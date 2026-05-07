@@ -7,7 +7,7 @@ import pyaudiowpatch as pyaudio
 import soundfile as sf
 import keyboard
 import tkinter as tk
-from tkinter import scrolledtext, filedialog, messagebox
+from tkinter import scrolledtext, filedialog, messagebox, ttk
 import argostranslate.translate
 from PIL import Image, ImageDraw
 import pystray
@@ -22,9 +22,10 @@ os.environ["PATH"] = r"C:\ffmpeg\bin" + os.pathsep + os.environ.get("PATH", "")
 # ══════════════════════════════════════════
 #  CONFIGURACIÓN
 # ══════════════════════════════════════════
-MODELO_WHISPER     = "small"   # más preciso que base
-CHUNK_SEGUNDOS     = 6         # procesa cada 6 segundos en tiempo real
-SAMPLE_RATE        = 16000
+MODELO_WHISPER  = "small"
+CHUNK_SEGUNDOS  = 6
+SAMPLE_RATE     = 16000
+ARCHIVO_GLOSARIO = os.path.join(os.path.dirname(__file__), "glosario.json")
 
 COLORES = {
     "fondo":        "#0d0d1a",
@@ -45,96 +46,108 @@ COLORES = {
 }
 
 # ══════════════════════════════════════════
-#  GLOSARIO FIJO
+#  GLOSARIO — estructura en memoria
+#  {
+#    "general": [ {pregunta, respuestas, traducciones}, ... ],
+#    "semanas": {
+#      "Semana 1": [ ... ],
+#      "Semana 2": [ ... ],
+#    },
+#    "semanas_activas": ["Semana 1"]
+#  }
 # ══════════════════════════════════════════
-GLOSARIO_FIJO = [
-    {
-        "pregunta_en_ingles": "How are you?",
-        "respuestas_ingles": ["I'm fine, thank you.", "I'm great, thanks!", "I'm okay, and you?"],
-        "traducciones_espanol": ["Estoy bien, gracias.", "Estoy genial, ¡gracias!", "Estoy bien, ¿y tú?"]
-    },
-    {
-        "pregunta_en_ingles": "How are you today?",
-        "respuestas_ingles": ["I'm doing well, thank you.", "I'm a little tired today.", "I'm very happy today!"],
-        "traducciones_espanol": ["Estoy bien hoy, gracias.", "Estoy un poco cansado hoy.", "¡Estoy muy feliz hoy!"]
-    },
-    {
-        "pregunta_en_ingles": "What did you do this weekend?",
-        "respuestas_ingles": ["I stayed at home and rested.", "I went out with my family.", "I studied and watched TV."],
-        "traducciones_espanol": ["Me quedé en casa y descansé.", "Salí con mi familia.", "Estudié y vi televisión."]
-    },
-    {
-        "pregunta_en_ingles": "How was your weekend?",
-        "respuestas_ingles": ["It was great, I relaxed a lot.", "It was okay, nothing special.", "It was busy but fun."],
-        "traducciones_espanol": ["Estuvo genial, descansé mucho.", "Estuvo bien, nada especial.", "Estuvo ocupado pero divertido."]
-    },
-    {
-        "pregunta_en_ingles": "How was your week?",
-        "respuestas_ingles": ["It was good, thank you.", "It was a bit stressful.", "It was very productive."],
-        "traducciones_espanol": ["Estuvo bien, gracias.", "Fue un poco estresante.", "Fue muy productiva."]
-    },
-    {
-        "pregunta_en_ingles": "What did you do yesterday?",
-        "respuestas_ingles": ["I worked and then cooked dinner.", "I visited my family.", "I stayed home and rested."],
-        "traducciones_espanol": ["Trabajé y luego cociné la cena.", "Visité a mi familia.", "Me quedé en casa y descansé."]
-    },
-    {
-        "pregunta_en_ingles": "Are you ready for class?",
-        "respuestas_ingles": ["Yes, I'm ready!", "Almost, give me a second.", "Yes, let's start!"],
-        "traducciones_espanol": ["¡Sí, estoy listo!", "Casi, dame un segundo.", "¡Sí, empecemos!"]
-    },
-    {
-        "pregunta_en_ingles": "Can you hear me?",
-        "respuestas_ingles": ["Yes, I can hear you clearly.", "Yes, loud and clear!", "No, there is an echo."],
-        "traducciones_espanol": ["Sí, te escucho claramente.", "¡Sí, muy claro!", "No, hay un eco."]
-    },
-    {
-        "pregunta_en_ingles": "Do you have any questions?",
-        "respuestas_ingles": ["No, I understand.", "Yes, I have one question.", "Can you repeat that please?"],
-        "traducciones_espanol": ["No, entiendo.", "Sí, tengo una pregunta.", "¿Puedes repetir eso por favor?"]
-    },
-    {
-        "pregunta_en_ingles": "What is your name?",
-        "respuestas_ingles": ["My name is Anthony.", "I'm Anthony, nice to meet you.", "Anthony, but you can call me Tony."],
-        "traducciones_espanol": ["Mi nombre es Anthony.", "Soy Anthony, mucho gusto.", "Anthony, pero puedes llamarme Tony."]
-    },
-    {
-        "pregunta_en_ingles": "Where are you from?",
-        "respuestas_ingles": ["I'm from Peru.", "I'm from Arequipa, Peru.", "I'm Peruvian."],
-        "traducciones_espanol": ["Soy de Perú.", "Soy de Arequipa, Perú.", "Soy peruano."]
-    },
-    {
-        "pregunta_en_ingles": "How do you feel today?",
-        "respuestas_ingles": ["I feel good, thank you.", "I feel a little nervous.", "I feel excited to learn!"],
-        "traducciones_espanol": ["Me siento bien, gracias.", "Me siento un poco nervioso.", "¡Me siento emocionado de aprender!"]
-    },
-    {
-        "pregunta_en_ingles": "What did you have for breakfast?",
-        "respuestas_ingles": ["I had bread and coffee.", "I had eggs and juice.", "I didn't have breakfast today."],
-        "traducciones_espanol": ["Comí pan y café.", "Comí huevos y jugo.", "No desayuné hoy."]
-    },
-    {
-        "pregunta_en_ingles": "Can you introduce yourself?",
-        "respuestas_ingles": ["Sure! My name is Anthony, I'm from Peru.", "Of course! I'm Anthony and I'm learning English.", "Yes! I'm Anthony, nice to meet everyone."],
-        "traducciones_espanol": ["¡Claro! Me llamo Anthony, soy de Perú.", "¡Por supuesto! Soy Anthony y estoy aprendiendo inglés.", "¡Sí! Soy Anthony, mucho gusto a todos."]
-    },
+
+GLOSARIO_GENERAL_DEFAULT = [
+    {"pregunta_en_ingles": "How are you?",
+     "respuestas_ingles": ["I'm fine, thank you.", "I'm great, thanks!", "I'm okay, and you?"],
+     "traducciones_espanol": ["Estoy bien, gracias.", "Estoy genial, ¡gracias!", "Estoy bien, ¿y tú?"]},
+    {"pregunta_en_ingles": "How are you today?",
+     "respuestas_ingles": ["I'm doing well, thank you.", "I'm a little tired today.", "I'm very happy today!"],
+     "traducciones_espanol": ["Estoy bien hoy, gracias.", "Estoy un poco cansado hoy.", "¡Estoy muy feliz hoy!"]},
+    {"pregunta_en_ingles": "What did you do this weekend?",
+     "respuestas_ingles": ["I stayed at home and rested.", "I went out with my family.", "I studied and watched TV."],
+     "traducciones_espanol": ["Me quedé en casa y descansé.", "Salí con mi familia.", "Estudié y vi televisión."]},
+    {"pregunta_en_ingles": "How was your weekend?",
+     "respuestas_ingles": ["It was great, I relaxed a lot.", "It was okay, nothing special.", "It was busy but fun."],
+     "traducciones_espanol": ["Estuvo genial, descansé mucho.", "Estuvo bien, nada especial.", "Estuvo ocupado pero divertido."]},
+    {"pregunta_en_ingles": "How was your week?",
+     "respuestas_ingles": ["It was good, thank you.", "It was a bit stressful.", "It was very productive."],
+     "traducciones_espanol": ["Estuvo bien, gracias.", "Fue un poco estresante.", "Fue muy productiva."]},
+    {"pregunta_en_ingles": "What did you do yesterday?",
+     "respuestas_ingles": ["I worked and then cooked dinner.", "I visited my family.", "I stayed home and rested."],
+     "traducciones_espanol": ["Trabajé y luego cociné la cena.", "Visité a mi familia.", "Me quedé en casa y descansé."]},
+    {"pregunta_en_ingles": "Are you ready for class?",
+     "respuestas_ingles": ["Yes, I'm ready!", "Almost, give me a second.", "Yes, let's start!"],
+     "traducciones_espanol": ["¡Sí, estoy listo!", "Casi, dame un segundo.", "¡Sí, empecemos!"]},
+    {"pregunta_en_ingles": "Can you hear me?",
+     "respuestas_ingles": ["Yes, I can hear you clearly.", "Yes, loud and clear!", "No, there is an echo."],
+     "traducciones_espanol": ["Sí, te escucho claramente.", "¡Sí, muy claro!", "No, hay un eco."]},
+    {"pregunta_en_ingles": "Do you have any questions?",
+     "respuestas_ingles": ["No, I understand.", "Yes, I have one question.", "Can you repeat that please?"],
+     "traducciones_espanol": ["No, entiendo.", "Sí, tengo una pregunta.", "¿Puedes repetir eso por favor?"]},
+    {"pregunta_en_ingles": "What is your name?",
+     "respuestas_ingles": ["My name is Anthony.", "I'm Anthony, nice to meet you.", "Anthony, but you can call me Tony."],
+     "traducciones_espanol": ["Mi nombre es Anthony.", "Soy Anthony, mucho gusto.", "Anthony, pero puedes llamarme Tony."]},
+    {"pregunta_en_ingles": "Where are you from?",
+     "respuestas_ingles": ["I'm from Peru.", "I'm from Arequipa, Peru.", "I'm Peruvian."],
+     "traducciones_espanol": ["Soy de Perú.", "Soy de Arequipa, Perú.", "Soy peruano."]},
+    {"pregunta_en_ingles": "How do you feel today?",
+     "respuestas_ingles": ["I feel good, thank you.", "I feel a little nervous.", "I feel excited to learn!"],
+     "traducciones_espanol": ["Me siento bien, gracias.", "Me siento un poco nervioso.", "¡Me siento emocionado de aprender!"]},
+    {"pregunta_en_ingles": "What did you have for breakfast?",
+     "respuestas_ingles": ["I had bread and coffee.", "I had eggs and juice.", "I didn't have breakfast today."],
+     "traducciones_espanol": ["Comí pan y café.", "Comí huevos y jugo.", "No desayuné hoy."]},
+    {"pregunta_en_ingles": "Can you introduce yourself?",
+     "respuestas_ingles": ["Sure! My name is Anthony, I'm from Peru.", "Of course! I'm Anthony and I'm learning English.", "Yes! I'm Anthony, nice to meet everyone."],
+     "traducciones_espanol": ["¡Claro! Me llamo Anthony, soy de Perú.", "¡Por supuesto! Soy Anthony y estoy aprendiendo inglés.", "¡Sí! Soy Anthony, mucho gusto a todos."]},
 ]
+
+def glosario_vacio():
+    return {
+        "general": GLOSARIO_GENERAL_DEFAULT.copy(),
+        "semanas": {},
+        "semanas_activas": []
+    }
+
+def cargar_glosario_json():
+    if os.path.exists(ARCHIVO_GLOSARIO):
+        try:
+            with open(ARCHIVO_GLOSARIO, "r", encoding="utf-8") as f:
+                return json.load(f)
+        except:
+            pass
+    return glosario_vacio()
+
+def guardar_glosario_json(data):
+    with open(ARCHIVO_GLOSARIO, "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
+
+# Glosario en memoria
+glosario_data = cargar_glosario_json()
+
+def obtener_preguntas_activas():
+    """Retorna todas las preguntas activas (general + semanas activas)."""
+    resultado = list(glosario_data["general"])
+    for semana in glosario_data.get("semanas_activas", []):
+        resultado += glosario_data["semanas"].get(semana, [])
+    return resultado
 
 # ══════════════════════════════════════════
 #  ESTADO GLOBAL
 # ══════════════════════════════════════════
-historial       = []
-grabando        = False
-ventana_principal = None
-label_estado    = None
-historial_widget = None
-tray_icon       = None
-boton_grabar    = None
-label_guia      = None
-detener_grabacion = threading.Event()
-glosario_mes    = []
-texto_acumulado = ""
+historial               = []
+grabando                = False
+ventana_principal       = None
+label_estado            = None
+historial_widget        = None
+tray_icon               = None
+boton_grabar            = None
+detener_grabacion       = threading.Event()
+texto_acumulado         = ""
 ventana_flotante_actual = None
+_ultima_linea_en        = ""
+_lock_flotante          = threading.Lock()
+_ultima_pregunta        = ""
 
 # ══════════════════════════════════════════
 #  CARGAR MODELOS
@@ -151,22 +164,22 @@ print("✅ Traductor listo")
 #  BÚSQUEDA POR SIMILITUD
 # ══════════════════════════════════════════
 def buscar_pregunta_similar(texto):
-    glosario_completo = GLOSARIO_FIJO + glosario_mes
-    if not glosario_completo or not texto.strip():
+    preguntas_activas = obtener_preguntas_activas()
+    if not preguntas_activas or not texto.strip():
         return None
-    preguntas = [item["pregunta_en_ingles"] for item in glosario_completo]
+    preguntas = [item["pregunta_en_ingles"] for item in preguntas_activas]
     corpus = preguntas + [texto]
     try:
         vectorizer = TfidfVectorizer().fit_transform(corpus)
         similitudes = cosine_similarity(vectorizer[-1], vectorizer[:-1]).flatten()
-        idx = similitudes.argmax()
+        idx   = similitudes.argmax()
         score = similitudes[idx]
         if score < 0.15:
             return None
         return {
-            "pregunta":     glosario_completo[idx]["pregunta_en_ingles"],
-            "respuestas":   glosario_completo[idx]["respuestas_ingles"],
-            "traducciones": glosario_completo[idx]["traducciones_espanol"],
+            "pregunta":     preguntas_activas[idx]["pregunta_en_ingles"],
+            "respuestas":   preguntas_activas[idx]["respuestas_ingles"],
+            "traducciones": preguntas_activas[idx]["traducciones_espanol"],
             "score":        round(float(score), 2)
         }
     except Exception as e:
@@ -174,43 +187,17 @@ def buscar_pregunta_similar(texto):
         return None
 
 # ══════════════════════════════════════════
-#  CARGAR JSON DEL MES
-# ══════════════════════════════════════════
-def cargar_guia():
-    global glosario_mes, label_guia
-    ruta = filedialog.askopenfilename(
-        filetypes=[("JSON", "*.json")],
-        title="Cargar guía del mes"
-    )
-    if not ruta:
-        return
-    try:
-        with open(ruta, "r", encoding="utf-8") as f:
-            datos = json.load(f)
-        glosario_mes = datos
-        nombre = os.path.basename(ruta)
-        if label_guia:
-            label_guia.config(
-                text=f"📂 {nombre} — {len(datos)} preguntas cargadas",
-                fg=COLORES["verde"]
-            )
-        print(f"✅ Guía cargada: {nombre} ({len(datos)} preguntas)")
-    except Exception as e:
-        messagebox.showerror("Error", f"No se pudo cargar:\n{e}")
-
-# ══════════════════════════════════════════
-#  TRANSCRIPCIÓN EN TIEMPO REAL
+#  TRANSCRIPCIÓN
 # ══════════════════════════════════════════
 def transcribir_chunk(audio_np):
-    """Transcribe un chunk de audio numpy y retorna el texto."""
     tmp = tempfile.NamedTemporaryFile(suffix=".wav", delete=False)
-    sf.write(tmp.name, audio_np, SAMPLE_RATE)
+    tmp_path = tmp.name
+    tmp.close()
+    sf.write(tmp_path, audio_np, SAMPLE_RATE)
     try:
         segments, _ = modelo_whisper.transcribe(
-            tmp.name,
-            language="en",
-            beam_size=1,
-            vad_filter=True,          # ignora silencio automáticamente
+            tmp_path, language="en", beam_size=1,
+            vad_filter=True,
             vad_parameters={"min_silence_duration_ms": 500}
         )
         texto = " ".join(seg.text for seg in segments).strip()
@@ -218,232 +205,90 @@ def transcribir_chunk(audio_np):
         texto = ""
         print(f"Error transcripción: {e}")
     finally:
-        os.unlink(tmp.name)
+        try:
+            os.unlink(tmp_path)
+        except:
+            pass
     return texto
-
-def grabar_y_transcribir():
-    """Graba audio en chunks y transcribe cada uno en tiempo real."""
-    global texto_acumulado, grabando, boton_grabar
-
-    p = pyaudio.PyAudio()
-    wasapi_info = p.get_host_api_info_by_type(pyaudio.paWASAPI)
-    default_speakers = p.get_device_info_by_index(wasapi_info["defaultOutputDevice"])
-
-    if not default_speakers.get("isLoopbackDevice", False):
-        for loopback in p.get_loopback_device_info_generator():
-            if default_speakers["name"] in loopback["name"]:
-                default_speakers = loopback
-                break
-
-    sample_rate = int(default_speakers["defaultSampleRate"])
-    channels    = int(default_speakers["maxInputChannels"])
-    chunk       = 1024
-    frames_por_chunk = int(sample_rate * CHUNK_SEGUNDOS)
-
-    stream = p.open(
-        format=pyaudio.paFloat32,
-        channels=channels,
-        rate=sample_rate,
-        input=True,
-        input_device_index=default_speakers["index"],
-        frames_per_buffer=chunk
-    )
-
-    texto_acumulado = ""
-    detener_grabacion.clear()
-    frames_actuales = []
-
-    actualizar_estado("🔴  Grabando en tiempo real...", COLORES["grabando"])
-
-    while not detener_grabacion.is_set():
-        data = stream.read(chunk, exception_on_overflow=False)
-        frames_actuales.append(np.frombuffer(data, dtype=np.float32))
-
-        # Cada CHUNK_SEGUNDOS procesamos
-        if len(frames_actuales) >= frames_por_chunk // chunk:
-            audio = np.concatenate(frames_actuales)
-            if channels > 1:
-                audio = audio.reshape(-1, channels).mean(axis=1)
-
-            # Resamplear si es necesario
-            if sample_rate != SAMPLE_RATE:
-                factor = SAMPLE_RATE / sample_rate
-                audio = np.interp(
-                    np.arange(0, len(audio) * factor) / factor,
-                    np.arange(len(audio)),
-                    audio
-                )
-
-            frames_actuales = []
-
-            # Transcribir en hilo separado para no bloquear grabación
-            chunk_audio = audio.copy()
-            def procesar_chunk(a=chunk_audio):
-                global texto_acumulado
-                texto = transcribir_chunk(a)
-                if texto:
-                    texto_acumulado = (texto_acumulado + " " + texto).strip()
-                    actualizar_historial_tiempo_real(texto)
-                    actualizar_estado(f"🔴  Grabando... | Último: \"{texto[:40]}...\"" if len(texto) > 40 else f"🔴  Grabando... | \"{texto}\"", COLORES["grabando"])
-
-            threading.Thread(target=procesar_chunk, daemon=True).start()
-
-    stream.stop_stream()
-    stream.close()
-    p.terminate()
-
-    # Procesar lo que quedó grabado al presionar DETENER
-    if frames_actuales:
-        audio = np.concatenate(frames_actuales)
-        if channels > 1:
-            audio = audio.reshape(-1, channels).mean(axis=1)
-        texto_final = transcribir_chunk(audio)
-        if texto_final:
-            texto_acumulado = (texto_acumulado + " " + texto_final).strip()
-
-    finalizar_sesion()
-
-def finalizar_sesion():
-    """Procesa el texto acumulado al terminar la grabación."""
-    global grabando, boton_grabar, texto_acumulado
-
-    if not texto_acumulado.strip():
-        actualizar_estado("⚠️  No se detectó audio claro.", COLORES["rosa"])
-        grabando = False
-        if boton_grabar:
-            boton_grabar.config(text="⬤  GRABAR  (Ctrl+Space)", bg=COLORES["boton"])
-        return
-
-    actualizar_estado("🌐  Traduciendo texto completo...", COLORES["cyan"])
-    texto_es = traductor.translate(texto_acumulado)
-
-    actualizar_estado("🔍  Buscando en glosario...", COLORES["borde"])
-    coincidencia = buscar_pregunta_similar(texto_acumulado)
-
-    hora = datetime.datetime.now().strftime("%H:%M:%S")
-    historial.append({"hora": hora, "en": texto_acumulado, "es": texto_es})
-    agregar_al_historial(texto_acumulado, texto_es, hora,
-                         coincidencia["pregunta"] if coincidencia else None)
-
-    if ventana_principal:
-        txt = texto_acumulado
-        es  = texto_es
-        c   = coincidencia
-        ventana_principal.after(0, lambda: mostrar_flotante(txt, es, c))
-
-    if coincidencia:
-        actualizar_estado(f"✅  Pregunta detectada ({int(coincidencia['score']*100)}% similitud)", COLORES["verde"])
-    else:
-        actualizar_estado("✅  Listo — presiona GRABAR para continuar", COLORES["texto2"])
-
-    grabando = False
-    if boton_grabar:
-        boton_grabar.config(text="⬤  GRABAR  (Ctrl+Space)", bg=COLORES["boton"])
-
-# ══════════════════════════════════════════
-#  ACTUALIZAR HISTORIAL EN TIEMPO REAL
-# ══════════════════════════════════════════
-_ultima_linea_en = ""
-
-def actualizar_historial_tiempo_real(texto_nuevo):
-    global _ultima_linea_en
-    if not historial_widget:
-        return
-    if ventana_principal:
-        ventana_principal.after(0, lambda: _insertar_chunk(texto_nuevo))
-
-def _insertar_chunk(texto):
-    global _ultima_linea_en
-    historial_widget.config(state="normal")
-    if not _ultima_linea_en:
-        historial_widget.insert("end", f"\n[{datetime.datetime.now().strftime('%H:%M:%S')}] 🔴 EN VIVO\n", "hora")
-    historial_widget.insert("end", texto + " ", "en")
-    historial_widget.see("end")
-    historial_widget.config(state="disabled")
-    _ultima_linea_en += texto + " "
 
 # ══════════════════════════════════════════
 #  VENTANA FLOTANTE
 # ══════════════════════════════════════════
 def mostrar_flotante(texto_en, texto_es, coincidencia=None):
-    global ventana_flotante_actual
+    global ventana_flotante_actual, _ultima_pregunta
+    if coincidencia:
+        if coincidencia["pregunta"] == _ultima_pregunta:
+            return
+        _ultima_pregunta = coincidencia["pregunta"]
 
-    # Cerrar flotante anterior si existe
-    try:
-        if ventana_flotante_actual and ventana_flotante_actual.winfo_exists():
-            ventana_flotante_actual.destroy()
-    except:
-        pass
+    with _lock_flotante:
+        try:
+            if ventana_flotante_actual and ventana_flotante_actual.winfo_exists():
+                ventana_flotante_actual.destroy()
+        except:
+            pass
 
     flotante = tk.Toplevel()
     ventana_flotante_actual = flotante
-    flotante.title("")
+    flotante.title("Adriana AI — Resultado")
     flotante.attributes("-topmost", True)
-    flotante.attributes("-alpha", 0.96)
-    flotante.overrideredirect(True)
     flotante.configure(bg=COLORES["fondo"])
+    flotante.resizable(True, True)
 
-    alto = 300 if coincidencia else 180
-    ancho = 520
     sw = flotante.winfo_screenwidth()
     sh = flotante.winfo_screenheight()
-    flotante.geometry(f"{ancho}x{alto}+{sw - ancho - 20}+{sh - alto - 70}")
+    ancho = min(500, sw - 40)
+    alto  = min(360 if coincidencia else 200, sh - 100)
+    flotante.geometry(f"{ancho}x{alto}+{sw - ancho - 10}+{sh - alto - 60}")
+    flotante.minsize(350, 150)
 
     marco = tk.Frame(flotante, bg=COLORES["borde"], padx=2, pady=2)
     marco.pack(fill="both", expand=True)
     interior = tk.Frame(marco, bg=COLORES["fondo"])
     interior.pack(fill="both", expand=True)
 
-    header = tk.Frame(interior, bg=COLORES["panel"], pady=6)
+    header = tk.Frame(interior, bg=COLORES["panel"], pady=5)
     header.pack(fill="x")
     tk.Label(header, text="◈ ADRIANA AI",
              bg=COLORES["panel"], fg=COLORES["borde"],
-             font=("Consolas", 9, "bold")).pack(side="left", padx=10)
+             font=("Consolas", 9, "bold")).pack(side="left", padx=8)
     tk.Button(header, text="✕", command=flotante.destroy,
               bg=COLORES["panel"], fg=COLORES["rosa"],
               relief="flat", font=("Consolas", 10, "bold"),
-              cursor="hand2", bd=0).pack(side="right", padx=8)
+              cursor="hand2", bd=0).pack(side="right", padx=6)
 
-    fila_en = tk.Frame(interior, bg=COLORES["fondo"], pady=4)
-    fila_en.pack(fill="x", padx=10)
-    tk.Label(fila_en, text="EN›", bg=COLORES["fondo"],
-             fg=COLORES["borde"], font=("Consolas", 9, "bold")).pack(side="left")
-    tk.Label(fila_en, text=texto_en, bg=COLORES["fondo"],
-             fg=COLORES["verde"], font=("Consolas", 10),
-             wraplength=440, justify="left").pack(side="left", padx=6)
+    contenido = scrolledtext.ScrolledText(
+        interior, bg=COLORES["fondo"], fg=COLORES["texto"],
+        font=("Consolas", 10), relief="flat", bd=0,
+        wrap="word", state="normal"
+    )
+    contenido.pack(fill="both", expand=True, padx=8, pady=6)
 
-    tk.Frame(interior, bg=COLORES["borde2"], height=1).pack(fill="x", padx=10)
+    contenido.tag_config("label",   foreground=COLORES["borde"],   font=("Consolas", 9, "bold"))
+    contenido.tag_config("en",      foreground=COLORES["verde"],    font=("Consolas", 10))
+    contenido.tag_config("label2",  foreground=COLORES["borde2"],   font=("Consolas", 9, "bold"))
+    contenido.tag_config("es",      foreground=COLORES["cyan"],     font=("Consolas", 10))
+    contenido.tag_config("sep",     foreground=COLORES["panel"],    font=("Consolas", 6))
+    contenido.tag_config("match",   foreground=COLORES["amarillo"], font=("Consolas", 9, "bold"))
+    contenido.tag_config("resp_en", foreground=COLORES["verde"],    font=("Consolas", 9))
+    contenido.tag_config("resp_es", foreground=COLORES["rosa"],     font=("Consolas", 9))
 
-    fila_es = tk.Frame(interior, bg=COLORES["fondo"], pady=4)
-    fila_es.pack(fill="x", padx=10)
-    tk.Label(fila_es, text="ES›", bg=COLORES["fondo"],
-             fg=COLORES["borde2"], font=("Consolas", 9, "bold")).pack(side="left")
-    tk.Label(fila_es, text=texto_es, bg=COLORES["fondo"],
-             fg=COLORES["cyan"], font=("Consolas", 10),
-             wraplength=440, justify="left").pack(side="left", padx=6)
+    contenido.insert("end", "EN › ", "label")
+    contenido.insert("end", texto_en + "\n\n", "en")
+    contenido.insert("end", "ES › ", "label2")
+    contenido.insert("end", texto_es + "\n", "es")
 
     if coincidencia:
-        tk.Frame(interior, bg=COLORES["neon"], height=1).pack(fill="x", padx=10, pady=4)
-        tk.Label(interior,
-                 text=f"🔍 Pregunta detectada  ({int(coincidencia['score']*100)}% similitud)",
-                 bg=COLORES["fondo"], fg=COLORES["amarillo"],
-                 font=("Consolas", 8, "bold")).pack(anchor="w", padx=10)
-        tk.Label(interior, text=f"  {coincidencia['pregunta']}",
-                 bg=COLORES["fondo"], fg=COLORES["amarillo"],
-                 font=("Consolas", 9, "italic"),
-                 wraplength=490, justify="left").pack(anchor="w", padx=10)
-        tk.Label(interior, text="💬 Respuestas sugeridas:",
-                 bg=COLORES["fondo"], fg=COLORES["texto2"],
-                 font=("Consolas", 8, "bold")).pack(anchor="w", padx=12, pady=(4, 0))
+        contenido.insert("end", "─" * 40 + "\n", "sep")
+        contenido.insert("end",
+            f"🔍 Pregunta detectada ({int(coincidencia['score']*100)}% similitud)\n", "match")
+        contenido.insert("end", f"   {coincidencia['pregunta']}\n\n", "match")
+        contenido.insert("end", "💬 Respuestas sugeridas:\n", "match")
         for i, (r, t) in enumerate(zip(coincidencia["respuestas"], coincidencia["traducciones"])):
-            tk.Label(interior, text=f"  {i+1}. {r}",
-                     bg=COLORES["fondo"], fg=COLORES["verde"],
-                     font=("Consolas", 9),
-                     wraplength=490, justify="left").pack(anchor="w", padx=14)
-            tk.Label(interior, text=f"     {t}",
-                     bg=COLORES["fondo"], fg=COLORES["rosa"],
-                     font=("Consolas", 8),
-                     wraplength=490, justify="left").pack(anchor="w", padx=14)
+            contenido.insert("end", f"  {i+1}. {r}\n", "resp_en")
+            contenido.insert("end", f"     {t}\n", "resp_es")
+
+    contenido.config(state="disabled")
 
     def iniciar_arrastre(e):
         flotante._drag_x = e.x
@@ -456,47 +301,497 @@ def mostrar_flotante(texto_en, texto_es, coincidencia=None):
     header.bind("<B1-Motion>", arrastrar)
 
 # ══════════════════════════════════════════
-#  ACTUALIZAR UI
+#  GRABACIÓN EN TIEMPO REAL
 # ══════════════════════════════════════════
+def grabar_y_transcribir():
+    global texto_acumulado, grabando, boton_grabar
+
+    p = pyaudio.PyAudio()
+    wasapi_info = p.get_host_api_info_by_type(pyaudio.paWASAPI)
+    default_spk = p.get_device_info_by_index(wasapi_info["defaultOutputDevice"])
+
+    if not default_spk.get("isLoopbackDevice", False):
+        for loopback in p.get_loopback_device_info_generator():
+            if default_spk["name"] in loopback["name"]:
+                default_spk = loopback
+                break
+
+    sample_rate      = int(default_spk["defaultSampleRate"])
+    channels         = int(default_spk["maxInputChannels"])
+    chunk            = 1024
+    frames_por_chunk = int(sample_rate * CHUNK_SEGUNDOS)
+
+    stream = p.open(
+        format=pyaudio.paFloat32, channels=channels,
+        rate=sample_rate, input=True,
+        input_device_index=default_spk["index"],
+        frames_per_buffer=chunk
+    )
+
+    texto_acumulado = ""
+    detener_grabacion.clear()
+    frames_actuales = []
+    actualizar_estado("🔴  Grabando en tiempo real...", COLORES["grabando"])
+
+    while not detener_grabacion.is_set():
+        data = stream.read(chunk, exception_on_overflow=False)
+        frames_actuales.append(np.frombuffer(data, dtype=np.float32))
+
+        if len(frames_actuales) >= frames_por_chunk // chunk:
+            audio = np.concatenate(frames_actuales)
+            if channels > 1:
+                audio = audio.reshape(-1, channels).mean(axis=1)
+            if sample_rate != SAMPLE_RATE:
+                factor = SAMPLE_RATE / sample_rate
+                audio = np.interp(
+                    np.arange(0, len(audio) * factor) / factor,
+                    np.arange(len(audio)), audio
+                )
+            frames_actuales = []
+            chunk_audio = audio.copy()
+
+            def procesar_chunk(a=chunk_audio):
+                global texto_acumulado
+                texto = transcribir_chunk(a)
+                if not texto:
+                    return
+                texto_acumulado = (texto_acumulado + " " + texto).strip()
+                insertar_chunk_en_historial(texto)
+                try:
+                    texto_es = traductor.translate(texto)
+                except:
+                    texto_es = ""
+                coincidencia = buscar_pregunta_similar(texto)
+                etiqueta = f"🔴 \"{texto[:45]}...\"" if len(texto) > 45 else f"🔴 \"{texto}\""
+                actualizar_estado(etiqueta, COLORES["grabando"])
+                if coincidencia and ventana_principal:
+                    ventana_principal.after(0, lambda t=texto, e=texto_es, c=coincidencia:
+                                            mostrar_flotante(t, e, c))
+
+            threading.Thread(target=procesar_chunk, daemon=True).start()
+
+    stream.stop_stream()
+    stream.close()
+    p.terminate()
+
+    if frames_actuales:
+        audio = np.concatenate(frames_actuales)
+        if channels > 1:
+            audio = audio.reshape(-1, channels).mean(axis=1)
+        texto_final = transcribir_chunk(audio)
+        if texto_final:
+            texto_acumulado = (texto_acumulado + " " + texto_final).strip()
+            insertar_chunk_en_historial(texto_final)
+
+    finalizar_sesion()
+
+def finalizar_sesion():
+    global grabando, boton_grabar, texto_acumulado, _ultima_pregunta
+    if not texto_acumulado.strip():
+        actualizar_estado("⚠️  No se detectó audio claro.", COLORES["rosa"])
+        grabando = False
+        if boton_grabar:
+            boton_grabar.config(text="⬤  GRABAR  (Ctrl+Space)", bg=COLORES["boton"])
+        return
+    try:
+        texto_es = traductor.translate(texto_acumulado)
+    except:
+        texto_es = ""
+    coincidencia = buscar_pregunta_similar(texto_acumulado)
+    hora = datetime.datetime.now().strftime("%H:%M:%S")
+    historial.append({"hora": hora, "en": texto_acumulado, "es": texto_es})
+    agregar_separador_historial(texto_es, hora, coincidencia["pregunta"] if coincidencia else None)
+    _ultima_pregunta = ""
+    if coincidencia:
+        actualizar_estado(f"✅  Sesión finalizada — {int(coincidencia['score']*100)}% similitud", COLORES["verde"])
+    else:
+        actualizar_estado("✅  Sesión finalizada — presiona GRABAR para continuar", COLORES["texto2"])
+    grabando = False
+    if boton_grabar:
+        boton_grabar.config(text="⬤  GRABAR  (Ctrl+Space)", bg=COLORES["boton"])
+
+# ══════════════════════════════════════════
+#  HISTORIAL EN TIEMPO REAL
+# ══════════════════════════════════════════
+def insertar_chunk_en_historial(texto):
+    global _ultima_linea_en
+    if not historial_widget or not ventana_principal:
+        return
+    def _hacer():
+        global _ultima_linea_en
+        historial_widget.config(state="normal")
+        if not _ultima_linea_en:
+            hora = datetime.datetime.now().strftime("%H:%M:%S")
+            historial_widget.insert("end", f"\n[{hora}] 🔴 EN VIVO\n", "hora")
+        historial_widget.insert("end", texto + " ", "en")
+        historial_widget.see("end")
+        historial_widget.config(state="disabled")
+        _ultima_linea_en += texto + " "
+    ventana_principal.after(0, _hacer)
+
+def agregar_separador_historial(texto_es, hora, pregunta=None):
+    global _ultima_linea_en
+    if not historial_widget or not ventana_principal:
+        return
+    def _hacer():
+        global _ultima_linea_en
+        historial_widget.config(state="normal")
+        historial_widget.insert("end", f"\nES › {texto_es}\n", "es")
+        if pregunta:
+            historial_widget.insert("end", f"🔍 {pregunta}\n", "match")
+        historial_widget.insert("end", "─" * 55 + "\n", "sep")
+        historial_widget.see("end")
+        historial_widget.config(state="disabled")
+        _ultima_linea_en = ""
+    ventana_principal.after(0, _hacer)
+
 def actualizar_estado(texto, color=None):
     if label_estado and ventana_principal:
         ventana_principal.after(0, lambda: label_estado.config(
             text=texto, fg=color or COLORES["texto2"]))
 
-def agregar_al_historial(texto_en, texto_es, hora, pregunta_detectada=None):
-    global _ultima_linea_en
-    if not historial_widget:
-        return
-    def _insertar():
-        global _ultima_linea_en
-        historial_widget.config(state="normal")
-        historial_widget.insert("end", "\n", "sep")
-        historial_widget.insert("end", f"ES › {texto_es}\n", "es")
-        if pregunta_detectada:
-            historial_widget.insert("end", f"🔍 {pregunta_detectada}\n", "match")
-        historial_widget.insert("end", "─" * 55 + "\n", "sep")
-        historial_widget.see("end")
-        historial_widget.config(state="disabled")
-        _ultima_linea_en = ""
-    if ventana_principal:
-        ventana_principal.after(0, _insertar)
-
 # ══════════════════════════════════════════
-#  TOGGLE GRABAR / DETENER
+#  TOGGLE GRABAR
 # ══════════════════════════════════════════
 def iniciar_proceso():
-    global grabando, boton_grabar, _ultima_linea_en
+    global grabando, boton_grabar, _ultima_linea_en, _ultima_pregunta
     if not grabando:
         grabando = True
         _ultima_linea_en = ""
+        _ultima_pregunta = ""
         if boton_grabar:
             boton_grabar.config(text="⬛  DETENER", bg="#cc0000")
-        hilo = threading.Thread(target=grabar_y_transcribir, daemon=True)
-        hilo.start()
+        threading.Thread(target=grabar_y_transcribir, daemon=True).start()
     else:
         detener_grabacion.set()
         if boton_grabar:
             boton_grabar.config(text="⏳  Procesando...", bg=COLORES["neon"])
+
+# ══════════════════════════════════════════
+#  EDITOR DE GLOSARIO — VENTANA
+# ══════════════════════════════════════════
+def abrir_editor_glosario():
+    editor = tk.Toplevel()
+    editor.title("📚 Editor de Glosario")
+    editor.configure(bg=COLORES["fondo"])
+    editor.geometry("700x600")
+    editor.minsize(600, 500)
+    editor.resizable(True, True)
+    editor.attributes("-topmost", False)
+
+    # ── NOTEBOOK (pestañas) ──────────────────
+    style = ttk.Style()
+    style.theme_use("default")
+    style.configure("TNotebook",          background=COLORES["fondo"],  borderwidth=0)
+    style.configure("TNotebook.Tab",      background=COLORES["panel"],  foreground=COLORES["texto2"],
+                    padding=[10, 4],      font=("Consolas", 9))
+    style.map("TNotebook.Tab",
+              background=[("selected", COLORES["borde"])],
+              foreground=[("selected", "white")])
+
+    notebook = ttk.Notebook(editor)
+    notebook.pack(fill="both", expand=True, padx=10, pady=10)
+
+    # ── FUNCIÓN PARA CREAR PESTAÑA ───────────
+    def crear_pestaña(nombre_seccion, es_general=False):
+        frame = tk.Frame(notebook, bg=COLORES["fondo"])
+        notebook.add(frame, text=f"{'🌐' if es_general else '📅'} {nombre_seccion}")
+
+        # Lista de preguntas (izquierda)
+        frame_lista = tk.Frame(frame, bg=COLORES["fondo2"], width=220)
+        frame_lista.pack(side="left", fill="y", padx=(0, 4), pady=4)
+        frame_lista.pack_propagate(False)
+
+        tk.Label(frame_lista, text="Preguntas guardadas:",
+                 bg=COLORES["fondo2"], fg=COLORES["borde"],
+                 font=("Consolas", 8, "bold")).pack(anchor="w", padx=8, pady=(8, 2))
+
+        lista_box = tk.Listbox(
+            frame_lista, bg=COLORES["fondo"], fg=COLORES["verde"],
+            font=("Consolas", 8), relief="flat", bd=0,
+            selectbackground=COLORES["neon"], selectforeground=COLORES["fondo"],
+            activestyle="none"
+        )
+        lista_box.pack(fill="both", expand=True, padx=4, pady=4)
+
+        # Formulario (derecha)
+        frame_form = tk.Frame(frame, bg=COLORES["fondo"])
+        frame_form.pack(side="left", fill="both", expand=True, pady=4)
+
+        def campo(label, ancho=40):
+            tk.Label(frame_form, text=label, bg=COLORES["fondo"],
+                     fg=COLORES["texto2"], font=("Consolas", 8)).pack(anchor="w", padx=8, pady=(6,0))
+            e = tk.Entry(frame_form, bg=COLORES["fondo2"], fg=COLORES["texto"],
+                         font=("Consolas", 9), relief="flat", bd=4,
+                         insertbackground=COLORES["borde"], width=ancho)
+            e.pack(fill="x", padx=8)
+            return e
+
+        e_pregunta = campo("Pregunta en inglés:")
+        tk.Frame(frame_form, bg=COLORES["panel"], height=1).pack(fill="x", padx=8, pady=6)
+
+        pares = []
+        for i in range(1, 4):
+            tk.Label(frame_form, text=f"Respuesta {i}:",
+                     bg=COLORES["fondo"], fg=COLORES["verde"],
+                     font=("Consolas", 8, "bold")).pack(anchor="w", padx=8, pady=(4,0))
+            e_r = tk.Entry(frame_form, bg=COLORES["fondo2"], fg=COLORES["verde"],
+                           font=("Consolas", 9), relief="flat", bd=4,
+                           insertbackground=COLORES["borde"])
+            e_r.pack(fill="x", padx=8)
+            tk.Label(frame_form, text=f"  Traducción {i}:",
+                     bg=COLORES["fondo"], fg=COLORES["rosa"],
+                     font=("Consolas", 8)).pack(anchor="w", padx=8)
+            e_t = tk.Entry(frame_form, bg=COLORES["fondo2"], fg=COLORES["rosa"],
+                           font=("Consolas", 9), relief="flat", bd=4,
+                           insertbackground=COLORES["borde"])
+            e_t.pack(fill="x", padx=8)
+            pares.append((e_r, e_t))
+
+        def obtener_lista_seccion():
+            if es_general:
+                return glosario_data["general"]
+            return glosario_data["semanas"].setdefault(nombre_seccion, [])
+
+        def refrescar_lista():
+            lista_box.delete(0, "end")
+            for item in obtener_lista_seccion():
+                lista_box.insert("end", item["pregunta_en_ingles"][:35])
+
+        def limpiar_form():
+            e_pregunta.delete(0, "end")
+            for e_r, e_t in pares:
+                e_r.delete(0, "end")
+                e_t.delete(0, "end")
+
+        def al_seleccionar(event):
+            sel = lista_box.curselection()
+            if not sel:
+                return
+            item = obtener_lista_seccion()[sel[0]]
+            limpiar_form()
+            e_pregunta.insert(0, item["pregunta_en_ingles"])
+            for i, (e_r, e_t) in enumerate(pares):
+                if i < len(item["respuestas_ingles"]):
+                    e_r.insert(0, item["respuestas_ingles"][i])
+                if i < len(item["traducciones_espanol"]):
+                    e_t.insert(0, item["traducciones_espanol"][i])
+
+        lista_box.bind("<<ListboxSelect>>", al_seleccionar)
+
+        def agregar():
+            pregunta = e_pregunta.get().strip()
+            if not pregunta:
+                messagebox.showwarning("Campo vacío", "Escribe la pregunta en inglés.", parent=editor)
+                return
+            respuestas = [e_r.get().strip() for e_r, _ in pares if e_r.get().strip()]
+            traducciones = [e_t.get().strip() for _, e_t in pares if e_t.get().strip()]
+            if not respuestas:
+                messagebox.showwarning("Sin respuestas", "Agrega al menos una respuesta.", parent=editor)
+                return
+            nuevo = {
+                "pregunta_en_ingles": pregunta,
+                "respuestas_ingles": respuestas,
+                "traducciones_espanol": traducciones
+            }
+            # Verificar si ya existe y actualizar
+            lista = obtener_lista_seccion()
+            for i, item in enumerate(lista):
+                if item["pregunta_en_ingles"].lower() == pregunta.lower():
+                    lista[i] = nuevo
+                    guardar_glosario_json(glosario_data)
+                    refrescar_lista()
+                    limpiar_form()
+                    actualizar_estado("✅  Pregunta actualizada en el glosario", COLORES["verde"])
+                    return
+            lista.append(nuevo)
+            guardar_glosario_json(glosario_data)
+            refrescar_lista()
+            limpiar_form()
+            actualizar_estado("✅  Pregunta agregada al glosario", COLORES["verde"])
+
+        def eliminar():
+            sel = lista_box.curselection()
+            if not sel:
+                return
+            lista = obtener_lista_seccion()
+            item = lista[sel[0]]
+            if messagebox.askyesno("Eliminar", f"¿Eliminar:\n{item['pregunta_en_ingles']}?", parent=editor):
+                lista.pop(sel[0])
+                guardar_glosario_json(glosario_data)
+                refrescar_lista()
+                limpiar_form()
+
+        # Botones
+        frame_bots = tk.Frame(frame_form, bg=COLORES["fondo"])
+        frame_bots.pack(fill="x", padx=8, pady=8)
+
+        tk.Button(frame_bots, text="➕  Agregar / Actualizar",
+                  command=agregar,
+                  bg=COLORES["boton"], fg="white",
+                  font=("Consolas", 9, "bold"), relief="flat",
+                  padx=10, pady=6, cursor="hand2").pack(side="left", padx=(0, 6))
+
+        tk.Button(frame_bots, text="🗑  Eliminar",
+                  command=eliminar,
+                  bg=COLORES["panel"], fg=COLORES["rosa"],
+                  font=("Consolas", 9), relief="flat",
+                  padx=10, pady=6, cursor="hand2").pack(side="left")
+
+        tk.Button(frame_bots, text="🔄  Limpiar form",
+                  command=limpiar_form,
+                  bg=COLORES["panel"], fg=COLORES["texto2"],
+                  font=("Consolas", 9), relief="flat",
+                  padx=10, pady=6, cursor="hand2").pack(side="left", padx=6)
+
+        refrescar_lista()
+        return frame
+
+    # ── PESTAÑA GENERAL (siempre presente) ──
+    crear_pestaña("General", es_general=True)
+
+    # ── PESTAÑAS DE SEMANAS ──────────────────
+    for semana in glosario_data["semanas"]:
+        crear_pestaña(semana)
+
+    # ── PESTAÑA: GESTIONAR SEMANAS ───────────
+    frame_sem = tk.Frame(notebook, bg=COLORES["fondo"])
+    notebook.add(frame_sem, text="⚙️ Semanas")
+
+    tk.Label(frame_sem, text="Gestionar semanas de clase",
+             bg=COLORES["fondo"], fg=COLORES["borde"],
+             font=("Consolas", 11, "bold")).pack(pady=(20, 4))
+    tk.Label(frame_sem, text="Crea semanas para organizar las preguntas de tu guía mensual.",
+             bg=COLORES["fondo"], fg=COLORES["texto2"],
+             font=("Consolas", 8)).pack()
+
+    tk.Frame(frame_sem, bg=COLORES["panel"], height=1).pack(fill="x", padx=20, pady=12)
+
+    # Crear nueva semana
+    frame_nueva = tk.Frame(frame_sem, bg=COLORES["fondo"])
+    frame_nueva.pack(pady=6)
+    tk.Label(frame_nueva, text="Nueva semana:", bg=COLORES["fondo"],
+             fg=COLORES["texto2"], font=("Consolas", 9)).pack(side="left", padx=6)
+    e_nueva_sem = tk.Entry(frame_nueva, bg=COLORES["fondo2"], fg=COLORES["texto"],
+                           font=("Consolas", 9), relief="flat", bd=4, width=20,
+                           insertbackground=COLORES["borde"])
+    e_nueva_sem.pack(side="left", padx=6)
+    e_nueva_sem.insert(0, "Semana 1")
+
+    def crear_semana():
+        nombre = e_nueva_sem.get().strip()
+        if not nombre:
+            return
+        if nombre in glosario_data["semanas"]:
+            messagebox.showinfo("Ya existe", f"'{nombre}' ya existe.", parent=editor)
+            return
+        glosario_data["semanas"][nombre] = []
+        guardar_glosario_json(glosario_data)
+        refrescar_semanas()
+        crear_pestaña(nombre)
+        messagebox.showinfo("✅", f"Semana '{nombre}' creada.\nReinicia el editor para ver la pestaña.", parent=editor)
+
+    tk.Button(frame_nueva, text="➕ Crear",
+              command=crear_semana,
+              bg=COLORES["boton"], fg="white",
+              font=("Consolas", 9), relief="flat",
+              padx=10, pady=4, cursor="hand2").pack(side="left")
+
+    tk.Frame(frame_sem, bg=COLORES["panel"], height=1).pack(fill="x", padx=20, pady=12)
+
+    # Activar/desactivar semanas
+    tk.Label(frame_sem, text="Semanas activas en la búsqueda:",
+             bg=COLORES["fondo"], fg=COLORES["amarillo"],
+             font=("Consolas", 9, "bold")).pack(pady=(0, 6))
+    tk.Label(frame_sem, text="(Las semanas activas se usan junto con las preguntas Generales)",
+             bg=COLORES["fondo"], fg=COLORES["texto2"],
+             font=("Consolas", 7)).pack()
+
+    frame_checks = tk.Frame(frame_sem, bg=COLORES["fondo"])
+    frame_checks.pack(pady=8)
+
+    checks_vars = {}
+
+    def refrescar_semanas():
+        for w in frame_checks.winfo_children():
+            w.destroy()
+        checks_vars.clear()
+        for semana in glosario_data["semanas"]:
+            var = tk.BooleanVar(value=(semana in glosario_data.get("semanas_activas", [])))
+            checks_vars[semana] = var
+
+            fila = tk.Frame(frame_checks, bg=COLORES["fondo"])
+            fila.pack(anchor="w", pady=2)
+
+            cb = tk.Checkbutton(
+                fila, text=semana, variable=var,
+                bg=COLORES["fondo"], fg=COLORES["cyan"],
+                selectcolor=COLORES["panel"],
+                activebackground=COLORES["fondo"],
+                font=("Consolas", 10),
+                command=guardar_activas
+            )
+            cb.pack(side="left")
+
+            preguntas = glosario_data["semanas"].get(semana, [])
+            tk.Label(fila, text=f"  ({len(preguntas)} preguntas)",
+                     bg=COLORES["fondo"], fg=COLORES["texto2"],
+                     font=("Consolas", 8)).pack(side="left")
+
+        if not glosario_data["semanas"]:
+            tk.Label(frame_checks, text="No hay semanas creadas aún.",
+                     bg=COLORES["fondo"], fg=COLORES["texto2"],
+                     font=("Consolas", 9)).pack()
+
+    def guardar_activas():
+        activas = [s for s, v in checks_vars.items() if v.get()]
+        glosario_data["semanas_activas"] = activas
+        guardar_glosario_json(glosario_data)
+        total = len(obtener_preguntas_activas())
+        actualizar_estado(f"✅  Glosario actualizado — {total} preguntas activas", COLORES["verde"])
+
+    refrescar_semanas()
+
+    # Importar JSON externo
+    tk.Frame(frame_sem, bg=COLORES["panel"], height=1).pack(fill="x", padx=20, pady=12)
+    tk.Label(frame_sem, text="Importar JSON externo a una semana:",
+             bg=COLORES["fondo"], fg=COLORES["texto2"],
+             font=("Consolas", 8, "bold")).pack()
+
+    frame_imp = tk.Frame(frame_sem, bg=COLORES["fondo"])
+    frame_imp.pack(pady=6)
+    tk.Label(frame_imp, text="Importar a semana:", bg=COLORES["fondo"],
+             fg=COLORES["texto2"], font=("Consolas", 8)).pack(side="left", padx=6)
+    e_sem_imp = tk.Entry(frame_imp, bg=COLORES["fondo2"], fg=COLORES["texto"],
+                         font=("Consolas", 9), relief="flat", bd=4, width=14,
+                         insertbackground=COLORES["borde"])
+    e_sem_imp.pack(side="left", padx=4)
+    e_sem_imp.insert(0, "Semana 1")
+
+    def importar_json():
+        nombre = e_sem_imp.get().strip()
+        if not nombre:
+            return
+        ruta = filedialog.askopenfilename(
+            filetypes=[("JSON", "*.json")], title="Seleccionar JSON", parent=editor)
+        if not ruta:
+            return
+        try:
+            with open(ruta, "r", encoding="utf-8") as f:
+                datos = json.load(f)
+            if nombre not in glosario_data["semanas"]:
+                glosario_data["semanas"][nombre] = []
+            glosario_data["semanas"][nombre] += datos
+            guardar_glosario_json(glosario_data)
+            messagebox.showinfo("✅", f"{len(datos)} preguntas importadas a '{nombre}'.\nReinicia el editor para ver los cambios.", parent=editor)
+        except Exception as e:
+            messagebox.showerror("Error", str(e), parent=editor)
+
+    tk.Button(frame_imp, text="📂 Importar JSON",
+              command=importar_json,
+              bg=COLORES["panel"], fg=COLORES["amarillo"],
+              font=("Consolas", 9), relief="flat",
+              padx=10, pady=4, cursor="hand2").pack(side="left", padx=6)
 
 # ══════════════════════════════════════════
 #  EXPORTAR / LIMPIAR
@@ -506,20 +801,13 @@ def exportar_historial():
         messagebox.showinfo("Sin datos", "No hay transcripciones aún.")
         return
     ruta = filedialog.asksaveasfilename(
-        defaultextension=".txt",
-        filetypes=[("Texto", "*.txt")],
-        title="Guardar historial"
-    )
+        defaultextension=".txt", filetypes=[("Texto", "*.txt")], title="Guardar historial")
     if ruta:
         with open(ruta, "w", encoding="utf-8") as f:
-            f.write("HISTORIAL — ADRIANA AI\n")
-            f.write("=" * 50 + "\n\n")
+            f.write("HISTORIAL — ADRIANA AI\n" + "=" * 50 + "\n\n")
             for item in historial:
-                f.write(f"[{item['hora']}]\n")
-                f.write(f"EN: {item['en']}\n")
-                f.write(f"ES: {item['es']}\n")
-                f.write("-" * 40 + "\n\n")
-        messagebox.showinfo("✅ Guardado", f"Historial exportado en:\n{ruta}")
+                f.write(f"[{item['hora']}]\nEN: {item['en']}\nES: {item['es']}\n" + "-" * 40 + "\n\n")
+        messagebox.showinfo("✅ Guardado", f"Historial exportado:\n{ruta}")
 
 def limpiar_historial():
     historial.clear()
@@ -563,14 +851,19 @@ def iniciar_tray():
 #  VENTANA PRINCIPAL
 # ══════════════════════════════════════════
 def construir_ui():
-    global ventana_principal, label_estado, historial_widget, boton_grabar, label_guia
+    global ventana_principal, label_estado, historial_widget, boton_grabar
 
     ventana_principal = tk.Tk()
     ventana_principal.title("Adriana AI — Asistente de Inglés")
     ventana_principal.configure(bg=COLORES["fondo"])
-    ventana_principal.geometry("620x750")
-    ventana_principal.resizable(False, True)
-    ventana_principal.minsize(620, 550)
+
+    sw = ventana_principal.winfo_screenwidth()
+    sh = ventana_principal.winfo_screenheight()
+    ancho = min(620, sw - 20)
+    alto  = min(680, sh - 60)
+    ventana_principal.geometry(f"{ancho}x{alto}+{(sw-ancho)//2}+{(sh-alto)//2}")
+    ventana_principal.minsize(400, 400)
+    ventana_principal.resizable(True, True)
 
     def minimizar_a_tray():
         ventana_principal.withdraw()
@@ -578,42 +871,56 @@ def construir_ui():
     ventana_principal.protocol("WM_DELETE_WINDOW", minimizar_a_tray)
 
     # HEADER
-    header = tk.Frame(ventana_principal, bg=COLORES["panel"], pady=14)
+    header = tk.Frame(ventana_principal, bg=COLORES["panel"], pady=10)
     header.pack(fill="x")
     tk.Label(header, text="◈ ADRIANA AI",
              bg=COLORES["panel"], fg=COLORES["borde"],
-             font=("Consolas", 18, "bold")).pack(side="left", padx=20)
+             font=("Consolas", 16, "bold")).pack(side="left", padx=16)
     tk.Label(header, text="Asistente para clases de inglés",
              bg=COLORES["panel"], fg=COLORES["texto2"],
-             font=("Consolas", 9)).pack(side="left")
+             font=("Consolas", 8)).pack(side="left")
     tk.Button(header, text="—", command=minimizar_a_tray,
               bg=COLORES["panel"], fg=COLORES["texto2"],
-              relief="flat", font=("Consolas", 12), cursor="hand2").pack(side="right", padx=6)
+              relief="flat", font=("Consolas", 11), cursor="hand2").pack(side="right", padx=6)
 
-    # ZONA GUÍA
-    zona_guia = tk.Frame(ventana_principal, bg=COLORES["fondo2"], pady=8)
-    zona_guia.pack(fill="x", padx=20, pady=(12, 0))
-    tk.Button(zona_guia, text="📂  Cargar guía del mes (.json)",
-              command=cargar_guia,
+    # ZONA ACCIONES RÁPIDAS
+    zona_acc = tk.Frame(ventana_principal, bg=COLORES["fondo2"], pady=6)
+    zona_acc.pack(fill="x", padx=16, pady=(10, 0))
+
+    tk.Button(zona_acc, text="📚  Editor de Glosario",
+              command=abrir_editor_glosario,
               bg=COLORES["panel"], fg=COLORES["amarillo"],
               font=("Consolas", 9, "bold"), relief="flat",
-              padx=12, pady=6, cursor="hand2").pack(side="left")
-    label_guia = tk.Label(zona_guia,
-                          text=f"📌 Glosario fijo: {len(GLOSARIO_FIJO)} preguntas",
-                          bg=COLORES["fondo2"], fg=COLORES["texto2"],
-                          font=("Consolas", 8))
-    label_guia.pack(side="left", padx=12)
+              padx=10, pady=5, cursor="hand2").pack(side="left")
+
+    # Info semanas activas
+    def info_semanas():
+        activas = glosario_data.get("semanas_activas", [])
+        total   = len(obtener_preguntas_activas())
+        if activas:
+            return f"✅ {total} preguntas activas  |  Semanas: {', '.join(activas)}"
+        return f"✅ {total} preguntas activas  |  Solo generales"
+
+    label_semanas = tk.Label(zona_acc, text=info_semanas(),
+                             bg=COLORES["fondo2"], fg=COLORES["texto2"],
+                             font=("Consolas", 7))
+    label_semanas.pack(side="left", padx=10)
+
+    def refrescar_info():
+        label_semanas.config(text=info_semanas())
+        ventana_principal.after(3000, refrescar_info)
+    ventana_principal.after(3000, refrescar_info)
 
     # BOTÓN PRINCIPAL
-    zona_boton = tk.Frame(ventana_principal, bg=COLORES["fondo"], pady=16)
+    zona_boton = tk.Frame(ventana_principal, bg=COLORES["fondo"], pady=12)
     zona_boton.pack(fill="x")
     boton_grabar = tk.Button(
         zona_boton,
         text="⬤  GRABAR  (Ctrl+Space)",
         command=iniciar_proceso,
         bg=COLORES["boton"], fg="white",
-        font=("Consolas", 13, "bold"),
-        relief="flat", padx=30, pady=14,
+        font=("Consolas", 12, "bold"),
+        relief="flat", padx=26, pady=12,
         cursor="hand2",
         activebackground=COLORES["boton_hover"],
         activeforeground="white"
@@ -630,33 +937,29 @@ def construir_ui():
         ventana_principal,
         text="✅  Listo — presiona GRABAR o Ctrl+Space para comenzar",
         bg=COLORES["fondo"], fg=COLORES["texto2"],
-        font=("Consolas", 9)
+        font=("Consolas", 8)
     )
-    label_estado.pack(pady=4)
+    label_estado.pack(pady=2)
 
-    # INFO TIEMPO REAL
     tk.Label(ventana_principal,
-             text="⚡ Transcripción en tiempo real cada 6 segundos",
+             text="⚡ Transcripción en tiempo real cada 6s  |  Ventana emergente automática al detectar pregunta",
              bg=COLORES["fondo"], fg=COLORES["borde"],
-             font=("Consolas", 8)).pack()
+             font=("Consolas", 7)).pack()
 
-    tk.Frame(ventana_principal, bg=COLORES["borde"], height=1).pack(fill="x", padx=20, pady=8)
+    tk.Frame(ventana_principal, bg=COLORES["borde"], height=1).pack(fill="x", padx=16, pady=6)
 
     # HISTORIAL
     zona_hist = tk.Frame(ventana_principal, bg=COLORES["fondo"])
-    zona_hist.pack(fill="both", expand=True, padx=20)
+    zona_hist.pack(fill="both", expand=True, padx=16)
     tk.Label(zona_hist, text="▸ TRANSCRIPCIÓN EN VIVO / HISTORIAL",
              bg=COLORES["fondo"], fg=COLORES["borde"],
-             font=("Consolas", 9, "bold")).pack(anchor="w", pady=(0, 6))
+             font=("Consolas", 8, "bold")).pack(anchor="w", pady=(0, 4))
 
     historial_widget = scrolledtext.ScrolledText(
-        zona_hist,
-        bg=COLORES["fondo2"], fg=COLORES["texto"],
+        zona_hist, bg=COLORES["fondo2"], fg=COLORES["texto"],
         font=("Consolas", 9), relief="flat", bd=0,
-        state="disabled",
-        insertbackground=COLORES["borde"],
-        selectbackground=COLORES["neon"],
-        wrap="word"
+        state="disabled", insertbackground=COLORES["borde"],
+        selectbackground=COLORES["neon"], wrap="word"
     )
     historial_widget.pack(fill="both", expand=True)
 
@@ -667,27 +970,27 @@ def construir_ui():
     historial_widget.tag_config("sep",   foreground=COLORES["panel"])
 
     # BOTONES INFERIORES
-    zona_bots = tk.Frame(ventana_principal, bg=COLORES["fondo"], pady=12)
-    zona_bots.pack(fill="x", padx=20)
+    zona_bots = tk.Frame(ventana_principal, bg=COLORES["fondo"], pady=8)
+    zona_bots.pack(fill="x", padx=16)
 
-    def boton(parent, texto, cmd, color):
+    def btn(parent, texto, cmd, color):
         b = tk.Button(parent, text=texto, command=cmd,
                       bg=COLORES["panel"], fg=color,
-                      font=("Consolas", 9), relief="flat",
-                      padx=14, pady=6, cursor="hand2",
+                      font=("Consolas", 8), relief="flat",
+                      padx=10, pady=5, cursor="hand2",
                       activebackground=COLORES["fondo2"])
-        b.pack(side="left", padx=4)
+        b.pack(side="left", padx=3)
         return b
 
-    boton(zona_bots, "🗑  Limpiar historial", limpiar_historial, COLORES["rosa"])
-    boton(zona_bots, "💾  Exportar .txt",     exportar_historial, COLORES["verde"])
-    boton(zona_bots, "⊟  Minimizar a tray",   minimizar_a_tray,   COLORES["texto2"])
+    btn(zona_bots, "🗑  Limpiar",   limpiar_historial,  COLORES["rosa"])
+    btn(zona_bots, "💾  Exportar",  exportar_historial, COLORES["verde"])
+    btn(zona_bots, "⊟  Minimizar", minimizar_a_tray,   COLORES["texto2"])
 
     # FOOTER
     tk.Label(ventana_principal,
              text="Faster-Whisper · Argos Translate · WASAPI Loopback  —  100% local",
              bg=COLORES["fondo"], fg=COLORES["panel"],
-             font=("Consolas", 7)).pack(pady=6)
+             font=("Consolas", 6)).pack(pady=4)
 
     return ventana_principal
 
@@ -700,9 +1003,7 @@ keyboard.add_hotkey("ctrl+space", iniciar_proceso, trigger_on_release=True)
 #  ARRANQUE
 # ══════════════════════════════════════════
 print("🎯 Iniciando interfaz...")
-hilo_tray = threading.Thread(target=iniciar_tray, daemon=True)
-hilo_tray.start()
-
+threading.Thread(target=iniciar_tray, daemon=True).start()
 ventana = construir_ui()
 print("⌨️  Ctrl+Space para grabar | Minimizar para ir al system tray")
 ventana.mainloop()
