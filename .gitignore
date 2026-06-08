@@ -2,3 +2,6 @@ venv/
 __pycache__/
 *.wav
 *.pyc
+dist/
+build/
+*.spec
