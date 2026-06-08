@@ -15,6 +15,9 @@ import datetime
 from faster_whisper import WhisperModel
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
+from configuracion import (
+    cargar_config, abrir_configuracion, calcular_geometria
+)
 
 # Ruta directa a FFmpeg
 os.environ["PATH"] = r"C:\ffmpeg\bin" + os.pathsep + os.environ.get("PATH", "")
@@ -22,9 +25,9 @@ os.environ["PATH"] = r"C:\ffmpeg\bin" + os.pathsep + os.environ.get("PATH", "")
 # ══════════════════════════════════════════
 #  CONFIGURACIÓN
 # ══════════════════════════════════════════
-MODELO_WHISPER  = "small"
-CHUNK_SEGUNDOS  = 6
-SAMPLE_RATE     = 16000
+MODELO_WHISPER   = "small"
+CHUNK_SEGUNDOS   = 6
+SAMPLE_RATE      = 16000
 ARCHIVO_GLOSARIO = os.path.join(os.path.dirname(__file__), "glosario.json")
 
 COLORES = {
@@ -46,17 +49,8 @@ COLORES = {
 }
 
 # ══════════════════════════════════════════
-#  GLOSARIO — estructura en memoria
-#  {
-#    "general": [ {pregunta, respuestas, traducciones}, ... ],
-#    "semanas": {
-#      "Semana 1": [ ... ],
-#      "Semana 2": [ ... ],
-#    },
-#    "semanas_activas": ["Semana 1"]
-#  }
+#  GLOSARIO FIJO
 # ══════════════════════════════════════════
-
 GLOSARIO_GENERAL_DEFAULT = [
     {"pregunta_en_ingles": "How are you?",
      "respuestas_ingles": ["I'm fine, thank you.", "I'm great, thanks!", "I'm okay, and you?"],
@@ -102,6 +96,9 @@ GLOSARIO_GENERAL_DEFAULT = [
      "traducciones_espanol": ["¡Claro! Me llamo Anthony, soy de Perú.", "¡Por supuesto! Soy Anthony y estoy aprendiendo inglés.", "¡Sí! Soy Anthony, mucho gusto a todos."]},
 ]
 
+# ══════════════════════════════════════════
+#  GLOSARIO
+# ══════════════════════════════════════════
 def glosario_vacio():
     return {
         "general": GLOSARIO_GENERAL_DEFAULT.copy(),
@@ -122,11 +119,9 @@ def guardar_glosario_json(data):
     with open(ARCHIVO_GLOSARIO, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
-# Glosario en memoria
 glosario_data = cargar_glosario_json()
 
 def obtener_preguntas_activas():
-    """Retorna todas las preguntas activas (general + semanas activas)."""
     resultado = list(glosario_data["general"])
     for semana in glosario_data.get("semanas_activas", []):
         resultado += glosario_data["semanas"].get(semana, [])
@@ -212,10 +207,17 @@ def transcribir_chunk(audio_np):
     return texto
 
 # ══════════════════════════════════════════
-#  VENTANA FLOTANTE
+#  VENTANA FLOTANTE — usa configuración
 # ══════════════════════════════════════════
 def mostrar_flotante(texto_en, texto_es, coincidencia=None):
     global ventana_flotante_actual, _ultima_pregunta
+
+    config = cargar_config()
+
+    # Si emergente desactivada, no mostrar
+    if not config["emergente_activa"]:
+        return
+
     if coincidencia:
         if coincidencia["pregunta"] == _ultima_pregunta:
             return
@@ -230,33 +232,43 @@ def mostrar_flotante(texto_en, texto_es, coincidencia=None):
 
     flotante = tk.Toplevel()
     ventana_flotante_actual = flotante
-    flotante.title("Adriana AI — Resultado")
+    flotante.title("Adriana AI")
     flotante.attributes("-topmost", True)
     flotante.configure(bg=COLORES["fondo"])
     flotante.resizable(True, True)
 
     sw = flotante.winfo_screenwidth()
     sh = flotante.winfo_screenheight()
-    ancho = min(500, sw - 40)
-    alto  = min(360 if coincidencia else 200, sh - 100)
-    flotante.geometry(f"{ancho}x{alto}+{sw - ancho - 10}+{sh - alto - 60}")
-    flotante.minsize(350, 150)
+    ancho, alto, x, y = calcular_geometria(config, sw, sh)
+    flotante.geometry(f"{ancho}x{alto}+{x}+{y}")
+    flotante.attributes("-alpha", config["emergente_opacidad"])
+    flotante.minsize(300, 150)
 
     marco = tk.Frame(flotante, bg=COLORES["borde"], padx=2, pady=2)
     marco.pack(fill="both", expand=True)
     interior = tk.Frame(marco, bg=COLORES["fondo"])
     interior.pack(fill="both", expand=True)
 
+    # Header
     header = tk.Frame(interior, bg=COLORES["panel"], pady=5)
     header.pack(fill="x")
     tk.Label(header, text="◈ ADRIANA AI",
              bg=COLORES["panel"], fg=COLORES["borde"],
              font=("Consolas", 9, "bold")).pack(side="left", padx=8)
+
+    # Botón configuración en la flotante
+    tk.Button(header, text="⚙",
+              command=lambda: abrir_configuracion(flotante),
+              bg=COLORES["panel"], fg=COLORES["texto2"],
+              relief="flat", font=("Consolas", 10),
+              cursor="hand2", bd=0).pack(side="right", padx=2)
+
     tk.Button(header, text="✕", command=flotante.destroy,
               bg=COLORES["panel"], fg=COLORES["rosa"],
               relief="flat", font=("Consolas", 10, "bold"),
               cursor="hand2", bd=0).pack(side="right", padx=6)
 
+    # Contenido con scroll
     contenido = scrolledtext.ScrolledText(
         interior, bg=COLORES["fondo"], fg=COLORES["texto"],
         font=("Consolas", 10), relief="flat", bd=0,
@@ -290,6 +302,7 @@ def mostrar_flotante(texto_en, texto_es, coincidencia=None):
 
     contenido.config(state="disabled")
 
+    # Arrastrable
     def iniciar_arrastre(e):
         flotante._drag_x = e.x
         flotante._drag_y = e.y
@@ -364,7 +377,7 @@ def grabar_y_transcribir():
                 coincidencia = buscar_pregunta_similar(texto)
                 etiqueta = f"🔴 \"{texto[:45]}...\"" if len(texto) > 45 else f"🔴 \"{texto}\""
                 actualizar_estado(etiqueta, COLORES["grabando"])
-                if coincidencia and ventana_principal:
+                if ventana_principal:
                     ventana_principal.after(0, lambda t=texto, e=texto_es, c=coincidencia:
                                             mostrar_flotante(t, e, c))
 
@@ -411,7 +424,7 @@ def finalizar_sesion():
         boton_grabar.config(text="⬤  GRABAR  (Ctrl+Space)", bg=COLORES["boton"])
 
 # ══════════════════════════════════════════
-#  HISTORIAL EN TIEMPO REAL
+#  HISTORIAL
 # ══════════════════════════════════════════
 def insertar_chunk_en_historial(texto):
     global _ultima_linea_en
@@ -468,7 +481,7 @@ def iniciar_proceso():
             boton_grabar.config(text="⏳  Procesando...", bg=COLORES["neon"])
 
 # ══════════════════════════════════════════
-#  EDITOR DE GLOSARIO — VENTANA
+#  EDITOR DE GLOSARIO
 # ══════════════════════════════════════════
 def abrir_editor_glosario():
     editor = tk.Toplevel()
@@ -477,14 +490,12 @@ def abrir_editor_glosario():
     editor.geometry("700x600")
     editor.minsize(600, 500)
     editor.resizable(True, True)
-    editor.attributes("-topmost", False)
 
-    # ── NOTEBOOK (pestañas) ──────────────────
     style = ttk.Style()
     style.theme_use("default")
-    style.configure("TNotebook",          background=COLORES["fondo"],  borderwidth=0)
-    style.configure("TNotebook.Tab",      background=COLORES["panel"],  foreground=COLORES["texto2"],
-                    padding=[10, 4],      font=("Consolas", 9))
+    style.configure("TNotebook",      background=COLORES["fondo"], borderwidth=0)
+    style.configure("TNotebook.Tab",  background=COLORES["panel"], foreground=COLORES["texto2"],
+                    padding=[10, 4],  font=("Consolas", 9))
     style.map("TNotebook.Tab",
               background=[("selected", COLORES["borde"])],
               foreground=[("selected", "white")])
@@ -492,12 +503,10 @@ def abrir_editor_glosario():
     notebook = ttk.Notebook(editor)
     notebook.pack(fill="both", expand=True, padx=10, pady=10)
 
-    # ── FUNCIÓN PARA CREAR PESTAÑA ───────────
     def crear_pestaña(nombre_seccion, es_general=False):
         frame = tk.Frame(notebook, bg=COLORES["fondo"])
         notebook.add(frame, text=f"{'🌐' if es_general else '📅'} {nombre_seccion}")
 
-        # Lista de preguntas (izquierda)
         frame_lista = tk.Frame(frame, bg=COLORES["fondo2"], width=220)
         frame_lista.pack(side="left", fill="y", padx=(0, 4), pady=4)
         frame_lista.pack_propagate(False)
@@ -514,16 +523,15 @@ def abrir_editor_glosario():
         )
         lista_box.pack(fill="both", expand=True, padx=4, pady=4)
 
-        # Formulario (derecha)
         frame_form = tk.Frame(frame, bg=COLORES["fondo"])
         frame_form.pack(side="left", fill="both", expand=True, pady=4)
 
-        def campo(label, ancho=40):
+        def campo(label):
             tk.Label(frame_form, text=label, bg=COLORES["fondo"],
-                     fg=COLORES["texto2"], font=("Consolas", 8)).pack(anchor="w", padx=8, pady=(6,0))
+                     fg=COLORES["texto2"], font=("Consolas", 8)).pack(anchor="w", padx=8, pady=(6, 0))
             e = tk.Entry(frame_form, bg=COLORES["fondo2"], fg=COLORES["texto"],
                          font=("Consolas", 9), relief="flat", bd=4,
-                         insertbackground=COLORES["borde"], width=ancho)
+                         insertbackground=COLORES["borde"])
             e.pack(fill="x", padx=8)
             return e
 
@@ -534,7 +542,7 @@ def abrir_editor_glosario():
         for i in range(1, 4):
             tk.Label(frame_form, text=f"Respuesta {i}:",
                      bg=COLORES["fondo"], fg=COLORES["verde"],
-                     font=("Consolas", 8, "bold")).pack(anchor="w", padx=8, pady=(4,0))
+                     font=("Consolas", 8, "bold")).pack(anchor="w", padx=8, pady=(4, 0))
             e_r = tk.Entry(frame_form, bg=COLORES["fondo2"], fg=COLORES["verde"],
                            font=("Consolas", 9), relief="flat", bd=4,
                            insertbackground=COLORES["borde"])
@@ -584,17 +592,16 @@ def abrir_editor_glosario():
             if not pregunta:
                 messagebox.showwarning("Campo vacío", "Escribe la pregunta en inglés.", parent=editor)
                 return
-            respuestas = [e_r.get().strip() for e_r, _ in pares if e_r.get().strip()]
+            respuestas   = [e_r.get().strip() for e_r, _ in pares if e_r.get().strip()]
             traducciones = [e_t.get().strip() for _, e_t in pares if e_t.get().strip()]
             if not respuestas:
                 messagebox.showwarning("Sin respuestas", "Agrega al menos una respuesta.", parent=editor)
                 return
             nuevo = {
-                "pregunta_en_ingles": pregunta,
-                "respuestas_ingles": respuestas,
+                "pregunta_en_ingles":   pregunta,
+                "respuestas_ingles":    respuestas,
                 "traducciones_espanol": traducciones
             }
-            # Verificar si ya existe y actualizar
             lista = obtener_lista_seccion()
             for i, item in enumerate(lista):
                 if item["pregunta_en_ingles"].lower() == pregunta.lower():
@@ -602,72 +609,54 @@ def abrir_editor_glosario():
                     guardar_glosario_json(glosario_data)
                     refrescar_lista()
                     limpiar_form()
-                    actualizar_estado("✅  Pregunta actualizada en el glosario", COLORES["verde"])
+                    actualizar_estado("✅  Pregunta actualizada", COLORES["verde"])
                     return
             lista.append(nuevo)
             guardar_glosario_json(glosario_data)
             refrescar_lista()
             limpiar_form()
-            actualizar_estado("✅  Pregunta agregada al glosario", COLORES["verde"])
+            actualizar_estado("✅  Pregunta agregada", COLORES["verde"])
 
         def eliminar():
             sel = lista_box.curselection()
             if not sel:
                 return
             lista = obtener_lista_seccion()
-            item = lista[sel[0]]
+            item  = lista[sel[0]]
             if messagebox.askyesno("Eliminar", f"¿Eliminar:\n{item['pregunta_en_ingles']}?", parent=editor):
                 lista.pop(sel[0])
                 guardar_glosario_json(glosario_data)
                 refrescar_lista()
                 limpiar_form()
 
-        # Botones
         frame_bots = tk.Frame(frame_form, bg=COLORES["fondo"])
         frame_bots.pack(fill="x", padx=8, pady=8)
 
-        tk.Button(frame_bots, text="➕  Agregar / Actualizar",
-                  command=agregar,
-                  bg=COLORES["boton"], fg="white",
-                  font=("Consolas", 9, "bold"), relief="flat",
-                  padx=10, pady=6, cursor="hand2").pack(side="left", padx=(0, 6))
-
-        tk.Button(frame_bots, text="🗑  Eliminar",
-                  command=eliminar,
-                  bg=COLORES["panel"], fg=COLORES["rosa"],
-                  font=("Consolas", 9), relief="flat",
-                  padx=10, pady=6, cursor="hand2").pack(side="left")
-
-        tk.Button(frame_bots, text="🔄  Limpiar form",
-                  command=limpiar_form,
-                  bg=COLORES["panel"], fg=COLORES["texto2"],
-                  font=("Consolas", 9), relief="flat",
-                  padx=10, pady=6, cursor="hand2").pack(side="left", padx=6)
+        tk.Button(frame_bots, text="➕  Agregar / Actualizar", command=agregar,
+                  bg=COLORES["boton"], fg="white", font=("Consolas", 9, "bold"),
+                  relief="flat", padx=10, pady=6, cursor="hand2").pack(side="left", padx=(0, 6))
+        tk.Button(frame_bots, text="🗑  Eliminar", command=eliminar,
+                  bg=COLORES["panel"], fg=COLORES["rosa"], font=("Consolas", 9),
+                  relief="flat", padx=10, pady=6, cursor="hand2").pack(side="left")
+        tk.Button(frame_bots, text="🔄  Limpiar", command=limpiar_form,
+                  bg=COLORES["panel"], fg=COLORES["texto2"], font=("Consolas", 9),
+                  relief="flat", padx=10, pady=6, cursor="hand2").pack(side="left", padx=6)
 
         refrescar_lista()
-        return frame
 
-    # ── PESTAÑA GENERAL (siempre presente) ──
     crear_pestaña("General", es_general=True)
-
-    # ── PESTAÑAS DE SEMANAS ──────────────────
     for semana in glosario_data["semanas"]:
         crear_pestaña(semana)
 
-    # ── PESTAÑA: GESTIONAR SEMANAS ───────────
     frame_sem = tk.Frame(notebook, bg=COLORES["fondo"])
     notebook.add(frame_sem, text="⚙️ Semanas")
 
     tk.Label(frame_sem, text="Gestionar semanas de clase",
              bg=COLORES["fondo"], fg=COLORES["borde"],
              font=("Consolas", 11, "bold")).pack(pady=(20, 4))
-    tk.Label(frame_sem, text="Crea semanas para organizar las preguntas de tu guía mensual.",
-             bg=COLORES["fondo"], fg=COLORES["texto2"],
-             font=("Consolas", 8)).pack()
 
     tk.Frame(frame_sem, bg=COLORES["panel"], height=1).pack(fill="x", padx=20, pady=12)
 
-    # Crear nueva semana
     frame_nueva = tk.Frame(frame_sem, bg=COLORES["fondo"])
     frame_nueva.pack(pady=6)
     tk.Label(frame_nueva, text="Nueva semana:", bg=COLORES["fondo"],
@@ -677,6 +666,40 @@ def abrir_editor_glosario():
                            insertbackground=COLORES["borde"])
     e_nueva_sem.pack(side="left", padx=6)
     e_nueva_sem.insert(0, "Semana 1")
+
+    frame_checks = tk.Frame(frame_sem, bg=COLORES["fondo"])
+    frame_checks.pack(pady=8)
+    checks_vars = {}
+
+    def refrescar_semanas():
+        for w in frame_checks.winfo_children():
+            w.destroy()
+        checks_vars.clear()
+        for semana in glosario_data["semanas"]:
+            var = tk.BooleanVar(value=(semana in glosario_data.get("semanas_activas", [])))
+            checks_vars[semana] = var
+            fila = tk.Frame(frame_checks, bg=COLORES["fondo"])
+            fila.pack(anchor="w", pady=2)
+            tk.Checkbutton(fila, text=semana, variable=var,
+                           bg=COLORES["fondo"], fg=COLORES["cyan"],
+                           selectcolor=COLORES["panel"],
+                           activebackground=COLORES["fondo"],
+                           font=("Consolas", 10), command=guardar_activas).pack(side="left")
+            preguntas = glosario_data["semanas"].get(semana, [])
+            tk.Label(fila, text=f"  ({len(preguntas)} preguntas)",
+                     bg=COLORES["fondo"], fg=COLORES["texto2"],
+                     font=("Consolas", 8)).pack(side="left")
+        if not glosario_data["semanas"]:
+            tk.Label(frame_checks, text="No hay semanas creadas aún.",
+                     bg=COLORES["fondo"], fg=COLORES["texto2"],
+                     font=("Consolas", 9)).pack()
+
+    def guardar_activas():
+        activas = [s for s, v in checks_vars.items() if v.get()]
+        glosario_data["semanas_activas"] = activas
+        guardar_glosario_json(glosario_data)
+        total = len(obtener_preguntas_activas())
+        actualizar_estado(f"✅  {total} preguntas activas", COLORES["verde"])
 
     def crear_semana():
         nombre = e_nueva_sem.get().strip()
@@ -689,70 +712,20 @@ def abrir_editor_glosario():
         guardar_glosario_json(glosario_data)
         refrescar_semanas()
         crear_pestaña(nombre)
-        messagebox.showinfo("✅", f"Semana '{nombre}' creada.\nReinicia el editor para ver la pestaña.", parent=editor)
+        messagebox.showinfo("✅", f"Semana '{nombre}' creada.", parent=editor)
 
-    tk.Button(frame_nueva, text="➕ Crear",
-              command=crear_semana,
-              bg=COLORES["boton"], fg="white",
-              font=("Consolas", 9), relief="flat",
-              padx=10, pady=4, cursor="hand2").pack(side="left")
+    tk.Button(frame_nueva, text="➕ Crear", command=crear_semana,
+              bg=COLORES["boton"], fg="white", font=("Consolas", 9),
+              relief="flat", padx=10, pady=4, cursor="hand2").pack(side="left")
 
     tk.Frame(frame_sem, bg=COLORES["panel"], height=1).pack(fill="x", padx=20, pady=12)
 
-    # Activar/desactivar semanas
     tk.Label(frame_sem, text="Semanas activas en la búsqueda:",
              bg=COLORES["fondo"], fg=COLORES["amarillo"],
              font=("Consolas", 9, "bold")).pack(pady=(0, 6))
-    tk.Label(frame_sem, text="(Las semanas activas se usan junto con las preguntas Generales)",
-             bg=COLORES["fondo"], fg=COLORES["texto2"],
-             font=("Consolas", 7)).pack()
-
-    frame_checks = tk.Frame(frame_sem, bg=COLORES["fondo"])
-    frame_checks.pack(pady=8)
-
-    checks_vars = {}
-
-    def refrescar_semanas():
-        for w in frame_checks.winfo_children():
-            w.destroy()
-        checks_vars.clear()
-        for semana in glosario_data["semanas"]:
-            var = tk.BooleanVar(value=(semana in glosario_data.get("semanas_activas", [])))
-            checks_vars[semana] = var
-
-            fila = tk.Frame(frame_checks, bg=COLORES["fondo"])
-            fila.pack(anchor="w", pady=2)
-
-            cb = tk.Checkbutton(
-                fila, text=semana, variable=var,
-                bg=COLORES["fondo"], fg=COLORES["cyan"],
-                selectcolor=COLORES["panel"],
-                activebackground=COLORES["fondo"],
-                font=("Consolas", 10),
-                command=guardar_activas
-            )
-            cb.pack(side="left")
-
-            preguntas = glosario_data["semanas"].get(semana, [])
-            tk.Label(fila, text=f"  ({len(preguntas)} preguntas)",
-                     bg=COLORES["fondo"], fg=COLORES["texto2"],
-                     font=("Consolas", 8)).pack(side="left")
-
-        if not glosario_data["semanas"]:
-            tk.Label(frame_checks, text="No hay semanas creadas aún.",
-                     bg=COLORES["fondo"], fg=COLORES["texto2"],
-                     font=("Consolas", 9)).pack()
-
-    def guardar_activas():
-        activas = [s for s, v in checks_vars.items() if v.get()]
-        glosario_data["semanas_activas"] = activas
-        guardar_glosario_json(glosario_data)
-        total = len(obtener_preguntas_activas())
-        actualizar_estado(f"✅  Glosario actualizado — {total} preguntas activas", COLORES["verde"])
 
     refrescar_semanas()
 
-    # Importar JSON externo
     tk.Frame(frame_sem, bg=COLORES["panel"], height=1).pack(fill="x", padx=20, pady=12)
     tk.Label(frame_sem, text="Importar JSON externo a una semana:",
              bg=COLORES["fondo"], fg=COLORES["texto2"],
@@ -783,15 +756,13 @@ def abrir_editor_glosario():
                 glosario_data["semanas"][nombre] = []
             glosario_data["semanas"][nombre] += datos
             guardar_glosario_json(glosario_data)
-            messagebox.showinfo("✅", f"{len(datos)} preguntas importadas a '{nombre}'.\nReinicia el editor para ver los cambios.", parent=editor)
+            messagebox.showinfo("✅", f"{len(datos)} preguntas importadas a '{nombre}'.", parent=editor)
         except Exception as e:
             messagebox.showerror("Error", str(e), parent=editor)
 
-    tk.Button(frame_imp, text="📂 Importar JSON",
-              command=importar_json,
-              bg=COLORES["panel"], fg=COLORES["amarillo"],
-              font=("Consolas", 9), relief="flat",
-              padx=10, pady=4, cursor="hand2").pack(side="left", padx=6)
+    tk.Button(frame_imp, text="📂 Importar JSON", command=importar_json,
+              bg=COLORES["panel"], fg=COLORES["amarillo"], font=("Consolas", 9),
+              relief="flat", padx=10, pady=4, cursor="hand2").pack(side="left", padx=6)
 
 # ══════════════════════════════════════════
 #  EXPORTAR / LIMPIAR
@@ -821,12 +792,17 @@ def limpiar_historial():
 #  SYSTEM TRAY
 # ══════════════════════════════════════════
 def crear_icono_tray():
-    img = Image.new("RGBA", (64, 64), (0, 0, 0, 0))
-    d = ImageDraw.Draw(img)
-    d.ellipse([4, 4, 60, 60], fill="#6c63ff")
-    d.ellipse([14, 14, 50, 50], fill="#0d0d1a")
-    d.ellipse([24, 24, 40, 40], fill="#7c3aed")
-    return img
+    try:
+        img = Image.open(os.path.join(os.path.dirname(__file__), "icono.ico"))
+        img = img.resize((64, 64))
+        return img
+    except:
+        img = Image.new("RGBA", (64, 64), (0, 0, 0, 0))
+        d = ImageDraw.Draw(img)
+        d.ellipse([4, 4, 60, 60], fill="#6c63ff")
+        d.ellipse([14, 14, 50, 50], fill="#0d0d1a")
+        d.ellipse([24, 24, 40, 40], fill="#7c3aed")
+        return img
 
 def mostrar_ventana_desde_tray(icon, item):
     if ventana_principal:
@@ -854,9 +830,12 @@ def construir_ui():
     global ventana_principal, label_estado, historial_widget, boton_grabar
 
     ventana_principal = tk.Tk()
+    try:
+        ventana_principal.iconbitmap(os.path.join(os.path.dirname(__file__), "icono.ico"))
+    except:
+        pass
     ventana_principal.title("Adriana AI — Asistente de Inglés")
     ventana_principal.configure(bg=COLORES["fondo"])
-
     sw = ventana_principal.winfo_screenwidth()
     sh = ventana_principal.winfo_screenheight()
     ancho = min(620, sw - 20)
@@ -883,33 +862,41 @@ def construir_ui():
               bg=COLORES["panel"], fg=COLORES["texto2"],
               relief="flat", font=("Consolas", 11), cursor="hand2").pack(side="right", padx=6)
 
-    # ZONA ACCIONES RÁPIDAS
+    # ZONA ACCIONES
     zona_acc = tk.Frame(ventana_principal, bg=COLORES["fondo2"], pady=6)
     zona_acc.pack(fill="x", padx=16, pady=(10, 0))
 
-    tk.Button(zona_acc, text="📚  Editor de Glosario",
+    tk.Button(zona_acc, text="📚  Glosario",
               command=abrir_editor_glosario,
               bg=COLORES["panel"], fg=COLORES["amarillo"],
               font=("Consolas", 9, "bold"), relief="flat",
               padx=10, pady=5, cursor="hand2").pack(side="left")
 
+    tk.Button(zona_acc, text="⚙️  Configuración",
+              command=lambda: abrir_configuracion(ventana_principal),
+              bg=COLORES["panel"], fg=COLORES["cyan"],
+              font=("Consolas", 9, "bold"), relief="flat",
+              padx=10, pady=5, cursor="hand2").pack(side="left", padx=6)
+
     # Info semanas activas
     def info_semanas():
         activas = glosario_data.get("semanas_activas", [])
         total   = len(obtener_preguntas_activas())
+        cfg     = cargar_config()
+        emergente = "✅ Emergente ON" if cfg["emergente_activa"] else "❌ Emergente OFF"
         if activas:
-            return f"✅ {total} preguntas activas  |  Semanas: {', '.join(activas)}"
-        return f"✅ {total} preguntas activas  |  Solo generales"
+            return f"{emergente}  |  {total} preguntas  |  {', '.join(activas)}"
+        return f"{emergente}  |  {total} preguntas activas"
 
-    label_semanas = tk.Label(zona_acc, text=info_semanas(),
-                             bg=COLORES["fondo2"], fg=COLORES["texto2"],
-                             font=("Consolas", 7))
-    label_semanas.pack(side="left", padx=10)
+    label_info = tk.Label(zona_acc, text=info_semanas(),
+                          bg=COLORES["fondo2"], fg=COLORES["texto2"],
+                          font=("Consolas", 7))
+    label_info.pack(side="left", padx=10)
 
     def refrescar_info():
-        label_semanas.config(text=info_semanas())
-        ventana_principal.after(3000, refrescar_info)
-    ventana_principal.after(3000, refrescar_info)
+        label_info.config(text=info_semanas())
+        ventana_principal.after(2000, refrescar_info)
+    ventana_principal.after(2000, refrescar_info)
 
     # BOTÓN PRINCIPAL
     zona_boton = tk.Frame(ventana_principal, bg=COLORES["fondo"], pady=12)
