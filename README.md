@@ -1,4 +1,4 @@
-# ADRIANA AI — Traductor de Inglés en Tiempo Real
+# ADRIANA AI 
 
 Aplicación de escritorio para Windows que transcribe y traduce audio en inglés 
 al español en tiempo real, con un sistema de respuestas sugeridas basado en 
