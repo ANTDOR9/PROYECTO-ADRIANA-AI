@@ -233,6 +233,15 @@ def crear_ventana_subtitulos():
     frame = tk.Frame(sub, bg="#000000", padx=10, pady=6)
     frame.pack(fill="both", expand=True)
 
+    # Botón cerrar sutil en esquina superior derecha
+    btn_cerrar = tk.Label(frame, text="✕",
+                          bg="#000000", fg="#888899",
+                          font=("Consolas", 10, "bold"), cursor="hand2")
+    btn_cerrar.place(relx=1.0, rely=0.0, anchor="ne", x=-2, y=2)
+    btn_cerrar.bind("<Button-1>", lambda e: cerrar_subtitulos())
+    btn_cerrar.bind("<Enter>", lambda e: btn_cerrar.config(fg=COLORES["rosa"]))
+    btn_cerrar.bind("<Leave>", lambda e: btn_cerrar.config(fg="#444466"))
+
     sub.lbl_en = tk.Label(frame, text="",
                            bg="#000000", fg=COLORES["verde"],
                            font=("Consolas", 11, "bold"),
@@ -302,10 +311,10 @@ def mostrar_emergente(texto_en, texto_es, coincidencia):
 
     flotante = tk.Toplevel()
     ventana_emergente_actual = flotante
-    flotante.title("Adriana AI — Pregunta")
+    flotante.overrideredirect(True)
     flotante.attributes("-topmost", True)
     flotante.configure(bg=COLORES["fondo"])
-    flotante.resizable(True, True)
+    flotante.resizable(False, False)
     flotante.attributes("-alpha", config["emergente_opacidad"])
 
     sw = flotante.winfo_screenwidth()
