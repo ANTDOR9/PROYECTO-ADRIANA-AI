@@ -1,0 +1,32 @@
+Opción 1 — Doble clic (más fácil)
+
+Abre el explorador de Windows
+Ve a D:\PROYECTO-ADRIANA-AI-main\
+Doble clic en iniciar.bat
+
+
+Opción 2 — Desde Git Bash
+bashcd /d/PROYECTO-ADRIANA-AI-main
+source venv/Scripts/activate
+python adriana_ui.py
+
+Opción 3 — Desde VS Code
+
+Abre VS Code
+Presiona Ctrl+` para abrir la terminal
+Ejecuta:
+
+bashsource venv/Scripts/activate
+python adriana_ui.py
+
+⚠️ La primera vez tarda 20-30 segundos en cargar Whisper. Es normal. Cuando veas la ventana morada ya está listo. 🙌
+
+
+
+---------------------
+Escribiste bashsource junto. Deben ser dos comandos separados:
+bashsource venv/Scripts/activate
+
+
+Espera que aparezca (venv) y luego:
+bashpython adriana_ui.py

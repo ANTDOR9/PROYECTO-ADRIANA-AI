@@ -1,1 +1,3658 @@
-{"general":[],"semanas":{},"semanas_activas":[]}
+{
+  "general": [],
+  "semanas": {
+    "Semana 1": [
+      {
+        "pregunta_en_ingles": "Who is the girl talking to?",
+        "respuestas_ingles": [
+          "She is talking to a shop assistant.",
+          "She is talking to a friend.",
+          "She is talking to her mother."
+        ],
+        "traducciones_espanol": [
+          "Ella está hablando con un dependiente.",
+          "Ella está hablando con un amigo.",
+          "Ella está hablando con su madre."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "What things does she say? What answers does she get?",
+        "respuestas_ingles": [
+          "She points to a doll and asks 'How much is this doll?' The assistant says 'It's 15 dollars.'",
+          "She says 'I like this doll. Can I buy it?' and the assistant says 'Yes, of course.'",
+          "She asks 'Is this doll for children?' and the assistant says 'Yes, it is.'"
+        ],
+        "traducciones_espanol": [
+          "Ella señala una muñeca y pregunta '¿Cuánto cuesta esta muñeca?' El dependiente dice 'Son 15 dólares.'",
+          "Ella dice 'Me gusta esta muñeca. ¿Puedo comprarla?' y el dependiente dice 'Sí, claro.'",
+          "Ella pregunta '¿Esta muñeca es para niños?' y el dependiente dice 'Sí, lo es.'"
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Do you think this girl enjoys shopping?",
+        "respuestas_ingles": [
+          "Yes, I think she enjoys shopping because she is pointing at a doll she likes.",
+          "No, I think she doesn't enjoy shopping because she looks bored.",
+          "Maybe she enjoys shopping only for toys."
+        ],
+        "traducciones_espanol": [
+          "Sí, creo que ella disfruta comprando porque está señalando una muñeca que le gusta.",
+          "No, creo que ella no disfruta comprando porque se ve aburrida.",
+          "Tal vez ella disfruta comprando solo para juguetes."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Where is the best place to go shopping for food in Arequipa?",
+        "respuestas_ingles": [
+          "The best place for food is San Camilo Market.",
+          "I think Plaza Vea or Supermercado El Super are good for food.",
+          "The best place is a local market near my house."
+        ],
+        "traducciones_espanol": [
+          "El mejor lugar para comida es el Mercado San Camilo.",
+          "Creo que Plaza Vea o Supermercado El Super son buenos para comida.",
+          "El mejor lugar es un mercado local cerca de mi casa."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Where is the best place to go shopping for clothes in Arequipa?",
+        "respuestas_ingles": [
+          "The best place for clothes is Mall Aventura Plaza.",
+          "I like going to Parque Lambramani for clothes.",
+          "There is a good place called Real Plaza in Arequipa."
+        ],
+        "traducciones_espanol": [
+          "El mejor lugar para ropa es Mall Aventura Plaza.",
+          "Me gusta ir a Parque Lambramani para ropa.",
+          "Hay un buen lugar llamado Real Plaza en Arequipa."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Where is the best place to go shopping for a present for someone in Arequipa?",
+        "respuestas_ingles": [
+          "The best place for a present is San Camilo Market because there are handmade gifts.",
+          "I go to Patio del Ekeko for souvenirs and presents.",
+          "Mall Aventura Plaza has many stores for presents."
+        ],
+        "traducciones_espanol": [
+          "El mejor lugar para un regalo es el Mercado San Camilo porque hay regalos hechos a mano.",
+          "Voy a Patio del Ekeko para recuerdos y regalos.",
+          "Mall Aventura Plaza tiene muchas tiendas para regalos."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "What are the people in picture 1 doing?",
+        "respuestas_ingles": [
+          "They are having breakfast or drinking tea together.",
+          "They are laughing and talking with friends.",
+          "They are happy because they are smiling."
+        ],
+        "traducciones_espanol": [
+          "Ellos están desayunando o tomando té juntos.",
+          "Ellos están riendo y hablando con amigos.",
+          "Ellos están felices porque están sonriendo."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Do you like having breakfast with friends?",
+        "respuestas_ingles": [
+          "Yes, I like having breakfast with friends on weekends.",
+          "Sometimes I have breakfast with my friends in Arequipa.",
+          "No, I prefer to have breakfast alone."
+        ],
+        "traducciones_espanol": [
+          "Sí, me gusta desayunar con amigos los fines de semana.",
+          "A veces desayuno con mis amigos en Arequipa.",
+          "No, prefiero desayunar solo."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "What is the girl in picture 2 doing?",
+        "respuestas_ingles": [
+          "She is reading a book in a library.",
+          "She is wearing black clothes.",
+          "She is studying or reading quietly."
+        ],
+        "traducciones_espanol": [
+          "Ella está leyendo un libro en una biblioteca.",
+          "Ella usa ropa negra.",
+          "Ella está estudiando o leyendo tranquilamente."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Do you like reading books in a library?",
+        "respuestas_ingles": [
+          "Yes, I like reading in the library because it is quiet.",
+          "In Arequipa, I sometimes go to the Biblioteca Regional.",
+          "No, I prefer to read at home."
+        ],
+        "traducciones_espanol": [
+          "Sí, me gusta leer en la biblioteca porque es tranquilo.",
+          "En Arequipa, a veces voy a la Biblioteca Regional.",
+          "No, prefiero leer en casa."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Where is picture 3? What is happening?",
+        "respuestas_ingles": [
+          "It is a chifa or fast food restaurant. There is a queue of people.",
+          "The receptionists are attending customers.",
+          "People are waiting to order food."
+        ],
+        "traducciones_espanol": [
+          "Es un chifa o restaurante de comida rápida. Hay una cola de personas.",
+          "Los recepcionistas están atendiendo a los clientes.",
+          "Las personas están esperando para pedir comida."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Is your experience in restaurants in Arequipa similar to picture 3?",
+        "respuestas_ingles": [
+          "Yes, sometimes there is a queue in restaurants like Chifa Mandarin.",
+          "No, in my favorite restaurant in Arequipa I don't wait too long.",
+          "Yes, in busy places like Plaza Vea food court there are queues."
+        ],
+        "traducciones_espanol": [
+          "Sí, a veces hay cola en restaurantes como Chifa Mandarin.",
+          "No, en mi restaurante favorito en Arequipa no espero mucho tiempo.",
+          "Sí, en lugares concurridos como el patio de comidas de Plaza Vea hay colas."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "What do you see in picture 4?",
+        "respuestas_ingles": [
+          "I see mannequins without heads wearing clothes.",
+          "It looks like a clothing store.",
+          "The mannequins are displaying shirts and pants."
+        ],
+        "traducciones_espanol": [
+          "Veo maniquíes sin cabeza usando ropa.",
+          "Parece una tienda de ropa.",
+          "Los maniquíes están mostrando camisas y pantalones."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Do you like shopping for clothes in Arequipa?",
+        "respuestas_ingles": [
+          "Yes, I like shopping at Mall Aventura Plaza.",
+          "Sometimes I go to Real Plaza in Arequipa to buy clothes.",
+          "No, I don't like shopping for clothes very much."
+        ],
+        "traducciones_espanol": [
+          "Sí, me gusta comprar ropa en Mall Aventura Plaza.",
+          "A veces voy a Real Plaza en Arequipa a comprar ropa.",
+          "No, no me gusta mucho comprar ropa."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "What is happening in picture 5?",
+        "respuestas_ingles": [
+          "A pharmacist is charging a customer for some pills.",
+          "The customer is buying medicine.",
+          "They are at a pharmacy counter."
+        ],
+        "traducciones_espanol": [
+          "Una farmacéutica está cobrando a un cliente por unas píldoras.",
+          "El cliente está comprando medicina.",
+          "Ellos están en el mostrador de una farmacia."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "In your opinion, is picture 6 a nice place to spend time?",
+        "respuestas_ingles": [
+          "Yes, it looks nice because it has two floors and a good view.",
+          "In my opinion, malls in Arequipa like Mall Aventura are similar.",
+          "Yes, I like going to the mall with my friends."
+        ],
+        "traducciones_espanol": [
+          "Sí, se ve bonito porque tiene dos pisos y una buena vista.",
+          "En mi opinión, los centros comerciales en Arequipa como Mall Aventura son similares.",
+          "Sí, me gusta ir al centro comercial con mis amigos."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Which of these places do you visit most in Arequipa: a restaurant, a library, a clothing store, a pharmacy, or a mall?",
+        "respuestas_ingles": [
+          "I visit the mall most often, especially Mall Aventura Plaza.",
+          "I go to restaurants a lot because I like Peruvian food.",
+          "I visit the pharmacy when I need medicine for my family."
+        ],
+        "traducciones_espanol": [
+          "Visito el centro comercial más seguido, especialmente Mall Aventura Plaza.",
+          "Voy a restaurantes mucho porque me gusta la comida peruana.",
+          "Visito la farmacia cuando necesito medicina para mi familia."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Match pictures 1-6 with the words: a chemist, a department store, a fast food restaurant, a bookshop, a clothes shop, a café. Which picture is the café?",
+        "respuestas_ingles": [
+          "Picture 1 is the café. Friends are having tea and laughing.",
+          "I think the café is picture 1 because they are eating breakfast.",
+          "Picture 1 shows people drinking tea, so it's a café."
+        ],
+        "traducciones_espanol": [
+          "La imagen 1 es la cafetería. Los amigos están tomando té y riendo.",
+          "Creo que la cafetería es la imagen 1 porque están desayunando.",
+          "La imagen 1 muestra personas tomando té, así que es una cafetería."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Which picture is the bookshop?",
+        "respuestas_ingles": [
+          "Picture 2 is the bookshop. A girl is reading a book.",
+          "The bookshop is picture 2 because she is reading in a library.",
+          "I think picture 2 is a bookshop or library."
+        ],
+        "traducciones_espanol": [
+          "La imagen 2 es la librería. Una chica está leyendo un libro.",
+          "La librería es la imagen 2 porque ella está leyendo en una biblioteca.",
+          "Creo que la imagen 2 es una librería o biblioteca."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Which picture is the fast food restaurant?",
+        "respuestas_ingles": [
+          "Picture 3 is the fast food restaurant. There is a queue of people.",
+          "The fast food restaurant is picture 3, it looks like a chifa.",
+          "I think picture 3 is fast food because people are waiting to order."
+        ],
+        "traducciones_espanol": [
+          "La imagen 3 es el restaurante de comida rápida. Hay una cola de personas.",
+          "El restaurante de comida rápida es la imagen 3, parece un chifa.",
+          "Creo que la imagen 3 es comida rápida porque la gente está esperando para pedir."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Which picture is the clothes shop?",
+        "respuestas_ingles": [
+          "Picture 4 is the clothes shop. I see mannequins without heads.",
+          "The clothes shop is picture 4 because the mannequins are wearing shirts and pants.",
+          "Picture 4 shows a clothing store with mannequins."
+        ],
+        "traducciones_espanol": [
+          "La imagen 4 es la tienda de ropa. Veo maniquíes sin cabeza.",
+          "La tienda de ropa es la imagen 4 porque los maniquíes usan camisas y pantalones.",
+          "La imagen 4 muestra una tienda de ropa con maniquíes."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Which picture is the chemist?",
+        "respuestas_ingles": [
+          "Picture 5 is the chemist. A pharmacist is charging a customer for pills.",
+          "The chemist is picture 5 because there is a pharmacy counter.",
+          "I think picture 5 is a chemist or pharmacy."
+        ],
+        "traducciones_espanol": [
+          "La imagen 5 es la farmacia. Una farmacéutica está cobrando a un cliente por pastillas.",
+          "La farmacia es la imagen 5 porque hay un mostrador de farmacia.",
+          "Creo que la imagen 5 es una farmacia."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Which of these shops is your favourite? Why?",
+        "respuestas_ingles": [
+          "My favourite is the clothes shop because I like buying new jeans and shirts.",
+          "I like the fast food restaurant because I love Peruvian chicken and chifa.",
+          "My favourite is the bookshop because I enjoy reading."
+        ],
+        "traducciones_espanol": [
+          "Mi favorita es la tienda de ropa porque me gusta comprar jeans y camisas nuevos.",
+          "Me gusta el restaurante de comida rápida porque amo el pollo peruano y el chifa.",
+          "Mi favorita es la librería porque disfruto leer."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Look at the mall plan. Where is the entrance?",
+        "respuestas_ingles": [
+          "The entrance is near the stairs and the information desk.",
+          "I think the entrance is at the bottom of the plan.",
+          "The entrance is between the car park and the bus stop."
+        ],
+        "traducciones_espanol": [
+          "La entrada está cerca de las escaleras y el mostrador de información.",
+          "Creo que la entrada está en la parte inferior del plano.",
+          "La entrada está entre el estacionamiento y la parada de autobús."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Where is the car park on the plan?",
+        "respuestas_ingles": [
+          "The car park is outside the mall, near the entrance.",
+          "It is next to the bus stop.",
+          "The car park is on the left side of the plan."
+        ],
+        "traducciones_espanol": [
+          "El estacionamiento está fuera del centro comercial, cerca de la entrada.",
+          "Está al lado de la parada de autobús.",
+          "El estacionamiento está en el lado izquierdo del plano."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Where is the cash machine or ATM in the mall?",
+        "respuestas_ingles": [
+          "The ATM is near the information desk.",
+          "It is on the first floor next to the stairs.",
+          "I think the cash machine is close to the entrance."
+        ],
+        "traducciones_espanol": [
+          "El cajero automático está cerca del mostrador de información.",
+          "Está en el primer piso al lado de las escaleras.",
+          "Creo que el cajero está cerca de la entrada."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Anthony, where is your favourite shopping mall in Arequipa? Where is the entrance and car park?",
+        "respuestas_ingles": [
+          "My favourite mall is Mall Aventura Plaza. The entrance is on Av. Ejército and the car park is big.",
+          "I like Real Plaza in Arequipa. The entrance is near the bus stop.",
+          "My favourite is Mall Aventura. The car park is underground."
+        ],
+        "traducciones_espanol": [
+          "Mi centro comercial favorito es Mall Aventura Plaza. La entrada está en la Av. Ejército y el estacionamiento es grande.",
+          "Me gusta Real Plaza en Arequipa. La entrada está cerca de la parada de autobús.",
+          "Mi favorito es Mall Aventura. El estacionamiento está subterráneo."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Listen to the pronunciation: 'clothes shop'. Which word is stressed?",
+        "respuestas_ingles": [
+          "The first word 'clothes' is stressed.",
+          "I think 'clothes' is stressed, not 'shop'.",
+          "The stress is on 'clothes'."
+        ],
+        "traducciones_espanol": [
+          "La primera palabra 'clothes' está acentuada.",
+          "Creo que 'clothes' está acentuada, no 'shop'.",
+          "El acento está en 'clothes'."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Read situation 1: 'My son needs new jeans.' Where can this person go?",
+        "respuestas_ingles": [
+          "They can go to the clothes shop.",
+          "They can go to a department store.",
+          "They can go to the clothes shop or department store."
+        ],
+        "traducciones_espanol": [
+          "Pueden ir a la tienda de ropa.",
+          "Pueden ir a una tienda por departamentos.",
+          "Pueden ir a la tienda de ropa o a una tienda por departamentos."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Situation 2: 'Let's get a new sofa.' Where can this person go?",
+        "respuestas_ingles": [
+          "They can go to a department store.",
+          "A department store sells sofas.",
+          "Maybe a furniture shop, but in a mall, a department store is good."
+        ],
+        "traducciones_espanol": [
+          "Pueden ir a una tienda por departamentos.",
+          "Una tienda por departamentos vende sofás.",
+          "Quizás una tienda de muebles, pero en un centro comercial, una tienda por departamentos es buena."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Situation 3: 'I want something to read on the train.' Where can this person go?",
+        "respuestas_ingles": [
+          "They can go to the bookshop.",
+          "A bookshop has books and magazines to read.",
+          "They can go to a library or bookshop."
+        ],
+        "traducciones_espanol": [
+          "Pueden ir a la librería.",
+          "Una librería tiene libros y revistas para leer.",
+          "Pueden ir a una biblioteca o librería."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Situation 4: 'I've got a headache. I need some aspirin.' Where can this person go?",
+        "respuestas_ingles": [
+          "They can go to the chemist.",
+          "The chemist sells aspirin.",
+          "They can go to a pharmacy."
+        ],
+        "traducciones_espanol": [
+          "Pueden ir a la farmacia.",
+          "La farmacia vende aspirinas.",
+          "Pueden ir a una farmacia."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Situation 5: 'Can you take the shopping to the car?' Where can this person go?",
+        "respuestas_ingles": [
+          "They can go to the car park.",
+          "The car park is where the car is.",
+          "They need to go outside to the car park."
+        ],
+        "traducciones_espanol": [
+          "Pueden ir al estacionamiento.",
+          "El estacionamiento es donde está el auto.",
+          "Necesitan salir al estacionamiento."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Situation 6: 'Are you hungry? I need to eat!' Where can this person go?",
+        "respuestas_ingles": [
+          "They can go to the fast food restaurant or café.",
+          "They can go to the food court.",
+          "A fast food restaurant or a café is good for hungry people."
+        ],
+        "traducciones_espanol": [
+          "Pueden ir al restaurante de comida rápida o a la cafetería.",
+          "Pueden ir al patio de comidas.",
+          "Un restaurante de comida rápida o una cafetería es bueno para personas con hambre."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Situation 7: 'I haven't got any money.' Where can this person go?",
+        "respuestas_ingles": [
+          "They can go to the cash machine or ATM.",
+          "They can withdraw money from the ATM.",
+          "The cash machine is where you get money."
+        ],
+        "traducciones_espanol": [
+          "Pueden ir al cajero automático.",
+          "Pueden retirar dinero del cajero.",
+          "El cajero automático es donde obtienes dinero."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Anthony, in Arequipa, where do you go to buy aspirin?",
+        "respuestas_ingles": [
+          "I go to Inkafarma or MiFarma near my house.",
+          "I go to the chemist in Mall Aventura Plaza.",
+          "There is a pharmacy on Av. Ejército."
+        ],
+        "traducciones_espanol": [
+          "Voy a Inkafarma o MiFarma cerca de mi casa.",
+          "Voy a la farmacia en Mall Aventura Plaza.",
+          "Hay una farmacia en la Av. Ejército."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Do you think a department store in Arequipa is similar to a department store in the picture?",
+        "respuestas_ingles": [
+          "Yes, Mall Aventura has a department store like Ripley or Falabella.",
+          "They are similar. Both sell clothes, sofas, and many things.",
+          "Yes, I think they are very similar."
+        ],
+        "traducciones_espanol": [
+          "Sí, Mall Aventura tiene una tienda por departamentos como Ripley o Falabella.",
+          "Son similares. Ambos venden ropa, sofás y muchas cosas.",
+          "Sí, creo que son muy similares."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "When you meet friends in town, what do you usually do?",
+        "respuestas_ingles": [
+          "I usually go to a café or go shopping with my friends.",
+          "Sometimes we go to the cinema or go for a walk in Parque Selva Alegre.",
+          "I usually go to Mall Aventura Plaza with my friends."
+        ],
+        "traducciones_espanol": [
+          "Normalmente voy a una cafetería o voy de compras con mis amigos.",
+          "A veces vamos al cine o damos un paseo en el Parque Selva Alegre.",
+          "Normalmente voy a Mall Aventura Plaza con mis amigos."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Do you prefer to go shopping, go to the cinema, go to a café, or go for a walk in Arequipa?",
+        "respuestas_ingles": [
+          "I prefer to go to a café because I like drinking coffee with friends.",
+          "I prefer going to the cinema to watch new movies.",
+          "I like going for a walk in the city center."
+        ],
+        "traducciones_espanol": [
+          "Prefiero ir a una cafetería porque me gusta tomar café con amigos.",
+          "Prefiero ir al cine para ver películas nuevas.",
+          "Me gusta dar un paseo por el centro de la ciudad."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Look at the shopping mall plan. Where is a good place to meet for a group of friends who want to go to the cinema?",
+        "respuestas_ingles": [
+          "A good place to meet is the information desk near the cinema.",
+          "They can meet at the café or the entrance.",
+          "The best place is outside the cinema or at the cash machine."
+        ],
+        "traducciones_espanol": [
+          "Un buen lugar para reunirse es el mostrador de información cerca del cine.",
+          "Pueden reunirse en la cafetería o en la entrada.",
+          "El mejor lugar es afuera del cine o en el cajero automático."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Simon wants to meet Susie. Where does Simon want to meet her?",
+        "respuestas_ingles": [
+          "Simon wants to meet Susie at the cinema.",
+          "He wants to meet her at the café near the entrance.",
+          "I think Simon wants to meet at the bookshop."
+        ],
+        "traducciones_espanol": [
+          "Simon quiere reunirse con Susie en el cine.",
+          "Él quiere reunirse con ella en la cafetería cerca de la entrada.",
+          "Creo que Simon quiere reunirse en la librería."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "What do you think will happen between Simon and Susie?",
+        "respuestas_ingles": [
+          "I think Simon will be late and Susie will be angry.",
+          "Maybe Susie is at the wrong place and they don't find each other.",
+          "I think they will meet at the cinema finally."
+        ],
+        "traducciones_espanol": [
+          "Creo que Simon llegará tarde y Susie se enojará.",
+          "Quizás Susie está en el lugar equivocado y no se encuentran.",
+          "Creo que finalmente se reunirán en el cine."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "In Conversation 2: Is Simon in the bookshop or in the café?",
+        "respuestas_ingles": [
+          "Simon is in the bookshop.",
+          "I think Simon is in the bookshop looking for a book.",
+          "He is in the bookshop, not the café."
+        ],
+        "traducciones_espanol": [
+          "Simon está en la librería.",
+          "Creo que Simon está en la librería buscando un libro.",
+          "Él está en la librería, no en la cafetería."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "In Conversation 2: Is Susie at the bus stop or in the car park?",
+        "respuestas_ingles": [
+          "Susie is at the bus stop.",
+          "She is waiting for Simon at the bus stop.",
+          "I think Susie is at the bus stop outside the mall."
+        ],
+        "traducciones_espanol": [
+          "Susie está en la parada de autobús.",
+          "Ella está esperando a Simon en la parada de autobús.",
+          "Creo que Susie está en la parada de autobús afuera del centro comercial."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "In Conversation 3: Is Amy in the clothes shop or in the department store?",
+        "respuestas_ingles": [
+          "Amy is in the clothes shop.",
+          "She is looking at clothes with mannequins.",
+          "Amy is in the clothes shop trying on jeans."
+        ],
+        "traducciones_espanol": [
+          "Amy está en la tienda de ropa.",
+          "Ella está mirando ropa con maniquíes.",
+          "Amy está en la tienda de ropa probándose jeans."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "In Conversation 3: Is Sandeep at the information desk or at the cash machine?",
+        "respuestas_ingles": [
+          "Sandeep is at the cash machine.",
+          "He is getting money from the ATM.",
+          "Sandeep is at the cash machine because he has no money."
+        ],
+        "traducciones_espanol": [
+          "Sandeep está en el cajero automático.",
+          "Él está sacando dinero del cajero.",
+          "Sandeep está en el cajero automático porque no tiene dinero."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Look at the picture. Why do you think Simon is running?",
+        "respuestas_ingles": [
+          "Simon is running because he is late to meet Susie.",
+          "He is running because he wants to catch the bus.",
+          "Maybe Simon is running because he forgot something."
+        ],
+        "traducciones_espanol": [
+          "Simon está corriendo porque llega tarde a reunirse con Susie.",
+          "Está corriendo porque quiere alcanzar el autobús.",
+          "Quizás Simon está corriendo porque olvidó algo."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "How do you think Susie feels in the picture? Why?",
+        "respuestas_ingles": [
+          "I think Susie feels stressed and angry because Simon is late.",
+          "She feels frustrated because they can't find each other.",
+          "Susie looks worried because Simon is not answering his phone."
+        ],
+        "traducciones_espanol": [
+          "Creo que Susie se siente estresada y enojada porque Simon llega tarde.",
+          "Ella se siente frustrada porque no pueden encontrarse.",
+          "Susie se ve preocupada porque Simon no contesta su teléfono."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Partner question 1: When you meet a friend in a mall in Arequipa, where do you usually meet?",
+        "respuestas_ingles": [
+          "I usually meet my friend near the cinema or the food court.",
+          "We meet at the entrance of Mall Aventura Plaza.",
+          "Sometimes we meet at a café like Starbucks."
+        ],
+        "traducciones_espanol": [
+          "Normalmente me reúno con mi amigo cerca del cine o del patio de comidas.",
+          "Nos reunimos en la entrada de Mall Aventura Plaza.",
+          "A veces nos reunimos en una cafetería como Starbucks."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Partner question 2: Do you have a funny story about being late to meet a friend?",
+        "respuestas_ingles": [
+          "Yes, once I was late because the bus was stuck in traffic in Arequipa.",
+          "No, I usually arrive on time.",
+          "Yes, my friend waited for me for 30 minutes at the wrong bus stop."
+        ],
+        "traducciones_espanol": [
+          "Sí, una vez llegué tarde porque el autobús estaba atrapado en el tráfico en Arequipa.",
+          "No, normalmente llego a tiempo.",
+          "Sí, mi amigo me esperó 30 minutos en la parada de autobús equivocada."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Partner question 3: How do you feel when your friend is late? Happy, angry, or worried?",
+        "respuestas_ingles": [
+          "I feel a little angry, but I understand if there is traffic.",
+          "I feel worried because maybe something bad happened.",
+          "I feel happy because I can wait and look at my phone."
+        ],
+        "traducciones_espanol": [
+          "Me siento un poco enojado, pero entiendo si hay tráfico.",
+          "Me siento preocupado porque quizás pasó algo malo.",
+          "Me siento feliz porque puedo esperar y mirar mi teléfono."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Partner question 4: In your opinion, what is the best place in a mall to wait for a friend?",
+        "respuestas_ingles": [
+          "In my opinion, the best place is the café because you can sit and drink something.",
+          "The information desk is good because it's easy to find.",
+          "I think the cinema entrance is a good place to wait."
+        ],
+        "traducciones_espanol": [
+          "En mi opinión, el mejor lugar es la cafetería porque puedes sentarte y tomar algo.",
+          "El mostrador de información es bueno porque es fácil de encontrar.",
+          "Creo que la entrada del cine es un buen lugar para esperar."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Partner question 5: Compare meeting a friend in a mall in Arequipa with the situation of Simon and Susie. Is it similar?",
+        "respuestas_ingles": [
+          "Yes, it's similar. Sometimes my friend and I go to different places.",
+          "No, we usually meet at the same place and don't get lost.",
+          "It is similar because Arequipa malls are big and sometimes confusing."
+        ],
+        "traducciones_espanol": [
+          "Sí, es similar. A veces mi amigo y yo vamos a diferentes lugares.",
+          "No, normalmente nos reunimos en el mismo lugar y no nos perdemos.",
+          "Es similar porque los centros comerciales de Arequipa son grandes y a veces confusos."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Match question 1: 'Where are you?' with the correct answer.",
+        "respuestas_ingles": [
+          "The correct answer is 'a: I'm standing by the entrance.'",
+          "Answer a is for question 1: 'Where are you?'",
+          "I'm standing by the entrance - that answers 'Where are you?'"
+        ],
+        "traducciones_espanol": [
+          "La respuesta correcta es 'a: Estoy parado junto a la entrada.'",
+          "La respuesta a es para la pregunta 1: '¿Dónde estás?'",
+          "Estoy parado junto a la entrada - eso responde '¿Dónde estás?'"
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Match question 2: 'Are you having a coffee?' with the correct answer.",
+        "respuestas_ingles": [
+          "The correct answer is 'd: No, I'm just buying that new book.'",
+          "Answer d is for 'Are you having a coffee?' - 'No, I'm just buying a book.'",
+          "Question 2 matches with answer d."
+        ],
+        "traducciones_espanol": [
+          "La respuesta correcta es 'd: No, solo estoy comprando ese libro nuevo.'",
+          "La respuesta d es para '¿Estás tomando un café?' - 'No, solo estoy comprando un libro.'",
+          "La pregunta 2 coincide con la respuesta d."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Match question 3: 'Where are you waiting for us?' with the correct answer.",
+        "respuestas_ingles": [
+          "The correct answer is 'a: I'm standing by the entrance.'",
+          "Question 3 'Where are you waiting for us?' matches with 'I'm standing by the entrance.'",
+          "Answer a can also be for question 3."
+        ],
+        "traducciones_espanol": [
+          "La respuesta correcta es 'a: Estoy parado junto a la entrada.'",
+          "La pregunta 3 '¿Dónde nos estás esperando?' coincide con 'Estoy parado junto a la entrada.'",
+          "La respuesta a también puede ser para la pregunta 3."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Match question 4: 'Are you buying furniture?' with the correct answer.",
+        "respuestas_ingles": [
+          "The correct answer is 'c: No, we aren't buying anything.'",
+          "Answer c 'No, we aren't buying anything' is for 'Are you buying furniture?'",
+          "Question 4 matches with answer c."
+        ],
+        "traducciones_espanol": [
+          "La respuesta correcta es 'c: No, no estamos comprando nada.'",
+          "La respuesta c 'No, no estamos comprando nada' es para '¿Estás comprando muebles?'",
+          "La pregunta 4 coincide con la respuesta c."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "We use 'be + verb + -ing' to talk about: a) now or b) all the time?",
+        "respuestas_ingles": [
+          "We use it to talk about 'a) now' - actions happening at this moment.",
+          "The correct answer is 'a) now'.",
+          "Present continuous is for now, not all the time."
+        ],
+        "traducciones_espanol": [
+          "Lo usamos para hablar de 'a) ahora' - acciones que están pasando en este momento.",
+          "La respuesta correcta es 'a) ahora'.",
+          "El presente continuo es para ahora, no todo el tiempo."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Complete the positive sentence: 'I'm ___ a magazine.'",
+        "respuestas_ingles": [
+          "I'm reading a magazine.",
+          "I'm looking at a magazine.",
+          "I'm buying a magazine."
+        ],
+        "traducciones_espanol": [
+          "Estoy leyendo una revista.",
+          "Estoy mirando una revista.",
+          "Estoy comprando una revista."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Complete the positive sentence: 'We're ___ on the phone.'",
+        "respuestas_ingles": [
+          "We're talking on the phone.",
+          "We're speaking on the phone.",
+          "We're waiting on the phone."
+        ],
+        "traducciones_espanol": [
+          "Estamos hablando por teléfono.",
+          "Estamos conversando por teléfono.",
+          "Estamos esperando al teléfono."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Complete the positive sentence: 'He's / She's ___ coffee.'",
+        "respuestas_ingles": [
+          "He's drinking coffee.",
+          "She's having coffee.",
+          "He's ordering coffee."
+        ],
+        "traducciones_espanol": [
+          "Él está tomando café.",
+          "Ella está tomando café.",
+          "Él está pidiendo café."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Anthony, what are you doing right now?",
+        "respuestas_ingles": [
+          "I'm studying English for my Zoom class.",
+          "I'm sitting in my room in Arequipa.",
+          "I'm answering questions about shopping."
+        ],
+        "traducciones_espanol": [
+          "Estoy estudiando inglés para mi clase por Zoom.",
+          "Estoy sentado en mi habitación en Arequipa.",
+          "Estoy respondiendo preguntas sobre compras."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Think of a place in Arequipa. Write: 'I'm eating a burger.' Where are you? Partner, guess.",
+        "respuestas_ingles": [
+          "Are you in a fast food restaurant?",
+          "Are you at Burger King or McDonald's?",
+          "Are you in a restaurant in Mall Aventura?"
+        ],
+        "traducciones_espanol": [
+          "¿Estás en un restaurante de comida rápida?",
+          "¿Estás en Burger King o McDonald's?",
+          "¿Estás en un restaurante en Mall Aventura?"
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Think of a place. Write: 'I'm buying a book.' Where are you?",
+        "respuestas_ingles": [
+          "Are you in a bookshop?",
+          "Are you in a library?",
+          "Are you in Crisol or Íbero in Arequipa?"
+        ],
+        "traducciones_espanol": [
+          "¿Estás en una librería?",
+          "¿Estás en una biblioteca?",
+          "¿Estás en Crisol o Íbero en Arequipa?"
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Think of a place. Write: 'I'm waiting for the bus.' Where are you?",
+        "respuestas_ingles": [
+          "Are you at a bus stop?",
+          "Are you on Av. Ejército?",
+          "Are you near the mall?"
+        ],
+        "traducciones_espanol": [
+          "¿Estás en una parada de autobús?",
+          "¿Estás en la Av. Ejército?",
+          "¿Estás cerca del centro comercial?"
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Think of a place. Write: 'I'm buying aspirin.' Where are you?",
+        "respuestas_ingles": [
+          "Are you in a chemist or pharmacy?",
+          "Are you in Inkafarma or MiFarma?",
+          "Are you in a drugstore in Arequipa?"
+        ],
+        "traducciones_espanol": [
+          "¿Estás en una farmacia?",
+          "¿Estás en Inkafarma o MiFarma?",
+          "¿Estás en una botica en Arequipa?"
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Think of a place. Write: 'I'm trying on jeans.' Where are you?",
+        "respuestas_ingles": [
+          "Are you in a clothes shop?",
+          "Are you in a dressing room?",
+          "Are you in Mall Aventura or Real Plaza?"
+        ],
+        "traducciones_espanol": [
+          "¿Estás en una tienda de ropa?",
+          "¿Estás en un probador?",
+          "¿Estás en Mall Aventura o Real Plaza?"
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Think of a place. Write: 'I'm getting cash.' Where are you?",
+        "respuestas_ingles": [
+          "Are you at a cash machine or ATM?",
+          "Are you at a bank?",
+          "Are you at the ATM in Plaza Vea?"
+        ],
+        "traducciones_espanol": [
+          "¿Estás en un cajero automático?",
+          "¿Estás en un banco?",
+          "¿Estás en el cajero de Plaza Vea?"
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Partner practice: Guess where your partner is. Ask a Yes/No question.",
+        "respuestas_ingles": [
+          "Are you eating something?",
+          "Are you shopping for clothes?",
+          "Are you waiting for someone?"
+        ],
+        "traducciones_espanol": [
+          "¿Estás comiendo algo?",
+          "¿Estás comprando ropa?",
+          "¿Estás esperando a alguien?"
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Partner practice: Ask a 'Where' question to guess the place.",
+        "respuestas_ingles": [
+          "Where are you that has many books?",
+          "Where are you that sells medicine?",
+          "Where are you that has mannequins?"
+        ],
+        "traducciones_espanol": [
+          "¿Dónde estás que tiene muchos libros?",
+          "¿Dónde estás que vende medicina?",
+          "¿Dónde estás que tiene maniquíes?"
+        ]
+      },
+      {
+        "pregunta_en_ingles": "In your opinion, is it easy or difficult to guess where someone is in Arequipa?",
+        "respuestas_ingles": [
+          "It is easy because I know the city well.",
+          "It is difficult because there are many similar places.",
+          "It depends on the sentence. 'Eating a burger' is easy."
+        ],
+        "traducciones_espanol": [
+          "Es fácil porque conozco bien la ciudad.",
+          "Es difícil porque hay muchos lugares similares.",
+          "Depende de la frase. 'Comiendo una hamburguesa' es fácil."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Compare the present continuous in English with Spanish. Is it similar?",
+        "respuestas_ingles": [
+          "Yes, it is similar. In Spanish we say 'estoy comiendo' like 'I am eating'.",
+          "It is very similar, but in Spanish we use 'estar' + gerund.",
+          "Yes, both languages use 'to be' + '-ing' / 'estar' + gerundio."
+        ],
+        "traducciones_espanol": [
+          "Sí, es similar. En español decimos 'estoy comiendo' como 'I am eating'.",
+          "Es muy similar, pero en español usamos 'estar' + gerundio.",
+          "Sí, ambos idiomas usan 'ser/estar' + '-ing' / gerundio."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "How many bedrooms are there in your home?",
+        "respuestas_ingles": [
+          "There are three bedrooms.",
+          "There is one bedroom.",
+          "There are two bedrooms."
+        ],
+        "traducciones_espanol": [
+          "Hay tres dormitorios.",
+          "Hay un dormitorio.",
+          "Hay dos dormitorios."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Where do you eat your dinner?",
+        "respuestas_ingles": [
+          "I eat my dinner in the kitchen.",
+          "I eat in the dining room.",
+          "I eat in the living room."
+        ],
+        "traducciones_espanol": [
+          "Como mi cena en la cocina.",
+          "Como en el comedor.",
+          "Como en la sala."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Is there a TV in your home? Where?",
+        "respuestas_ingles": [
+          "Yes, there is a TV in the living room.",
+          "No, there isn't a TV in my home.",
+          "Yes, there is a TV in my bedroom."
+        ],
+        "traducciones_espanol": [
+          "Sí, hay un televisor en la sala.",
+          "No, no hay televisor en mi casa.",
+          "Sí, hay un televisor en mi dormitorio."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Do you have a garden? If yes, is it big or small?",
+        "respuestas_ingles": [
+          "Yes, I have a small garden.",
+          "No, I don't have a garden.",
+          "Yes, I have a big garden."
+        ],
+        "traducciones_espanol": [
+          "Sí, tengo un jardín pequeño.",
+          "No, no tengo jardín.",
+          "Sí, tengo un jardín grande."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Which room do you like best in your home?",
+        "respuestas_ingles": [
+          "I like my bedroom best.",
+          "I like the living room best.",
+          "I like the kitchen best."
+        ],
+        "traducciones_espanol": [
+          "Me gusta más mi dormitorio.",
+          "Me gusta más la sala.",
+          "Me gusta más la cocina."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Do you like Mimi's flat? Why or why not?",
+        "respuestas_ingles": [
+          "Yes, I like it because it is nice.",
+          "No, I don't like it because it is small.",
+          "Yes, I like the living room."
+        ],
+        "traducciones_espanol": [
+          "Sí, me gusta porque es bonito.",
+          "No, no me gusta porque es pequeño.",
+          "Sí, me gusta la sala."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Do you sometimes send a message to someone when you're in the same place? Why or why not?",
+        "respuestas_ingles": [
+          "Yes, because I am shy to talk.",
+          "No, because I can talk to them.",
+          "Yes, because it is funny."
+        ],
+        "traducciones_espanol": [
+          "Sí, porque soy tímido para hablar.",
+          "No, porque puedo hablar con ellos.",
+          "Sí, porque es divertido."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "What are you doing? (It's 2 pm on Sunday)",
+        "respuestas_ingles": [
+          "I am having lunch with my family.",
+          "I am watching TV in my living room.",
+          "I am studying English at home."
+        ],
+        "traducciones_espanol": [
+          "Estoy almorzando con mi familia.",
+          "Estoy viendo televisión en mi sala.",
+          "Estoy estudiando inglés en casa."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Is anyone doing the same thing?",
+        "respuestas_ingles": [
+          "Yes, my friend is studying too.",
+          "No, everyone is doing something different.",
+          "Yes, my sister is watching TV."
+        ],
+        "traducciones_espanol": [
+          "Sí, mi amigo también está estudiando.",
+          "No, todos están haciendo algo diferente.",
+          "Sí, mi hermana está viendo televisión."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Which are a good idea, quite normal, or a bad idea?",
+        "respuestas_ingles": [
+          "Using phone at home is normal.",
+          "Using phone at the cinema is a bad idea.",
+          "Using phone on a mountain is a good idea for photos."
+        ],
+        "traducciones_espanol": [
+          "Usar el teléfono en casa es normal.",
+          "Usar el teléfono en el cine es una mala idea.",
+          "Usar el teléfono en una montaña es una buena idea para fotos."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Which person do you think has good ideas?",
+        "respuestas_ingles": [
+          "I think Jenny has good ideas.",
+          "I think Yasmin has good ideas.",
+          "I think Sam has good ideas."
+        ],
+        "traducciones_espanol": [
+          "Creo que Jenny tiene buenas ideas.",
+          "Creo que Yasmin tiene buenas ideas.",
+          "Creo que Sam tiene buenas ideas."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Which person do you think has a problem?",
+        "respuestas_ingles": [
+          "I think Kevin has a problem.",
+          "I think Branko has a problem.",
+          "I think Sam has a problem."
+        ],
+        "traducciones_espanol": [
+          "Creo que Kevin tiene un problema.",
+          "Creo que Branko tiene un problema.",
+          "Creo que Sam tiene un problema."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "What is your comment about you and your phone?",
+        "respuestas_ingles": [
+          "My phone is always on in the day.",
+          "I turn off my phone at night.",
+          "I don't like talking on the phone."
+        ],
+        "traducciones_espanol": [
+          "Mi teléfono siempre está encendido durante el día.",
+          "Apago mi teléfono por la noche.",
+          "No me gusta hablar por teléfono."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Are you the same as your partner?",
+        "respuestas_ingles": [
+          "Yes, we are the same.",
+          "No, we are different.",
+          "Yes, we both turn off our phones at night."
+        ],
+        "traducciones_espanol": [
+          "Sí, somos iguales.",
+          "No, somos diferentes.",
+          "Sí, ambos apagamos nuestros teléfonos por la noche."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Are you in the car? (guessing game)",
+        "respuestas_ingles": [
+          "Yes, I am in the car.",
+          "No, I am in a café.",
+          "Yes, I am on the train."
+        ],
+        "traducciones_espanol": [
+          "Sí, estoy en el coche.",
+          "No, estoy en un café.",
+          "Sí, estoy en el tren."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Who is the girl talking to?",
+        "respuestas_ingles": [
+          "She is talking to a shop assistant.",
+          "She is talking to a friend.",
+          "She is talking to her mother."
+        ],
+        "traducciones_espanol": [
+          "Ella está hablando con un dependiente.",
+          "Ella está hablando con un amigo.",
+          "Ella está hablando con su madre."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "What things does she say? What answers does she get?",
+        "respuestas_ingles": [
+          "She points to a doll and asks 'How much is this doll?' The assistant says 'It's 15 dollars.'",
+          "She says 'I like this doll. Can I buy it?' and the assistant says 'Yes, of course.'",
+          "She asks 'Is this doll for children?' and the assistant says 'Yes, it is.'"
+        ],
+        "traducciones_espanol": [
+          "Ella señala una muñeca y pregunta '¿Cuánto cuesta esta muñeca?' El dependiente dice 'Son 15 dólares.'",
+          "Ella dice 'Me gusta esta muñeca. ¿Puedo comprarla?' y el dependiente dice 'Sí, claro.'",
+          "Ella pregunta '¿Esta muñeca es para niños?' y el dependiente dice 'Sí, lo es.'"
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Do you think this girl enjoys shopping?",
+        "respuestas_ingles": [
+          "Yes, I think she enjoys shopping because she is pointing at a doll she likes.",
+          "No, I think she doesn't enjoy shopping because she looks bored.",
+          "Maybe she enjoys shopping only for toys."
+        ],
+        "traducciones_espanol": [
+          "Sí, creo que ella disfruta comprando porque está señalando una muñeca que le gusta.",
+          "No, creo que ella no disfruta comprando porque se ve aburrida.",
+          "Tal vez ella disfruta comprando solo para juguetes."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Where is the best place to go shopping for food in Arequipa?",
+        "respuestas_ingles": [
+          "The best place for food is San Camilo Market.",
+          "I think Plaza Vea or Supermercado El Super are good for food.",
+          "The best place is a local market near my house."
+        ],
+        "traducciones_espanol": [
+          "El mejor lugar para comida es el Mercado San Camilo.",
+          "Creo que Plaza Vea o Supermercado El Super son buenos para comida.",
+          "El mejor lugar es un mercado local cerca de mi casa."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Where is the best place to go shopping for clothes in Arequipa?",
+        "respuestas_ingles": [
+          "The best place for clothes is Mall Aventura Plaza.",
+          "I like going to Parque Lambramani for clothes.",
+          "There is a good place called Real Plaza in Arequipa."
+        ],
+        "traducciones_espanol": [
+          "El mejor lugar para ropa es Mall Aventura Plaza.",
+          "Me gusta ir a Parque Lambramani para ropa.",
+          "Hay un buen lugar llamado Real Plaza en Arequipa."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Where is the best place to go shopping for a present for someone in Arequipa?",
+        "respuestas_ingles": [
+          "The best place for a present is San Camilo Market because there are handmade gifts.",
+          "I go to Patio del Ekeko for souvenirs and presents.",
+          "Mall Aventura Plaza has many stores for presents."
+        ],
+        "traducciones_espanol": [
+          "El mejor lugar para un regalo es el Mercado San Camilo porque hay regalos hechos a mano.",
+          "Voy a Patio del Ekeko para recuerdos y regalos.",
+          "Mall Aventura Plaza tiene muchas tiendas para regalos."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "What are the people in picture 1 doing?",
+        "respuestas_ingles": [
+          "They are having breakfast or drinking tea together.",
+          "They are laughing and talking with friends.",
+          "They are happy because they are smiling."
+        ],
+        "traducciones_espanol": [
+          "Ellos están desayunando o tomando té juntos.",
+          "Ellos están riendo y hablando con amigos.",
+          "Ellos están felices porque están sonriendo."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Do you like having breakfast with friends?",
+        "respuestas_ingles": [
+          "Yes, I like having breakfast with friends on weekends.",
+          "Sometimes I have breakfast with my friends in Arequipa.",
+          "No, I prefer to have breakfast alone."
+        ],
+        "traducciones_espanol": [
+          "Sí, me gusta desayunar con amigos los fines de semana.",
+          "A veces desayuno con mis amigos en Arequipa.",
+          "No, prefiero desayunar solo."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "What is the girl in picture 2 doing?",
+        "respuestas_ingles": [
+          "She is reading a book in a library.",
+          "She is wearing black clothes.",
+          "She is studying or reading quietly."
+        ],
+        "traducciones_espanol": [
+          "Ella está leyendo un libro en una biblioteca.",
+          "Ella usa ropa negra.",
+          "Ella está estudiando o leyendo tranquilamente."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Do you like reading books in a library?",
+        "respuestas_ingles": [
+          "Yes, I like reading in the library because it is quiet.",
+          "In Arequipa, I sometimes go to the Biblioteca Regional.",
+          "No, I prefer to read at home."
+        ],
+        "traducciones_espanol": [
+          "Sí, me gusta leer en la biblioteca porque es tranquilo.",
+          "En Arequipa, a veces voy a la Biblioteca Regional.",
+          "No, prefiero leer en casa."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Where is picture 3? What is happening?",
+        "respuestas_ingles": [
+          "It is a chifa or fast food restaurant. There is a queue of people.",
+          "The receptionists are attending customers.",
+          "People are waiting to order food."
+        ],
+        "traducciones_espanol": [
+          "Es un chifa o restaurante de comida rápida. Hay una cola de personas.",
+          "Los recepcionistas están atendiendo a los clientes.",
+          "Las personas están esperando para pedir comida."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Is your experience in restaurants in Arequipa similar to picture 3?",
+        "respuestas_ingles": [
+          "Yes, sometimes there is a queue in restaurants like Chifa Mandarin.",
+          "No, in my favorite restaurant in Arequipa I don't wait too long.",
+          "Yes, in busy places like Plaza Vea food court there are queues."
+        ],
+        "traducciones_espanol": [
+          "Sí, a veces hay cola en restaurantes como Chifa Mandarin.",
+          "No, en mi restaurante favorito en Arequipa no espero mucho tiempo.",
+          "Sí, en lugares concurridos como el patio de comidas de Plaza Vea hay colas."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "What do you see in picture 4?",
+        "respuestas_ingles": [
+          "I see mannequins without heads wearing clothes.",
+          "It looks like a clothing store.",
+          "The mannequins are displaying shirts and pants."
+        ],
+        "traducciones_espanol": [
+          "Veo maniquíes sin cabeza usando ropa.",
+          "Parece una tienda de ropa.",
+          "Los maniquíes están mostrando camisas y pantalones."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Do you like shopping for clothes in Arequipa?",
+        "respuestas_ingles": [
+          "Yes, I like shopping at Mall Aventura Plaza.",
+          "Sometimes I go to Real Plaza in Arequipa to buy clothes.",
+          "No, I don't like shopping for clothes very much."
+        ],
+        "traducciones_espanol": [
+          "Sí, me gusta comprar ropa en Mall Aventura Plaza.",
+          "A veces voy a Real Plaza en Arequipa a comprar ropa.",
+          "No, no me gusta mucho comprar ropa."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "What is happening in picture 5?",
+        "respuestas_ingles": [
+          "A pharmacist is charging a customer for some pills.",
+          "The customer is buying medicine.",
+          "They are at a pharmacy counter."
+        ],
+        "traducciones_espanol": [
+          "Una farmacéutica está cobrando a un cliente por unas píldoras.",
+          "El cliente está comprando medicina.",
+          "Ellos están en el mostrador de una farmacia."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "In your opinion, is picture 6 a nice place to spend time?",
+        "respuestas_ingles": [
+          "Yes, it looks nice because it has two floors and a good view.",
+          "In my opinion, malls in Arequipa like Mall Aventura are similar.",
+          "Yes, I like going to the mall with my friends."
+        ],
+        "traducciones_espanol": [
+          "Sí, se ve bonito porque tiene dos pisos y una buena vista.",
+          "En mi opinión, los centros comerciales en Arequipa como Mall Aventura son similares.",
+          "Sí, me gusta ir al centro comercial con mis amigos."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Which of these places do you visit most in Arequipa: a restaurant, a library, a clothing store, a pharmacy, or a mall?",
+        "respuestas_ingles": [
+          "I visit the mall most often, especially Mall Aventura Plaza.",
+          "I go to restaurants a lot because I like Peruvian food.",
+          "I visit the pharmacy when I need medicine for my family."
+        ],
+        "traducciones_espanol": [
+          "Visito el centro comercial más seguido, especialmente Mall Aventura Plaza.",
+          "Voy a restaurantes mucho porque me gusta la comida peruana.",
+          "Visito la farmacia cuando necesito medicina para mi familia."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Match pictures 1-6 with the words: a chemist, a department store, a fast food restaurant, a bookshop, a clothes shop, a café. Which picture is the café?",
+        "respuestas_ingles": [
+          "Picture 1 is the café. Friends are having tea and laughing.",
+          "I think the café is picture 1 because they are eating breakfast.",
+          "Picture 1 shows people drinking tea, so it's a café."
+        ],
+        "traducciones_espanol": [
+          "La imagen 1 es la cafetería. Los amigos están tomando té y riendo.",
+          "Creo que la cafetería es la imagen 1 porque están desayunando.",
+          "La imagen 1 muestra personas tomando té, así que es una cafetería."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Which picture is the bookshop?",
+        "respuestas_ingles": [
+          "Picture 2 is the bookshop. A girl is reading a book.",
+          "The bookshop is picture 2 because she is reading in a library.",
+          "I think picture 2 is a bookshop or library."
+        ],
+        "traducciones_espanol": [
+          "La imagen 2 es la librería. Una chica está leyendo un libro.",
+          "La librería es la imagen 2 porque ella está leyendo en una biblioteca.",
+          "Creo que la imagen 2 es una librería o biblioteca."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Which picture is the fast food restaurant?",
+        "respuestas_ingles": [
+          "Picture 3 is the fast food restaurant. There is a queue of people.",
+          "The fast food restaurant is picture 3, it looks like a chifa.",
+          "I think picture 3 is fast food because people are waiting to order."
+        ],
+        "traducciones_espanol": [
+          "La imagen 3 es el restaurante de comida rápida. Hay una cola de personas.",
+          "El restaurante de comida rápida es la imagen 3, parece un chifa.",
+          "Creo que la imagen 3 es comida rápida porque la gente está esperando para pedir."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Which picture is the clothes shop?",
+        "respuestas_ingles": [
+          "Picture 4 is the clothes shop. I see mannequins without heads.",
+          "The clothes shop is picture 4 because the mannequins are wearing shirts and pants.",
+          "Picture 4 shows a clothing store with mannequins."
+        ],
+        "traducciones_espanol": [
+          "La imagen 4 es la tienda de ropa. Veo maniquíes sin cabeza.",
+          "La tienda de ropa es la imagen 4 porque los maniquíes usan camisas y pantalones.",
+          "La imagen 4 muestra una tienda de ropa con maniquíes."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Which picture is the chemist?",
+        "respuestas_ingles": [
+          "Picture 5 is the chemist. A pharmacist is charging a customer for pills.",
+          "The chemist is picture 5 because there is a pharmacy counter.",
+          "I think picture 5 is a chemist or pharmacy."
+        ],
+        "traducciones_espanol": [
+          "La imagen 5 es la farmacia. Una farmacéutica está cobrando a un cliente por pastillas.",
+          "La farmacia es la imagen 5 porque hay un mostrador de farmacia.",
+          "Creo que la imagen 5 es una farmacia."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Which of these shops is your favourite? Why?",
+        "respuestas_ingles": [
+          "My favourite is the clothes shop because I like buying new jeans and shirts.",
+          "I like the fast food restaurant because I love Peruvian chicken and chifa.",
+          "My favourite is the bookshop because I enjoy reading."
+        ],
+        "traducciones_espanol": [
+          "Mi favorita es la tienda de ropa porque me gusta comprar jeans y camisas nuevos.",
+          "Me gusta el restaurante de comida rápida porque amo el pollo peruano y el chifa.",
+          "Mi favorita es la librería porque disfruto leer."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Look at the mall plan. Where is the entrance?",
+        "respuestas_ingles": [
+          "The entrance is near the stairs and the information desk.",
+          "I think the entrance is at the bottom of the plan.",
+          "The entrance is between the car park and the bus stop."
+        ],
+        "traducciones_espanol": [
+          "La entrada está cerca de las escaleras y el mostrador de información.",
+          "Creo que la entrada está en la parte inferior del plano.",
+          "La entrada está entre el estacionamiento y la parada de autobús."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Where is the car park on the plan?",
+        "respuestas_ingles": [
+          "The car park is outside the mall, near the entrance.",
+          "It is next to the bus stop.",
+          "The car park is on the left side of the plan."
+        ],
+        "traducciones_espanol": [
+          "El estacionamiento está fuera del centro comercial, cerca de la entrada.",
+          "Está al lado de la parada de autobús.",
+          "El estacionamiento está en el lado izquierdo del plano."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Where is the cash machine or ATM in the mall?",
+        "respuestas_ingles": [
+          "The ATM is near the information desk.",
+          "It is on the first floor next to the stairs.",
+          "I think the cash machine is close to the entrance."
+        ],
+        "traducciones_espanol": [
+          "El cajero automático está cerca del mostrador de información.",
+          "Está en el primer piso al lado de las escaleras.",
+          "Creo que el cajero está cerca de la entrada."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Anthony, where is your favourite shopping mall in Arequipa? Where is the entrance and car park?",
+        "respuestas_ingles": [
+          "My favourite mall is Mall Aventura Plaza. The entrance is on Av. Ejército and the car park is big.",
+          "I like Real Plaza in Arequipa. The entrance is near the bus stop.",
+          "My favourite is Mall Aventura. The car park is underground."
+        ],
+        "traducciones_espanol": [
+          "Mi centro comercial favorito es Mall Aventura Plaza. La entrada está en la Av. Ejército y el estacionamiento es grande.",
+          "Me gusta Real Plaza en Arequipa. La entrada está cerca de la parada de autobús.",
+          "Mi favorito es Mall Aventura. El estacionamiento está subterráneo."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Listen to the pronunciation: 'clothes shop'. Which word is stressed?",
+        "respuestas_ingles": [
+          "The first word 'clothes' is stressed.",
+          "I think 'clothes' is stressed, not 'shop'.",
+          "The stress is on 'clothes'."
+        ],
+        "traducciones_espanol": [
+          "La primera palabra 'clothes' está acentuada.",
+          "Creo que 'clothes' está acentuada, no 'shop'.",
+          "El acento está en 'clothes'."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Read situation 1: 'My son needs new jeans.' Where can this person go?",
+        "respuestas_ingles": [
+          "They can go to the clothes shop.",
+          "They can go to a department store.",
+          "They can go to the clothes shop or department store."
+        ],
+        "traducciones_espanol": [
+          "Pueden ir a la tienda de ropa.",
+          "Pueden ir a una tienda por departamentos.",
+          "Pueden ir a la tienda de ropa o a una tienda por departamentos."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Situation 2: 'Let's get a new sofa.' Where can this person go?",
+        "respuestas_ingles": [
+          "They can go to a department store.",
+          "A department store sells sofas.",
+          "Maybe a furniture shop, but in a mall, a department store is good."
+        ],
+        "traducciones_espanol": [
+          "Pueden ir a una tienda por departamentos.",
+          "Una tienda por departamentos vende sofás.",
+          "Quizás una tienda de muebles, pero en un centro comercial, una tienda por departamentos es buena."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Situation 3: 'I want something to read on the train.' Where can this person go?",
+        "respuestas_ingles": [
+          "They can go to the bookshop.",
+          "A bookshop has books and magazines to read.",
+          "They can go to a library or bookshop."
+        ],
+        "traducciones_espanol": [
+          "Pueden ir a la librería.",
+          "Una librería tiene libros y revistas para leer.",
+          "Pueden ir a una biblioteca o librería."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Situation 4: 'I've got a headache. I need some aspirin.' Where can this person go?",
+        "respuestas_ingles": [
+          "They can go to the chemist.",
+          "The chemist sells aspirin.",
+          "They can go to a pharmacy."
+        ],
+        "traducciones_espanol": [
+          "Pueden ir a la farmacia.",
+          "La farmacia vende aspirinas.",
+          "Pueden ir a una farmacia."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Situation 5: 'Can you take the shopping to the car?' Where can this person go?",
+        "respuestas_ingles": [
+          "They can go to the car park.",
+          "The car park is where the car is.",
+          "They need to go outside to the car park."
+        ],
+        "traducciones_espanol": [
+          "Pueden ir al estacionamiento.",
+          "El estacionamiento es donde está el auto.",
+          "Necesitan salir al estacionamiento."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Situation 6: 'Are you hungry? I need to eat!' Where can this person go?",
+        "respuestas_ingles": [
+          "They can go to the fast food restaurant or café.",
+          "They can go to the food court.",
+          "A fast food restaurant or a café is good for hungry people."
+        ],
+        "traducciones_espanol": [
+          "Pueden ir al restaurante de comida rápida o a la cafetería.",
+          "Pueden ir al patio de comidas.",
+          "Un restaurante de comida rápida o una cafetería es bueno para personas con hambre."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Situation 7: 'I haven't got any money.' Where can this person go?",
+        "respuestas_ingles": [
+          "They can go to the cash machine or ATM.",
+          "They can withdraw money from the ATM.",
+          "The cash machine is where you get money."
+        ],
+        "traducciones_espanol": [
+          "Pueden ir al cajero automático.",
+          "Pueden retirar dinero del cajero.",
+          "El cajero automático es donde obtienes dinero."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Anthony, in Arequipa, where do you go to buy aspirin?",
+        "respuestas_ingles": [
+          "I go to Inkafarma or MiFarma near my house.",
+          "I go to the chemist in Mall Aventura Plaza.",
+          "There is a pharmacy on Av. Ejército."
+        ],
+        "traducciones_espanol": [
+          "Voy a Inkafarma o MiFarma cerca de mi casa.",
+          "Voy a la farmacia en Mall Aventura Plaza.",
+          "Hay una farmacia en la Av. Ejército."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Do you think a department store in Arequipa is similar to a department store in the picture?",
+        "respuestas_ingles": [
+          "Yes, Mall Aventura has a department store like Ripley or Falabella.",
+          "They are similar. Both sell clothes, sofas, and many things.",
+          "Yes, I think they are very similar."
+        ],
+        "traducciones_espanol": [
+          "Sí, Mall Aventura tiene una tienda por departamentos como Ripley o Falabella.",
+          "Son similares. Ambos venden ropa, sofás y muchas cosas.",
+          "Sí, creo que son muy similares."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "When you meet friends in town, what do you usually do?",
+        "respuestas_ingles": [
+          "I usually go to a café or go shopping with my friends.",
+          "Sometimes we go to the cinema or go for a walk in Parque Selva Alegre.",
+          "I usually go to Mall Aventura Plaza with my friends."
+        ],
+        "traducciones_espanol": [
+          "Normalmente voy a una cafetería o voy de compras con mis amigos.",
+          "A veces vamos al cine o damos un paseo en el Parque Selva Alegre.",
+          "Normalmente voy a Mall Aventura Plaza con mis amigos."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Do you prefer to go shopping, go to the cinema, go to a café, or go for a walk in Arequipa?",
+        "respuestas_ingles": [
+          "I prefer to go to a café because I like drinking coffee with friends.",
+          "I prefer going to the cinema to watch new movies.",
+          "I like going for a walk in the city center."
+        ],
+        "traducciones_espanol": [
+          "Prefiero ir a una cafetería porque me gusta tomar café con amigos.",
+          "Prefiero ir al cine para ver películas nuevas.",
+          "Me gusta dar un paseo por el centro de la ciudad."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Look at the shopping mall plan. Where is a good place to meet for a group of friends who want to go to the cinema?",
+        "respuestas_ingles": [
+          "A good place to meet is the information desk near the cinema.",
+          "They can meet at the café or the entrance.",
+          "The best place is outside the cinema or at the cash machine."
+        ],
+        "traducciones_espanol": [
+          "Un buen lugar para reunirse es el mostrador de información cerca del cine.",
+          "Pueden reunirse en la cafetería o en la entrada.",
+          "El mejor lugar es afuera del cine o en el cajero automático."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Simon wants to meet Susie. Where does Simon want to meet her?",
+        "respuestas_ingles": [
+          "Simon wants to meet Susie at the cinema.",
+          "He wants to meet her at the café near the entrance.",
+          "I think Simon wants to meet at the bookshop."
+        ],
+        "traducciones_espanol": [
+          "Simon quiere reunirse con Susie en el cine.",
+          "Él quiere reunirse con ella en la cafetería cerca de la entrada.",
+          "Creo que Simon quiere reunirse en la librería."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "What do you think will happen between Simon and Susie?",
+        "respuestas_ingles": [
+          "I think Simon will be late and Susie will be angry.",
+          "Maybe Susie is at the wrong place and they don't find each other.",
+          "I think they will meet at the cinema finally."
+        ],
+        "traducciones_espanol": [
+          "Creo que Simon llegará tarde y Susie se enojará.",
+          "Quizás Susie está en el lugar equivocado y no se encuentran.",
+          "Creo que finalmente se reunirán en el cine."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "In Conversation 2: Is Simon in the bookshop or in the café?",
+        "respuestas_ingles": [
+          "Simon is in the bookshop.",
+          "I think Simon is in the bookshop looking for a book.",
+          "He is in the bookshop, not the café."
+        ],
+        "traducciones_espanol": [
+          "Simon está en la librería.",
+          "Creo que Simon está en la librería buscando un libro.",
+          "Él está en la librería, no en la cafetería."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "In Conversation 2: Is Susie at the bus stop or in the car park?",
+        "respuestas_ingles": [
+          "Susie is at the bus stop.",
+          "She is waiting for Simon at the bus stop.",
+          "I think Susie is at the bus stop outside the mall."
+        ],
+        "traducciones_espanol": [
+          "Susie está en la parada de autobús.",
+          "Ella está esperando a Simon en la parada de autobús.",
+          "Creo que Susie está en la parada de autobús afuera del centro comercial."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "In Conversation 3: Is Amy in the clothes shop or in the department store?",
+        "respuestas_ingles": [
+          "Amy is in the clothes shop.",
+          "She is looking at clothes with mannequins.",
+          "Amy is in the clothes shop trying on jeans."
+        ],
+        "traducciones_espanol": [
+          "Amy está en la tienda de ropa.",
+          "Ella está mirando ropa con maniquíes.",
+          "Amy está en la tienda de ropa probándose jeans."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "In Conversation 3: Is Sandeep at the information desk or at the cash machine?",
+        "respuestas_ingles": [
+          "Sandeep is at the cash machine.",
+          "He is getting money from the ATM.",
+          "Sandeep is at the cash machine because he has no money."
+        ],
+        "traducciones_espanol": [
+          "Sandeep está en el cajero automático.",
+          "Él está sacando dinero del cajero.",
+          "Sandeep está en el cajero automático porque no tiene dinero."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Look at the picture. Why do you think Simon is running?",
+        "respuestas_ingles": [
+          "Simon is running because he is late to meet Susie.",
+          "He is running because he wants to catch the bus.",
+          "Maybe Simon is running because he forgot something."
+        ],
+        "traducciones_espanol": [
+          "Simon está corriendo porque llega tarde a reunirse con Susie.",
+          "Está corriendo porque quiere alcanzar el autobús.",
+          "Quizás Simon está corriendo porque olvidó algo."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "How do you think Susie feels in the picture? Why?",
+        "respuestas_ingles": [
+          "I think Susie feels stressed and angry because Simon is late.",
+          "She feels frustrated because they can't find each other.",
+          "Susie looks worried because Simon is not answering his phone."
+        ],
+        "traducciones_espanol": [
+          "Creo que Susie se siente estresada y enojada porque Simon llega tarde.",
+          "Ella se siente frustrada porque no pueden encontrarse.",
+          "Susie se ve preocupada porque Simon no contesta su teléfono."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Partner question 1: When you meet a friend in a mall in Arequipa, where do you usually meet?",
+        "respuestas_ingles": [
+          "I usually meet my friend near the cinema or the food court.",
+          "We meet at the entrance of Mall Aventura Plaza.",
+          "Sometimes we meet at a café like Starbucks."
+        ],
+        "traducciones_espanol": [
+          "Normalmente me reúno con mi amigo cerca del cine o del patio de comidas.",
+          "Nos reunimos en la entrada de Mall Aventura Plaza.",
+          "A veces nos reunimos en una cafetería como Starbucks."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Partner question 2: Do you have a funny story about being late to meet a friend?",
+        "respuestas_ingles": [
+          "Yes, once I was late because the bus was stuck in traffic in Arequipa.",
+          "No, I usually arrive on time.",
+          "Yes, my friend waited for me for 30 minutes at the wrong bus stop."
+        ],
+        "traducciones_espanol": [
+          "Sí, una vez llegué tarde porque el autobús estaba atrapado en el tráfico en Arequipa.",
+          "No, normalmente llego a tiempo.",
+          "Sí, mi amigo me esperó 30 minutos en la parada de autobús equivocada."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Partner question 3: How do you feel when your friend is late? Happy, angry, or worried?",
+        "respuestas_ingles": [
+          "I feel a little angry, but I understand if there is traffic.",
+          "I feel worried because maybe something bad happened.",
+          "I feel happy because I can wait and look at my phone."
+        ],
+        "traducciones_espanol": [
+          "Me siento un poco enojado, pero entiendo si hay tráfico.",
+          "Me siento preocupado porque quizás pasó algo malo.",
+          "Me siento feliz porque puedo esperar y mirar mi teléfono."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Partner question 4: In your opinion, what is the best place in a mall to wait for a friend?",
+        "respuestas_ingles": [
+          "In my opinion, the best place is the café because you can sit and drink something.",
+          "The information desk is good because it's easy to find.",
+          "I think the cinema entrance is a good place to wait."
+        ],
+        "traducciones_espanol": [
+          "En mi opinión, el mejor lugar es la cafetería porque puedes sentarte y tomar algo.",
+          "El mostrador de información es bueno porque es fácil de encontrar.",
+          "Creo que la entrada del cine es un buen lugar para esperar."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Partner question 5: Compare meeting a friend in a mall in Arequipa with the situation of Simon and Susie. Is it similar?",
+        "respuestas_ingles": [
+          "Yes, it's similar. Sometimes my friend and I go to different places.",
+          "No, we usually meet at the same place and don't get lost.",
+          "It is similar because Arequipa malls are big and sometimes confusing."
+        ],
+        "traducciones_espanol": [
+          "Sí, es similar. A veces mi amigo y yo vamos a diferentes lugares.",
+          "No, normalmente nos reunimos en el mismo lugar y no nos perdemos.",
+          "Es similar porque los centros comerciales de Arequipa son grandes y a veces confusos."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Match question 1: 'Where are you?' with the correct answer.",
+        "respuestas_ingles": [
+          "The correct answer is 'a: I'm standing by the entrance.'",
+          "Answer a is for question 1: 'Where are you?'",
+          "I'm standing by the entrance - that answers 'Where are you?'"
+        ],
+        "traducciones_espanol": [
+          "La respuesta correcta es 'a: Estoy parado junto a la entrada.'",
+          "La respuesta a es para la pregunta 1: '¿Dónde estás?'",
+          "Estoy parado junto a la entrada - eso responde '¿Dónde estás?'"
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Match question 2: 'Are you having a coffee?' with the correct answer.",
+        "respuestas_ingles": [
+          "The correct answer is 'd: No, I'm just buying that new book.'",
+          "Answer d is for 'Are you having a coffee?' - 'No, I'm just buying a book.'",
+          "Question 2 matches with answer d."
+        ],
+        "traducciones_espanol": [
+          "La respuesta correcta es 'd: No, solo estoy comprando ese libro nuevo.'",
+          "La respuesta d es para '¿Estás tomando un café?' - 'No, solo estoy comprando un libro.'",
+          "La pregunta 2 coincide con la respuesta d."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Match question 3: 'Where are you waiting for us?' with the correct answer.",
+        "respuestas_ingles": [
+          "The correct answer is 'a: I'm standing by the entrance.'",
+          "Question 3 'Where are you waiting for us?' matches with 'I'm standing by the entrance.'",
+          "Answer a can also be for question 3."
+        ],
+        "traducciones_espanol": [
+          "La respuesta correcta es 'a: Estoy parado junto a la entrada.'",
+          "La pregunta 3 '¿Dónde nos estás esperando?' coincide con 'Estoy parado junto a la entrada.'",
+          "La respuesta a también puede ser para la pregunta 3."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Match question 4: 'Are you buying furniture?' with the correct answer.",
+        "respuestas_ingles": [
+          "The correct answer is 'c: No, we aren't buying anything.'",
+          "Answer c 'No, we aren't buying anything' is for 'Are you buying furniture?'",
+          "Question 4 matches with answer c."
+        ],
+        "traducciones_espanol": [
+          "La respuesta correcta es 'c: No, no estamos comprando nada.'",
+          "La respuesta c 'No, no estamos comprando nada' es para '¿Estás comprando muebles?'",
+          "La pregunta 4 coincide con la respuesta c."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "We use 'be + verb + -ing' to talk about: a) now or b) all the time?",
+        "respuestas_ingles": [
+          "We use it to talk about 'a) now' - actions happening at this moment.",
+          "The correct answer is 'a) now'.",
+          "Present continuous is for now, not all the time."
+        ],
+        "traducciones_espanol": [
+          "Lo usamos para hablar de 'a) ahora' - acciones que están pasando en este momento.",
+          "La respuesta correcta es 'a) ahora'.",
+          "El presente continuo es para ahora, no todo el tiempo."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Complete the positive sentence: 'I'm ___ a magazine.'",
+        "respuestas_ingles": [
+          "I'm reading a magazine.",
+          "I'm looking at a magazine.",
+          "I'm buying a magazine."
+        ],
+        "traducciones_espanol": [
+          "Estoy leyendo una revista.",
+          "Estoy mirando una revista.",
+          "Estoy comprando una revista."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Complete the positive sentence: 'We're ___ on the phone.'",
+        "respuestas_ingles": [
+          "We're talking on the phone.",
+          "We're speaking on the phone.",
+          "We're waiting on the phone."
+        ],
+        "traducciones_espanol": [
+          "Estamos hablando por teléfono.",
+          "Estamos conversando por teléfono.",
+          "Estamos esperando al teléfono."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Complete the positive sentence: 'He's / She's ___ coffee.'",
+        "respuestas_ingles": [
+          "He's drinking coffee.",
+          "She's having coffee.",
+          "He's ordering coffee."
+        ],
+        "traducciones_espanol": [
+          "Él está tomando café.",
+          "Ella está tomando café.",
+          "Él está pidiendo café."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Anthony, what are you doing right now?",
+        "respuestas_ingles": [
+          "I'm studying English for my Zoom class.",
+          "I'm sitting in my room in Arequipa.",
+          "I'm answering questions about shopping."
+        ],
+        "traducciones_espanol": [
+          "Estoy estudiando inglés para mi clase por Zoom.",
+          "Estoy sentado en mi habitación en Arequipa.",
+          "Estoy respondiendo preguntas sobre compras."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Think of a place in Arequipa. Write: 'I'm eating a burger.' Where are you? Partner, guess.",
+        "respuestas_ingles": [
+          "Are you in a fast food restaurant?",
+          "Are you at Burger King or McDonald's?",
+          "Are you in a restaurant in Mall Aventura?"
+        ],
+        "traducciones_espanol": [
+          "¿Estás en un restaurante de comida rápida?",
+          "¿Estás en Burger King o McDonald's?",
+          "¿Estás en un restaurante en Mall Aventura?"
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Think of a place. Write: 'I'm buying a book.' Where are you?",
+        "respuestas_ingles": [
+          "Are you in a bookshop?",
+          "Are you in a library?",
+          "Are you in Crisol or Íbero in Arequipa?"
+        ],
+        "traducciones_espanol": [
+          "¿Estás en una librería?",
+          "¿Estás en una biblioteca?",
+          "¿Estás en Crisol o Íbero en Arequipa?"
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Think of a place. Write: 'I'm waiting for the bus.' Where are you?",
+        "respuestas_ingles": [
+          "Are you at a bus stop?",
+          "Are you on Av. Ejército?",
+          "Are you near the mall?"
+        ],
+        "traducciones_espanol": [
+          "¿Estás en una parada de autobús?",
+          "¿Estás en la Av. Ejército?",
+          "¿Estás cerca del centro comercial?"
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Think of a place. Write: 'I'm buying aspirin.' Where are you?",
+        "respuestas_ingles": [
+          "Are you in a chemist or pharmacy?",
+          "Are you in Inkafarma or MiFarma?",
+          "Are you in a drugstore in Arequipa?"
+        ],
+        "traducciones_espanol": [
+          "¿Estás en una farmacia?",
+          "¿Estás en Inkafarma o MiFarma?",
+          "¿Estás en una botica en Arequipa?"
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Think of a place. Write: 'I'm trying on jeans.' Where are you?",
+        "respuestas_ingles": [
+          "Are you in a clothes shop?",
+          "Are you in a dressing room?",
+          "Are you in Mall Aventura or Real Plaza?"
+        ],
+        "traducciones_espanol": [
+          "¿Estás en una tienda de ropa?",
+          "¿Estás en un probador?",
+          "¿Estás en Mall Aventura o Real Plaza?"
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Think of a place. Write: 'I'm getting cash.' Where are you?",
+        "respuestas_ingles": [
+          "Are you at a cash machine or ATM?",
+          "Are you at a bank?",
+          "Are you at the ATM in Plaza Vea?"
+        ],
+        "traducciones_espanol": [
+          "¿Estás en un cajero automático?",
+          "¿Estás en un banco?",
+          "¿Estás en el cajero de Plaza Vea?"
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Partner practice: Guess where your partner is. Ask a Yes/No question.",
+        "respuestas_ingles": [
+          "Are you eating something?",
+          "Are you shopping for clothes?",
+          "Are you waiting for someone?"
+        ],
+        "traducciones_espanol": [
+          "¿Estás comiendo algo?",
+          "¿Estás comprando ropa?",
+          "¿Estás esperando a alguien?"
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Partner practice: Ask a 'Where' question to guess the place.",
+        "respuestas_ingles": [
+          "Where are you that has many books?",
+          "Where are you that sells medicine?",
+          "Where are you that has mannequins?"
+        ],
+        "traducciones_espanol": [
+          "¿Dónde estás que tiene muchos libros?",
+          "¿Dónde estás que vende medicina?",
+          "¿Dónde estás que tiene maniquíes?"
+        ]
+      },
+      {
+        "pregunta_en_ingles": "In your opinion, is it easy or difficult to guess where someone is in Arequipa?",
+        "respuestas_ingles": [
+          "It is easy because I know the city well.",
+          "It is difficult because there are many similar places.",
+          "It depends on the sentence. 'Eating a burger' is easy."
+        ],
+        "traducciones_espanol": [
+          "Es fácil porque conozco bien la ciudad.",
+          "Es difícil porque hay muchos lugares similares.",
+          "Depende de la frase. 'Comiendo una hamburguesa' es fácil."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Compare the present continuous in English with Spanish. Is it similar?",
+        "respuestas_ingles": [
+          "Yes, it is similar. In Spanish we say 'estoy comiendo' like 'I am eating'.",
+          "It is very similar, but in Spanish we use 'estar' + gerund.",
+          "Yes, both languages use 'to be' + '-ing' / 'estar' + gerundio."
+        ],
+        "traducciones_espanol": [
+          "Sí, es similar. En español decimos 'estoy comiendo' como 'I am eating'.",
+          "Es muy similar, pero en español usamos 'estar' + gerundio.",
+          "Sí, ambos idiomas usan 'ser/estar' + '-ing' / gerundio."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Who is the girl talking to?",
+        "respuestas_ingles": [
+          "She is talking to a shop assistant.",
+          "She is talking to a friend.",
+          "She is talking to her mother."
+        ],
+        "traducciones_espanol": [
+          "Ella está hablando con un dependiente.",
+          "Ella está hablando con un amigo.",
+          "Ella está hablando con su madre."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "What things does she say? What answers does she get?",
+        "respuestas_ingles": [
+          "She points to a doll and asks 'How much is this doll?' The assistant says 'It's 15 dollars.'",
+          "She says 'I like this doll. Can I buy it?' and the assistant says 'Yes, of course.'",
+          "She asks 'Is this doll for children?' and the assistant says 'Yes, it is.'"
+        ],
+        "traducciones_espanol": [
+          "Ella señala una muñeca y pregunta '¿Cuánto cuesta esta muñeca?' El dependiente dice 'Son 15 dólares.'",
+          "Ella dice 'Me gusta esta muñeca. ¿Puedo comprarla?' y el dependiente dice 'Sí, claro.'",
+          "Ella pregunta '¿Esta muñeca es para niños?' y el dependiente dice 'Sí, lo es.'"
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Do you think this girl enjoys shopping?",
+        "respuestas_ingles": [
+          "Yes, I think she enjoys shopping because she is pointing at a doll she likes.",
+          "No, I think she doesn't enjoy shopping because she looks bored.",
+          "Maybe she enjoys shopping only for toys."
+        ],
+        "traducciones_espanol": [
+          "Sí, creo que ella disfruta comprando porque está señalando una muñeca que le gusta.",
+          "No, creo que ella no disfruta comprando porque se ve aburrida.",
+          "Tal vez ella disfruta comprando solo para juguetes."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Where is the best place to go shopping for food in Arequipa?",
+        "respuestas_ingles": [
+          "The best place for food is San Camilo Market.",
+          "I think Plaza Vea or Supermercado El Super are good for food.",
+          "The best place is a local market near my house."
+        ],
+        "traducciones_espanol": [
+          "El mejor lugar para comida es el Mercado San Camilo.",
+          "Creo que Plaza Vea o Supermercado El Super son buenos para comida.",
+          "El mejor lugar es un mercado local cerca de mi casa."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Where is the best place to go shopping for clothes in Arequipa?",
+        "respuestas_ingles": [
+          "The best place for clothes is Mall Aventura Plaza.",
+          "I like going to Parque Lambramani for clothes.",
+          "There is a good place called Real Plaza in Arequipa."
+        ],
+        "traducciones_espanol": [
+          "El mejor lugar para ropa es Mall Aventura Plaza.",
+          "Me gusta ir a Parque Lambramani para ropa.",
+          "Hay un buen lugar llamado Real Plaza en Arequipa."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Where is the best place to go shopping for a present for someone in Arequipa?",
+        "respuestas_ingles": [
+          "The best place for a present is San Camilo Market because there are handmade gifts.",
+          "I go to Patio del Ekeko for souvenirs and presents.",
+          "Mall Aventura Plaza has many stores for presents."
+        ],
+        "traducciones_espanol": [
+          "El mejor lugar para un regalo es el Mercado San Camilo porque hay regalos hechos a mano.",
+          "Voy a Patio del Ekeko para recuerdos y regalos.",
+          "Mall Aventura Plaza tiene muchas tiendas para regalos."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "What are the people in picture 1 doing?",
+        "respuestas_ingles": [
+          "They are having breakfast or drinking tea together.",
+          "They are laughing and talking with friends.",
+          "They are happy because they are smiling."
+        ],
+        "traducciones_espanol": [
+          "Ellos están desayunando o tomando té juntos.",
+          "Ellos están riendo y hablando con amigos.",
+          "Ellos están felices porque están sonriendo."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Do you like having breakfast with friends?",
+        "respuestas_ingles": [
+          "Yes, I like having breakfast with friends on weekends.",
+          "Sometimes I have breakfast with my friends in Arequipa.",
+          "No, I prefer to have breakfast alone."
+        ],
+        "traducciones_espanol": [
+          "Sí, me gusta desayunar con amigos los fines de semana.",
+          "A veces desayuno con mis amigos en Arequipa.",
+          "No, prefiero desayunar solo."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "What is the girl in picture 2 doing?",
+        "respuestas_ingles": [
+          "She is reading a book in a library.",
+          "She is wearing black clothes.",
+          "She is studying or reading quietly."
+        ],
+        "traducciones_espanol": [
+          "Ella está leyendo un libro en una biblioteca.",
+          "Ella usa ropa negra.",
+          "Ella está estudiando o leyendo tranquilamente."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Do you like reading books in a library?",
+        "respuestas_ingles": [
+          "Yes, I like reading in the library because it is quiet.",
+          "In Arequipa, I sometimes go to the Biblioteca Regional.",
+          "No, I prefer to read at home."
+        ],
+        "traducciones_espanol": [
+          "Sí, me gusta leer en la biblioteca porque es tranquilo.",
+          "En Arequipa, a veces voy a la Biblioteca Regional.",
+          "No, prefiero leer en casa."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Where is picture 3? What is happening?",
+        "respuestas_ingles": [
+          "It is a chifa or fast food restaurant. There is a queue of people.",
+          "The receptionists are attending customers.",
+          "People are waiting to order food."
+        ],
+        "traducciones_espanol": [
+          "Es un chifa o restaurante de comida rápida. Hay una cola de personas.",
+          "Los recepcionistas están atendiendo a los clientes.",
+          "Las personas están esperando para pedir comida."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Is your experience in restaurants in Arequipa similar to picture 3?",
+        "respuestas_ingles": [
+          "Yes, sometimes there is a queue in restaurants like Chifa Mandarin.",
+          "No, in my favorite restaurant in Arequipa I don't wait too long.",
+          "Yes, in busy places like Plaza Vea food court there are queues."
+        ],
+        "traducciones_espanol": [
+          "Sí, a veces hay cola en restaurantes como Chifa Mandarin.",
+          "No, en mi restaurante favorito en Arequipa no espero mucho tiempo.",
+          "Sí, en lugares concurridos como el patio de comidas de Plaza Vea hay colas."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "What do you see in picture 4?",
+        "respuestas_ingles": [
+          "I see mannequins without heads wearing clothes.",
+          "It looks like a clothing store.",
+          "The mannequins are displaying shirts and pants."
+        ],
+        "traducciones_espanol": [
+          "Veo maniquíes sin cabeza usando ropa.",
+          "Parece una tienda de ropa.",
+          "Los maniquíes están mostrando camisas y pantalones."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Do you like shopping for clothes in Arequipa?",
+        "respuestas_ingles": [
+          "Yes, I like shopping at Mall Aventura Plaza.",
+          "Sometimes I go to Real Plaza in Arequipa to buy clothes.",
+          "No, I don't like shopping for clothes very much."
+        ],
+        "traducciones_espanol": [
+          "Sí, me gusta comprar ropa en Mall Aventura Plaza.",
+          "A veces voy a Real Plaza en Arequipa a comprar ropa.",
+          "No, no me gusta mucho comprar ropa."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "What is happening in picture 5?",
+        "respuestas_ingles": [
+          "A pharmacist is charging a customer for some pills.",
+          "The customer is buying medicine.",
+          "They are at a pharmacy counter."
+        ],
+        "traducciones_espanol": [
+          "Una farmacéutica está cobrando a un cliente por unas píldoras.",
+          "El cliente está comprando medicina.",
+          "Ellos están en el mostrador de una farmacia."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "In your opinion, is picture 6 a nice place to spend time?",
+        "respuestas_ingles": [
+          "Yes, it looks nice because it has two floors and a good view.",
+          "In my opinion, malls in Arequipa like Mall Aventura are similar.",
+          "Yes, I like going to the mall with my friends."
+        ],
+        "traducciones_espanol": [
+          "Sí, se ve bonito porque tiene dos pisos y una buena vista.",
+          "En mi opinión, los centros comerciales en Arequipa como Mall Aventura son similares.",
+          "Sí, me gusta ir al centro comercial con mis amigos."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Which of these places do you visit most in Arequipa: a restaurant, a library, a clothing store, a pharmacy, or a mall?",
+        "respuestas_ingles": [
+          "I visit the mall most often, especially Mall Aventura Plaza.",
+          "I go to restaurants a lot because I like Peruvian food.",
+          "I visit the pharmacy when I need medicine for my family."
+        ],
+        "traducciones_espanol": [
+          "Visito el centro comercial más seguido, especialmente Mall Aventura Plaza.",
+          "Voy a restaurantes mucho porque me gusta la comida peruana.",
+          "Visito la farmacia cuando necesito medicina para mi familia."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Match pictures 1-6 with the words: a chemist, a department store, a fast food restaurant, a bookshop, a clothes shop, a café. Which picture is the café?",
+        "respuestas_ingles": [
+          "Picture 1 is the café. Friends are having tea and laughing.",
+          "I think the café is picture 1 because they are eating breakfast.",
+          "Picture 1 shows people drinking tea, so it's a café."
+        ],
+        "traducciones_espanol": [
+          "La imagen 1 es la cafetería. Los amigos están tomando té y riendo.",
+          "Creo que la cafetería es la imagen 1 porque están desayunando.",
+          "La imagen 1 muestra personas tomando té, así que es una cafetería."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Which picture is the bookshop?",
+        "respuestas_ingles": [
+          "Picture 2 is the bookshop. A girl is reading a book.",
+          "The bookshop is picture 2 because she is reading in a library.",
+          "I think picture 2 is a bookshop or library."
+        ],
+        "traducciones_espanol": [
+          "La imagen 2 es la librería. Una chica está leyendo un libro.",
+          "La librería es la imagen 2 porque ella está leyendo en una biblioteca.",
+          "Creo que la imagen 2 es una librería o biblioteca."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Which picture is the fast food restaurant?",
+        "respuestas_ingles": [
+          "Picture 3 is the fast food restaurant. There is a queue of people.",
+          "The fast food restaurant is picture 3, it looks like a chifa.",
+          "I think picture 3 is fast food because people are waiting to order."
+        ],
+        "traducciones_espanol": [
+          "La imagen 3 es el restaurante de comida rápida. Hay una cola de personas.",
+          "El restaurante de comida rápida es la imagen 3, parece un chifa.",
+          "Creo que la imagen 3 es comida rápida porque la gente está esperando para pedir."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Which picture is the clothes shop?",
+        "respuestas_ingles": [
+          "Picture 4 is the clothes shop. I see mannequins without heads.",
+          "The clothes shop is picture 4 because the mannequins are wearing shirts and pants.",
+          "Picture 4 shows a clothing store with mannequins."
+        ],
+        "traducciones_espanol": [
+          "La imagen 4 es la tienda de ropa. Veo maniquíes sin cabeza.",
+          "La tienda de ropa es la imagen 4 porque los maniquíes usan camisas y pantalones.",
+          "La imagen 4 muestra una tienda de ropa con maniquíes."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Which picture is the chemist?",
+        "respuestas_ingles": [
+          "Picture 5 is the chemist. A pharmacist is charging a customer for pills.",
+          "The chemist is picture 5 because there is a pharmacy counter.",
+          "I think picture 5 is a chemist or pharmacy."
+        ],
+        "traducciones_espanol": [
+          "La imagen 5 es la farmacia. Una farmacéutica está cobrando a un cliente por pastillas.",
+          "La farmacia es la imagen 5 porque hay un mostrador de farmacia.",
+          "Creo que la imagen 5 es una farmacia."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Which of these shops is your favourite? Why?",
+        "respuestas_ingles": [
+          "My favourite is the clothes shop because I like buying new jeans and shirts.",
+          "I like the fast food restaurant because I love Peruvian chicken and chifa.",
+          "My favourite is the bookshop because I enjoy reading."
+        ],
+        "traducciones_espanol": [
+          "Mi favorita es la tienda de ropa porque me gusta comprar jeans y camisas nuevos.",
+          "Me gusta el restaurante de comida rápida porque amo el pollo peruano y el chifa.",
+          "Mi favorita es la librería porque disfruto leer."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Look at the mall plan. Where is the entrance?",
+        "respuestas_ingles": [
+          "The entrance is near the stairs and the information desk.",
+          "I think the entrance is at the bottom of the plan.",
+          "The entrance is between the car park and the bus stop."
+        ],
+        "traducciones_espanol": [
+          "La entrada está cerca de las escaleras y el mostrador de información.",
+          "Creo que la entrada está en la parte inferior del plano.",
+          "La entrada está entre el estacionamiento y la parada de autobús."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Where is the car park on the plan?",
+        "respuestas_ingles": [
+          "The car park is outside the mall, near the entrance.",
+          "It is next to the bus stop.",
+          "The car park is on the left side of the plan."
+        ],
+        "traducciones_espanol": [
+          "El estacionamiento está fuera del centro comercial, cerca de la entrada.",
+          "Está al lado de la parada de autobús.",
+          "El estacionamiento está en el lado izquierdo del plano."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Where is the cash machine or ATM in the mall?",
+        "respuestas_ingles": [
+          "The ATM is near the information desk.",
+          "It is on the first floor next to the stairs.",
+          "I think the cash machine is close to the entrance."
+        ],
+        "traducciones_espanol": [
+          "El cajero automático está cerca del mostrador de información.",
+          "Está en el primer piso al lado de las escaleras.",
+          "Creo que el cajero está cerca de la entrada."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Anthony, where is your favourite shopping mall in Arequipa? Where is the entrance and car park?",
+        "respuestas_ingles": [
+          "My favourite mall is Mall Aventura Plaza. The entrance is on Av. Ejército and the car park is big.",
+          "I like Real Plaza in Arequipa. The entrance is near the bus stop.",
+          "My favourite is Mall Aventura. The car park is underground."
+        ],
+        "traducciones_espanol": [
+          "Mi centro comercial favorito es Mall Aventura Plaza. La entrada está en la Av. Ejército y el estacionamiento es grande.",
+          "Me gusta Real Plaza en Arequipa. La entrada está cerca de la parada de autobús.",
+          "Mi favorito es Mall Aventura. El estacionamiento está subterráneo."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Listen to the pronunciation: 'clothes shop'. Which word is stressed?",
+        "respuestas_ingles": [
+          "The first word 'clothes' is stressed.",
+          "I think 'clothes' is stressed, not 'shop'.",
+          "The stress is on 'clothes'."
+        ],
+        "traducciones_espanol": [
+          "La primera palabra 'clothes' está acentuada.",
+          "Creo que 'clothes' está acentuada, no 'shop'.",
+          "El acento está en 'clothes'."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Read situation 1: 'My son needs new jeans.' Where can this person go?",
+        "respuestas_ingles": [
+          "They can go to the clothes shop.",
+          "They can go to a department store.",
+          "They can go to the clothes shop or department store."
+        ],
+        "traducciones_espanol": [
+          "Pueden ir a la tienda de ropa.",
+          "Pueden ir a una tienda por departamentos.",
+          "Pueden ir a la tienda de ropa o a una tienda por departamentos."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Situation 2: 'Let's get a new sofa.' Where can this person go?",
+        "respuestas_ingles": [
+          "They can go to a department store.",
+          "A department store sells sofas.",
+          "Maybe a furniture shop, but in a mall, a department store is good."
+        ],
+        "traducciones_espanol": [
+          "Pueden ir a una tienda por departamentos.",
+          "Una tienda por departamentos vende sofás.",
+          "Quizás una tienda de muebles, pero en un centro comercial, una tienda por departamentos es buena."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Situation 3: 'I want something to read on the train.' Where can this person go?",
+        "respuestas_ingles": [
+          "They can go to the bookshop.",
+          "A bookshop has books and magazines to read.",
+          "They can go to a library or bookshop."
+        ],
+        "traducciones_espanol": [
+          "Pueden ir a la librería.",
+          "Una librería tiene libros y revistas para leer.",
+          "Pueden ir a una biblioteca o librería."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Situation 4: 'I've got a headache. I need some aspirin.' Where can this person go?",
+        "respuestas_ingles": [
+          "They can go to the chemist.",
+          "The chemist sells aspirin.",
+          "They can go to a pharmacy."
+        ],
+        "traducciones_espanol": [
+          "Pueden ir a la farmacia.",
+          "La farmacia vende aspirinas.",
+          "Pueden ir a una farmacia."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Situation 5: 'Can you take the shopping to the car?' Where can this person go?",
+        "respuestas_ingles": [
+          "They can go to the car park.",
+          "The car park is where the car is.",
+          "They need to go outside to the car park."
+        ],
+        "traducciones_espanol": [
+          "Pueden ir al estacionamiento.",
+          "El estacionamiento es donde está el auto.",
+          "Necesitan salir al estacionamiento."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Situation 6: 'Are you hungry? I need to eat!' Where can this person go?",
+        "respuestas_ingles": [
+          "They can go to the fast food restaurant or café.",
+          "They can go to the food court.",
+          "A fast food restaurant or a café is good for hungry people."
+        ],
+        "traducciones_espanol": [
+          "Pueden ir al restaurante de comida rápida o a la cafetería.",
+          "Pueden ir al patio de comidas.",
+          "Un restaurante de comida rápida o una cafetería es bueno para personas con hambre."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Situation 7: 'I haven't got any money.' Where can this person go?",
+        "respuestas_ingles": [
+          "They can go to the cash machine or ATM.",
+          "They can withdraw money from the ATM.",
+          "The cash machine is where you get money."
+        ],
+        "traducciones_espanol": [
+          "Pueden ir al cajero automático.",
+          "Pueden retirar dinero del cajero.",
+          "El cajero automático es donde obtienes dinero."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Anthony, in Arequipa, where do you go to buy aspirin?",
+        "respuestas_ingles": [
+          "I go to Inkafarma or MiFarma near my house.",
+          "I go to the chemist in Mall Aventura Plaza.",
+          "There is a pharmacy on Av. Ejército."
+        ],
+        "traducciones_espanol": [
+          "Voy a Inkafarma o MiFarma cerca de mi casa.",
+          "Voy a la farmacia en Mall Aventura Plaza.",
+          "Hay una farmacia en la Av. Ejército."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Do you think a department store in Arequipa is similar to a department store in the picture?",
+        "respuestas_ingles": [
+          "Yes, Mall Aventura has a department store like Ripley or Falabella.",
+          "They are similar. Both sell clothes, sofas, and many things.",
+          "Yes, I think they are very similar."
+        ],
+        "traducciones_espanol": [
+          "Sí, Mall Aventura tiene una tienda por departamentos como Ripley o Falabella.",
+          "Son similares. Ambos venden ropa, sofás y muchas cosas.",
+          "Sí, creo que son muy similares."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "When you meet friends in town, what do you usually do?",
+        "respuestas_ingles": [
+          "I usually go to a café or go shopping with my friends.",
+          "Sometimes we go to the cinema or go for a walk in Parque Selva Alegre.",
+          "I usually go to Mall Aventura Plaza with my friends."
+        ],
+        "traducciones_espanol": [
+          "Normalmente voy a una cafetería o voy de compras con mis amigos.",
+          "A veces vamos al cine o damos un paseo en el Parque Selva Alegre.",
+          "Normalmente voy a Mall Aventura Plaza con mis amigos."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Do you prefer to go shopping, go to the cinema, go to a café, or go for a walk in Arequipa?",
+        "respuestas_ingles": [
+          "I prefer to go to a café because I like drinking coffee with friends.",
+          "I prefer going to the cinema to watch new movies.",
+          "I like going for a walk in the city center."
+        ],
+        "traducciones_espanol": [
+          "Prefiero ir a una cafetería porque me gusta tomar café con amigos.",
+          "Prefiero ir al cine para ver películas nuevas.",
+          "Me gusta dar un paseo por el centro de la ciudad."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Look at the shopping mall plan. Where is a good place to meet for a group of friends who want to go to the cinema?",
+        "respuestas_ingles": [
+          "A good place to meet is the information desk near the cinema.",
+          "They can meet at the café or the entrance.",
+          "The best place is outside the cinema or at the cash machine."
+        ],
+        "traducciones_espanol": [
+          "Un buen lugar para reunirse es el mostrador de información cerca del cine.",
+          "Pueden reunirse en la cafetería o en la entrada.",
+          "El mejor lugar es afuera del cine o en el cajero automático."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Simon wants to meet Susie. Where does Simon want to meet her?",
+        "respuestas_ingles": [
+          "Simon wants to meet Susie at the cinema.",
+          "He wants to meet her at the café near the entrance.",
+          "I think Simon wants to meet at the bookshop."
+        ],
+        "traducciones_espanol": [
+          "Simon quiere reunirse con Susie en el cine.",
+          "Él quiere reunirse con ella en la cafetería cerca de la entrada.",
+          "Creo que Simon quiere reunirse en la librería."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "What do you think will happen between Simon and Susie?",
+        "respuestas_ingles": [
+          "I think Simon will be late and Susie will be angry.",
+          "Maybe Susie is at the wrong place and they don't find each other.",
+          "I think they will meet at the cinema finally."
+        ],
+        "traducciones_espanol": [
+          "Creo que Simon llegará tarde y Susie se enojará.",
+          "Quizás Susie está en el lugar equivocado y no se encuentran.",
+          "Creo que finalmente se reunirán en el cine."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "In Conversation 2: Is Simon in the bookshop or in the café?",
+        "respuestas_ingles": [
+          "Simon is in the bookshop.",
+          "I think Simon is in the bookshop looking for a book.",
+          "He is in the bookshop, not the café."
+        ],
+        "traducciones_espanol": [
+          "Simon está en la librería.",
+          "Creo que Simon está en la librería buscando un libro.",
+          "Él está en la librería, no en la cafetería."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "In Conversation 2: Is Susie at the bus stop or in the car park?",
+        "respuestas_ingles": [
+          "Susie is at the bus stop.",
+          "She is waiting for Simon at the bus stop.",
+          "I think Susie is at the bus stop outside the mall."
+        ],
+        "traducciones_espanol": [
+          "Susie está en la parada de autobús.",
+          "Ella está esperando a Simon en la parada de autobús.",
+          "Creo que Susie está en la parada de autobús afuera del centro comercial."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "In Conversation 3: Is Amy in the clothes shop or in the department store?",
+        "respuestas_ingles": [
+          "Amy is in the clothes shop.",
+          "She is looking at clothes with mannequins.",
+          "Amy is in the clothes shop trying on jeans."
+        ],
+        "traducciones_espanol": [
+          "Amy está en la tienda de ropa.",
+          "Ella está mirando ropa con maniquíes.",
+          "Amy está en la tienda de ropa probándose jeans."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "In Conversation 3: Is Sandeep at the information desk or at the cash machine?",
+        "respuestas_ingles": [
+          "Sandeep is at the cash machine.",
+          "He is getting money from the ATM.",
+          "Sandeep is at the cash machine because he has no money."
+        ],
+        "traducciones_espanol": [
+          "Sandeep está en el cajero automático.",
+          "Él está sacando dinero del cajero.",
+          "Sandeep está en el cajero automático porque no tiene dinero."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Look at the picture. Why do you think Simon is running?",
+        "respuestas_ingles": [
+          "Simon is running because he is late to meet Susie.",
+          "He is running because he wants to catch the bus.",
+          "Maybe Simon is running because he forgot something."
+        ],
+        "traducciones_espanol": [
+          "Simon está corriendo porque llega tarde a reunirse con Susie.",
+          "Está corriendo porque quiere alcanzar el autobús.",
+          "Quizás Simon está corriendo porque olvidó algo."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "How do you think Susie feels in the picture? Why?",
+        "respuestas_ingles": [
+          "I think Susie feels stressed and angry because Simon is late.",
+          "She feels frustrated because they can't find each other.",
+          "Susie looks worried because Simon is not answering his phone."
+        ],
+        "traducciones_espanol": [
+          "Creo que Susie se siente estresada y enojada porque Simon llega tarde.",
+          "Ella se siente frustrada porque no pueden encontrarse.",
+          "Susie se ve preocupada porque Simon no contesta su teléfono."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Partner question 1: When you meet a friend in a mall in Arequipa, where do you usually meet?",
+        "respuestas_ingles": [
+          "I usually meet my friend near the cinema or the food court.",
+          "We meet at the entrance of Mall Aventura Plaza.",
+          "Sometimes we meet at a café like Starbucks."
+        ],
+        "traducciones_espanol": [
+          "Normalmente me reúno con mi amigo cerca del cine o del patio de comidas.",
+          "Nos reunimos en la entrada de Mall Aventura Plaza.",
+          "A veces nos reunimos en una cafetería como Starbucks."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Partner question 2: Do you have a funny story about being late to meet a friend?",
+        "respuestas_ingles": [
+          "Yes, once I was late because the bus was stuck in traffic in Arequipa.",
+          "No, I usually arrive on time.",
+          "Yes, my friend waited for me for 30 minutes at the wrong bus stop."
+        ],
+        "traducciones_espanol": [
+          "Sí, una vez llegué tarde porque el autobús estaba atrapado en el tráfico en Arequipa.",
+          "No, normalmente llego a tiempo.",
+          "Sí, mi amigo me esperó 30 minutos en la parada de autobús equivocada."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Partner question 3: How do you feel when your friend is late? Happy, angry, or worried?",
+        "respuestas_ingles": [
+          "I feel a little angry, but I understand if there is traffic.",
+          "I feel worried because maybe something bad happened.",
+          "I feel happy because I can wait and look at my phone."
+        ],
+        "traducciones_espanol": [
+          "Me siento un poco enojado, pero entiendo si hay tráfico.",
+          "Me siento preocupado porque quizás pasó algo malo.",
+          "Me siento feliz porque puedo esperar y mirar mi teléfono."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Partner question 4: In your opinion, what is the best place in a mall to wait for a friend?",
+        "respuestas_ingles": [
+          "In my opinion, the best place is the café because you can sit and drink something.",
+          "The information desk is good because it's easy to find.",
+          "I think the cinema entrance is a good place to wait."
+        ],
+        "traducciones_espanol": [
+          "En mi opinión, el mejor lugar es la cafetería porque puedes sentarte y tomar algo.",
+          "El mostrador de información es bueno porque es fácil de encontrar.",
+          "Creo que la entrada del cine es un buen lugar para esperar."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Partner question 5: Compare meeting a friend in a mall in Arequipa with the situation of Simon and Susie. Is it similar?",
+        "respuestas_ingles": [
+          "Yes, it's similar. Sometimes my friend and I go to different places.",
+          "No, we usually meet at the same place and don't get lost.",
+          "It is similar because Arequipa malls are big and sometimes confusing."
+        ],
+        "traducciones_espanol": [
+          "Sí, es similar. A veces mi amigo y yo vamos a diferentes lugares.",
+          "No, normalmente nos reunimos en el mismo lugar y no nos perdemos.",
+          "Es similar porque los centros comerciales de Arequipa son grandes y a veces confusos."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Match question 1: 'Where are you?' with the correct answer.",
+        "respuestas_ingles": [
+          "The correct answer is 'a: I'm standing by the entrance.'",
+          "Answer a is for question 1: 'Where are you?'",
+          "I'm standing by the entrance - that answers 'Where are you?'"
+        ],
+        "traducciones_espanol": [
+          "La respuesta correcta es 'a: Estoy parado junto a la entrada.'",
+          "La respuesta a es para la pregunta 1: '¿Dónde estás?'",
+          "Estoy parado junto a la entrada - eso responde '¿Dónde estás?'"
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Match question 2: 'Are you having a coffee?' with the correct answer.",
+        "respuestas_ingles": [
+          "The correct answer is 'd: No, I'm just buying that new book.'",
+          "Answer d is for 'Are you having a coffee?' - 'No, I'm just buying a book.'",
+          "Question 2 matches with answer d."
+        ],
+        "traducciones_espanol": [
+          "La respuesta correcta es 'd: No, solo estoy comprando ese libro nuevo.'",
+          "La respuesta d es para '¿Estás tomando un café?' - 'No, solo estoy comprando un libro.'",
+          "La pregunta 2 coincide con la respuesta d."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Match question 3: 'Where are you waiting for us?' with the correct answer.",
+        "respuestas_ingles": [
+          "The correct answer is 'a: I'm standing by the entrance.'",
+          "Question 3 'Where are you waiting for us?' matches with 'I'm standing by the entrance.'",
+          "Answer a can also be for question 3."
+        ],
+        "traducciones_espanol": [
+          "La respuesta correcta es 'a: Estoy parado junto a la entrada.'",
+          "La pregunta 3 '¿Dónde nos estás esperando?' coincide con 'Estoy parado junto a la entrada.'",
+          "La respuesta a también puede ser para la pregunta 3."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Match question 4: 'Are you buying furniture?' with the correct answer.",
+        "respuestas_ingles": [
+          "The correct answer is 'c: No, we aren't buying anything.'",
+          "Answer c 'No, we aren't buying anything' is for 'Are you buying furniture?'",
+          "Question 4 matches with answer c."
+        ],
+        "traducciones_espanol": [
+          "La respuesta correcta es 'c: No, no estamos comprando nada.'",
+          "La respuesta c 'No, no estamos comprando nada' es para '¿Estás comprando muebles?'",
+          "La pregunta 4 coincide con la respuesta c."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "We use 'be + verb + -ing' to talk about: a) now or b) all the time?",
+        "respuestas_ingles": [
+          "We use it to talk about 'a) now' - actions happening at this moment.",
+          "The correct answer is 'a) now'.",
+          "Present continuous is for now, not all the time."
+        ],
+        "traducciones_espanol": [
+          "Lo usamos para hablar de 'a) ahora' - acciones que están pasando en este momento.",
+          "La respuesta correcta es 'a) ahora'.",
+          "El presente continuo es para ahora, no todo el tiempo."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Complete the positive sentence: 'I'm ___ a magazine.'",
+        "respuestas_ingles": [
+          "I'm reading a magazine.",
+          "I'm looking at a magazine.",
+          "I'm buying a magazine."
+        ],
+        "traducciones_espanol": [
+          "Estoy leyendo una revista.",
+          "Estoy mirando una revista.",
+          "Estoy comprando una revista."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Complete the positive sentence: 'We're ___ on the phone.'",
+        "respuestas_ingles": [
+          "We're talking on the phone.",
+          "We're speaking on the phone.",
+          "We're waiting on the phone."
+        ],
+        "traducciones_espanol": [
+          "Estamos hablando por teléfono.",
+          "Estamos conversando por teléfono.",
+          "Estamos esperando al teléfono."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Complete the positive sentence: 'He's / She's ___ coffee.'",
+        "respuestas_ingles": [
+          "He's drinking coffee.",
+          "She's having coffee.",
+          "He's ordering coffee."
+        ],
+        "traducciones_espanol": [
+          "Él está tomando café.",
+          "Ella está tomando café.",
+          "Él está pidiendo café."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Anthony, what are you doing right now?",
+        "respuestas_ingles": [
+          "I'm studying English for my Zoom class.",
+          "I'm sitting in my room in Arequipa.",
+          "I'm answering questions about shopping."
+        ],
+        "traducciones_espanol": [
+          "Estoy estudiando inglés para mi clase por Zoom.",
+          "Estoy sentado en mi habitación en Arequipa.",
+          "Estoy respondiendo preguntas sobre compras."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Think of a place in Arequipa. Write: 'I'm eating a burger.' Where are you? Partner, guess.",
+        "respuestas_ingles": [
+          "Are you in a fast food restaurant?",
+          "Are you at Burger King or McDonald's?",
+          "Are you in a restaurant in Mall Aventura?"
+        ],
+        "traducciones_espanol": [
+          "¿Estás en un restaurante de comida rápida?",
+          "¿Estás en Burger King o McDonald's?",
+          "¿Estás en un restaurante en Mall Aventura?"
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Think of a place. Write: 'I'm buying a book.' Where are you?",
+        "respuestas_ingles": [
+          "Are you in a bookshop?",
+          "Are you in a library?",
+          "Are you in Crisol or Íbero in Arequipa?"
+        ],
+        "traducciones_espanol": [
+          "¿Estás en una librería?",
+          "¿Estás en una biblioteca?",
+          "¿Estás en Crisol o Íbero en Arequipa?"
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Think of a place. Write: 'I'm waiting for the bus.' Where are you?",
+        "respuestas_ingles": [
+          "Are you at a bus stop?",
+          "Are you on Av. Ejército?",
+          "Are you near the mall?"
+        ],
+        "traducciones_espanol": [
+          "¿Estás en una parada de autobús?",
+          "¿Estás en la Av. Ejército?",
+          "¿Estás cerca del centro comercial?"
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Think of a place. Write: 'I'm buying aspirin.' Where are you?",
+        "respuestas_ingles": [
+          "Are you in a chemist or pharmacy?",
+          "Are you in Inkafarma or MiFarma?",
+          "Are you in a drugstore in Arequipa?"
+        ],
+        "traducciones_espanol": [
+          "¿Estás en una farmacia?",
+          "¿Estás en Inkafarma o MiFarma?",
+          "¿Estás en una botica en Arequipa?"
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Think of a place. Write: 'I'm trying on jeans.' Where are you?",
+        "respuestas_ingles": [
+          "Are you in a clothes shop?",
+          "Are you in a dressing room?",
+          "Are you in Mall Aventura or Real Plaza?"
+        ],
+        "traducciones_espanol": [
+          "¿Estás en una tienda de ropa?",
+          "¿Estás en un probador?",
+          "¿Estás en Mall Aventura o Real Plaza?"
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Think of a place. Write: 'I'm getting cash.' Where are you?",
+        "respuestas_ingles": [
+          "Are you at a cash machine or ATM?",
+          "Are you at a bank?",
+          "Are you at the ATM in Plaza Vea?"
+        ],
+        "traducciones_espanol": [
+          "¿Estás en un cajero automático?",
+          "¿Estás en un banco?",
+          "¿Estás en el cajero de Plaza Vea?"
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Partner practice: Guess where your partner is. Ask a Yes/No question.",
+        "respuestas_ingles": [
+          "Are you eating something?",
+          "Are you shopping for clothes?",
+          "Are you waiting for someone?"
+        ],
+        "traducciones_espanol": [
+          "¿Estás comiendo algo?",
+          "¿Estás comprando ropa?",
+          "¿Estás esperando a alguien?"
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Partner practice: Ask a 'Where' question to guess the place.",
+        "respuestas_ingles": [
+          "Where are you that has many books?",
+          "Where are you that sells medicine?",
+          "Where are you that has mannequins?"
+        ],
+        "traducciones_espanol": [
+          "¿Dónde estás que tiene muchos libros?",
+          "¿Dónde estás que vende medicina?",
+          "¿Dónde estás que tiene maniquíes?"
+        ]
+      },
+      {
+        "pregunta_en_ingles": "In your opinion, is it easy or difficult to guess where someone is in Arequipa?",
+        "respuestas_ingles": [
+          "It is easy because I know the city well.",
+          "It is difficult because there are many similar places.",
+          "It depends on the sentence. 'Eating a burger' is easy."
+        ],
+        "traducciones_espanol": [
+          "Es fácil porque conozco bien la ciudad.",
+          "Es difícil porque hay muchos lugares similares.",
+          "Depende de la frase. 'Comiendo una hamburguesa' es fácil."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Compare the present continuous in English with Spanish. Is it similar?",
+        "respuestas_ingles": [
+          "Yes, it is similar. In Spanish we say 'estoy comiendo' like 'I am eating'.",
+          "It is very similar, but in Spanish we use 'estar' + gerund.",
+          "Yes, both languages use 'to be' + '-ing' / 'estar' + gerundio."
+        ],
+        "traducciones_espanol": [
+          "Sí, es similar. En español decimos 'estoy comiendo' como 'I am eating'.",
+          "Es muy similar, pero en español usamos 'estar' + gerundio.",
+          "Sí, ambos idiomas usan 'ser/estar' + '-ing' / gerundio."
+        ]
+      }
+    ],
+    "Semana 2": [
+      {
+        "pregunta_en_ingles": "How many bedrooms are there in your home?",
+        "respuestas_ingles": [
+          "There are three bedrooms.",
+          "There is one bedroom.",
+          "There are two bedrooms."
+        ],
+        "traducciones_espanol": [
+          "Hay tres dormitorios.",
+          "Hay un dormitorio.",
+          "Hay dos dormitorios."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Where do you eat your dinner?",
+        "respuestas_ingles": [
+          "I eat my dinner in the kitchen.",
+          "I eat in the dining room.",
+          "I eat in the living room."
+        ],
+        "traducciones_espanol": [
+          "Como mi cena en la cocina.",
+          "Como en el comedor.",
+          "Como en la sala."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Is there a TV in your home? Where?",
+        "respuestas_ingles": [
+          "Yes, there is a TV in the living room.",
+          "No, there isn't a TV in my home.",
+          "Yes, there is a TV in my bedroom."
+        ],
+        "traducciones_espanol": [
+          "Sí, hay un televisor en la sala.",
+          "No, no hay televisor en mi casa.",
+          "Sí, hay un televisor en mi dormitorio."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Do you have a garden? If yes, is it big or small?",
+        "respuestas_ingles": [
+          "Yes, I have a small garden.",
+          "No, I don't have a garden.",
+          "Yes, I have a big garden."
+        ],
+        "traducciones_espanol": [
+          "Sí, tengo un jardín pequeño.",
+          "No, no tengo jardín.",
+          "Sí, tengo un jardín grande."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Which room do you like best in your home?",
+        "respuestas_ingles": [
+          "I like my bedroom best.",
+          "I like the living room best.",
+          "I like the kitchen best."
+        ],
+        "traducciones_espanol": [
+          "Me gusta más mi dormitorio.",
+          "Me gusta más la sala.",
+          "Me gusta más la cocina."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Do you like Mimi's flat? Why or why not?",
+        "respuestas_ingles": [
+          "Yes, I like it because it is nice.",
+          "No, I don't like it because it is small.",
+          "Yes, I like the living room."
+        ],
+        "traducciones_espanol": [
+          "Sí, me gusta porque es bonito.",
+          "No, no me gusta porque es pequeño.",
+          "Sí, me gusta la sala."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Do you sometimes send a message to someone when you're in the same place? Why or why not?",
+        "respuestas_ingles": [
+          "Yes, because I am shy to talk.",
+          "No, because I can talk to them.",
+          "Yes, because it is funny."
+        ],
+        "traducciones_espanol": [
+          "Sí, porque soy tímido para hablar.",
+          "No, porque puedo hablar con ellos.",
+          "Sí, porque es divertido."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "What are you doing? (It's 2 pm on Sunday)",
+        "respuestas_ingles": [
+          "I am having lunch with my family.",
+          "I am watching TV in my living room.",
+          "I am studying English at home."
+        ],
+        "traducciones_espanol": [
+          "Estoy almorzando con mi familia.",
+          "Estoy viendo televisión en mi sala.",
+          "Estoy estudiando inglés en casa."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Is anyone doing the same thing?",
+        "respuestas_ingles": [
+          "Yes, my friend is studying too.",
+          "No, everyone is doing something different.",
+          "Yes, my sister is watching TV."
+        ],
+        "traducciones_espanol": [
+          "Sí, mi amigo también está estudiando.",
+          "No, todos están haciendo algo diferente.",
+          "Sí, mi hermana está viendo televisión."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Which are a good idea, quite normal, or a bad idea?",
+        "respuestas_ingles": [
+          "Using phone at home is normal.",
+          "Using phone at the cinema is a bad idea.",
+          "Using phone on a mountain is a good idea for photos."
+        ],
+        "traducciones_espanol": [
+          "Usar el teléfono en casa es normal.",
+          "Usar el teléfono en el cine es una mala idea.",
+          "Usar el teléfono en una montaña es una buena idea para fotos."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Which person do you think has good ideas?",
+        "respuestas_ingles": [
+          "I think Jenny has good ideas.",
+          "I think Yasmin has good ideas.",
+          "I think Sam has good ideas."
+        ],
+        "traducciones_espanol": [
+          "Creo que Jenny tiene buenas ideas.",
+          "Creo que Yasmin tiene buenas ideas.",
+          "Creo que Sam tiene buenas ideas."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Which person do you think has a problem?",
+        "respuestas_ingles": [
+          "I think Kevin has a problem.",
+          "I think Branko has a problem.",
+          "I think Sam has a problem."
+        ],
+        "traducciones_espanol": [
+          "Creo que Kevin tiene un problema.",
+          "Creo que Branko tiene un problema.",
+          "Creo que Sam tiene un problema."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "What is your comment about you and your phone?",
+        "respuestas_ingles": [
+          "My phone is always on in the day.",
+          "I turn off my phone at night.",
+          "I don't like talking on the phone."
+        ],
+        "traducciones_espanol": [
+          "Mi teléfono siempre está encendido durante el día.",
+          "Apago mi teléfono por la noche.",
+          "No me gusta hablar por teléfono."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Are you the same as your partner?",
+        "respuestas_ingles": [
+          "Yes, we are the same.",
+          "No, we are different.",
+          "Yes, we both turn off our phones at night."
+        ],
+        "traducciones_espanol": [
+          "Sí, somos iguales.",
+          "No, somos diferentes.",
+          "Sí, ambos apagamos nuestros teléfonos por la noche."
+        ]
+      },
+      {
+        "pregunta_en_ingles": "Are you in the car? (guessing game)",
+        "respuestas_ingles": [
+          "Yes, I am in the car.",
+          "No, I am in a café.",
+          "Yes, I am on the train."
+        ],
+        "traducciones_espanol": [
+          "Sí, estoy en el coche.",
+          "No, estoy en un café.",
+          "Sí, estoy en el tren."
+        ]
+      }
+    ],
+    "SENATI_1": [
+      {
+        "tipo": "libro",
+        "pregunta_en_ingles": "Where is the woman in the picture? Is it difficult to get to this place?",
+        "respuestas_ingles": [
+          "She is at Machu Picchu. Yes, it is difficult to get there.",
+          "She is in the mountains. It is a long trip.",
+          "She is at a historic place in Peru. You need to take a train."
+        ],
+        "traducciones_espanol": [
+          "Ella está en Machu Picchu. Sí, es difícil llegar allí.",
+          "Ella está en las montañas. Es un viaje largo.",
+          "Ella está en un lugar histórico de Perú. Necesitas tomar un tren."
+        ]
+      },
+      {
+        "tipo": "libro",
+        "pregunta_en_ingles": "What do you do in your free time? Do you go to new places?",
+        "respuestas_ingles": [
+          "In my free time, I study English and work. Sometimes I go to new places in Arequipa.",
+          "I like to visit places in the city. I go to the Plaza de Armas.",
+          "I don't go to many new places. I study and work a lot."
+        ],
+        "traducciones_espanol": [
+          "En mi tiempo libre, estudio inglés y trabajo. A veces voy a lugares nuevos en Arequipa.",
+          "Me gusta visitar lugares en la ciudad. Voy a la Plaza de Armas.",
+          "No voy a muchos lugares nuevos. Estudio y trabajo mucho."
+        ]
+      },
+      {
+        "tipo": "libro",
+        "pregunta_en_ingles": "Think of a place you like. Why is it good?",
+        "respuestas_ingles": [
+          "I like the Plaza de Armas in Arequipa. It is beautiful and historic.",
+          "I like Machu Picchu. It is amazing and very famous.",
+          "I like the Misti volcano. It is big and you can see it from the city."
+        ],
+        "traducciones_espanol": [
+          "Me gusta la Plaza de Armas en Arequipa. Es hermosa e histórica.",
+          "Me gusta Machu Picchu. Es increíble y muy famoso.",
+          "Me gusta el volcán Misti. Es grande y puedes verlo desde la ciudad."
+        ]
+      },
+      {
+        "tipo": "libro",
+        "pregunta_en_ingles": "Where does Kaitlin go on vacation?",
+        "respuestas_ingles": [
+          "She goes to San Diego.",
+          "Kaitlin travels to San Diego with her friends.",
+          "She visits San Diego and San Francisco."
+        ],
+        "traducciones_espanol": [
+          "Ella va a San Diego.",
+          "Kaitlin viaja a San Diego con sus amigas.",
+          "Ella visita San Diego y San Francisco."
+        ]
+      },
+      {
+        "tipo": "libro",
+        "pregunta_en_ingles": "How does Sandy travel to San Francisco — by plane or by bus?",
+        "respuestas_ingles": [
+          "She takes the bus because the plane ticket is expensive.",
+          "Sandy travels by bus. It is a 12-hour trip.",
+          "She takes the night bus to San Francisco."
+        ],
+        "traducciones_espanol": [
+          "Ella toma el bus porque el boleto de avión es caro.",
+          "Sandy viaja en bus. Es un viaje de 12 horas.",
+          "Ella toma el bus nocturno a San Francisco."
+        ]
+      },
+      {
+        "tipo": "libro",
+        "pregunta_en_ingles": "Why doesn't Sandy need to stay in a hotel on Friday night?",
+        "respuestas_ingles": [
+          "Because she takes the night bus and arrives in the morning.",
+          "She travels at night, so she doesn't need a hotel.",
+          "The bus arrives in San Francisco in the morning, so no hotel."
+        ],
+        "traducciones_espanol": [
+          "Porque toma el bus nocturno y llega en la mañana.",
+          "Ella viaja de noche, así que no necesita un hotel.",
+          "El bus llega a San Francisco en la mañana, así que no hay hotel."
+        ]
+      },
+      {
+        "tipo": "libro",
+        "pregunta_en_ingles": "Use 'this' or 'these': ___ postcard shows Balboa Park.",
+        "respuestas_ingles": [
+          "This postcard shows Balboa Park.",
+          "This — because postcard is singular.",
+          "This is correct because it is one postcard."
+        ],
+        "traducciones_espanol": [
+          "Esta postal muestra el Parque Balboa.",
+          "This — porque postal está en singular.",
+          "This es correcto porque es una postal."
+        ]
+      },
+      {
+        "tipo": "libro",
+        "pregunta_en_ingles": "Use 'this' or 'these': ___ museums are for art and history.",
+        "respuestas_ingles": [
+          "These museums are for art and history.",
+          "These — because museums is plural.",
+          "These is correct because there are many museums."
+        ],
+        "traducciones_espanol": [
+          "Estos museos son de arte e historia.",
+          "These — porque museos está en plural.",
+          "These es correcto porque hay varios museos."
+        ]
+      },
+      {
+        "tipo": "libro",
+        "pregunta_en_ingles": "Complete: I always sit by the window because I ___ (need to / like to) look outside.",
+        "respuestas_ingles": [
+          "like to — because it is something I choose, not something necessary.",
+          "I like to look outside. It is interesting.",
+          "Like to is correct. It is a preference, not an obligation."
+        ],
+        "traducciones_espanol": [
+          "like to — porque es algo que eliges, no algo necesario.",
+          "Me gusta mirar afuera. Es interesante.",
+          "Like to es correcto. Es una preferencia, no una obligación."
+        ]
+      },
+      {
+        "tipo": "libro",
+        "pregunta_en_ingles": "Complete: He starts work at 6:30, so he ___ (needs to / wants to) get up really early.",
+        "respuestas_ingles": [
+          "needs to — because it is necessary, not a choice.",
+          "He needs to get up early because of his job.",
+          "Needs to is correct. It is an obligation."
+        ],
+        "traducciones_espanol": [
+          "needs to — porque es necesario, no una elección.",
+          "Él necesita levantarse temprano por su trabajo.",
+          "Needs to es correcto. Es una obligación."
+        ]
+      },
+      {
+        "tipo": "personal",
+        "pregunta_en_ingles": "Anthony, do you like to travel? Where do you want to go?",
+        "respuestas_ingles": [
+          "Yes, I like to travel. I want to visit Cusco and Machu Picchu.",
+          "Yes, I want to go to Lima. It is the capital of Peru.",
+          "I don't travel much, but I want to visit the beach someday."
+        ],
+        "traducciones_espanol": [
+          "Sí, me gusta viajar. Quiero visitar Cusco y Machu Picchu.",
+          "Sí, quiero ir a Lima. Es la capital de Perú.",
+          "No viajo mucho, pero quiero visitar la playa algún día."
+        ]
+      },
+      {
+        "tipo": "personal",
+        "pregunta_en_ingles": "Do you need to buy a ticket online or at the station to travel from Arequipa?",
+        "respuestas_ingles": [
+          "I need to buy the ticket online. It is faster and easier.",
+          "I usually buy tickets at the station in Arequipa.",
+          "I like to buy tickets online because it saves time."
+        ],
+        "traducciones_espanol": [
+          "Necesito comprar el boleto en línea. Es más rápido y fácil.",
+          "Usualmente compro los boletos en la terminal de Arequipa.",
+          "Me gusta comprar boletos en línea porque ahorra tiempo."
+        ]
+      },
+      {
+        "tipo": "personal",
+        "pregunta_en_ingles": "How do you travel from Arequipa to Lima — by plane or by bus?",
+        "respuestas_ingles": [
+          "I travel by bus. The bus ticket is cheaper than the plane.",
+          "Sometimes I fly to Lima. It is only one hour by plane.",
+          "I prefer the bus because it is not expensive."
+        ],
+        "traducciones_espanol": [
+          "Viajo en bus. El boleto de bus es más barato que el avión.",
+          "A veces vuelo a Lima. Es solo una hora en avión.",
+          "Prefiero el bus porque no es caro."
+        ]
+      },
+      {
+        "tipo": "personal",
+        "pregunta_en_ingles": "Is there a famous place in Arequipa you like to visit?",
+        "respuestas_ingles": [
+          "Yes, I like the Plaza de Armas. It is beautiful and historic.",
+          "I like the Santa Catalina Monastery. It is very old and interesting.",
+          "I like to walk near the Misti volcano. The view is amazing."
+        ],
+        "traducciones_espanol": [
+          "Sí, me gusta la Plaza de Armas. Es hermosa e histórica.",
+          "Me gusta el Monasterio de Santa Catalina. Es muy antiguo e interesante.",
+          "Me gusta caminar cerca del volcán Misti. La vista es increíble."
+        ]
+      },
+      {
+        "tipo": "personal",
+        "pregunta_en_ingles": "Do you want to take a vacation soon? Where do you want to go?",
+        "respuestas_ingles": [
+          "Yes, I want to go to Cusco. I want to see Machu Picchu.",
+          "I want to visit the beach in Peru, maybe Mollendo.",
+          "I don't have plans right now, but I want to travel to another city."
+        ],
+        "traducciones_espanol": [
+          "Sí, quiero ir a Cusco. Quiero ver Machu Picchu.",
+          "Quiero visitar la playa en Perú, quizás Mollendo.",
+          "No tengo planes ahora, pero quiero viajar a otra ciudad."
+        ]
+      },
+      {
+        "tipo": "personal",
+        "pregunta_en_ingles": "Do you have to check in at the airport when you fly?",
+        "respuestas_ingles": [
+          "Yes, I have to check in before the flight. It is necessary.",
+          "Yes, you need to arrive early and check in at the airport.",
+          "Yes, I have to show my ID and check my bag."
+        ],
+        "traducciones_espanol": [
+          "Sí, tengo que hacer el check-in antes del vuelo. Es necesario.",
+          "Sí, necesitas llegar temprano y hacer el check-in en el aeropuerto.",
+          "Sí, tengo que mostrar mi ID y registrar mi maleta."
+        ]
+      },
+      {
+        "tipo": "personal",
+        "pregunta_en_ingles": "What do you like to do on a long bus trip?",
+        "respuestas_ingles": [
+          "I like to listen to music and sleep on the bus.",
+          "I like to watch videos on my phone during the trip.",
+          "I like to look at the view from the window."
+        ],
+        "traducciones_espanol": [
+          "Me gusta escuchar música y dormir en el bus.",
+          "Me gusta ver videos en mi celular durante el viaje.",
+          "Me gusta ver el paisaje por la ventana."
+        ]
+      },
+      {
+        "tipo": "personal",
+        "pregunta_en_ingles": "Do you need to stay in a hotel when you travel, or do you stay with family?",
+        "respuestas_ingles": [
+          "I usually stay with family. It is cheaper.",
+          "Sometimes I need to stay in a hotel when I travel far.",
+          "I prefer to stay with family. I don't need a hotel."
+        ],
+        "traducciones_espanol": [
+          "Usualmente me quedo con familia. Es más barato.",
+          "A veces necesito quedarme en un hotel cuando viajo lejos.",
+          "Prefiero quedarme con familia. No necesito un hotel."
+        ]
+      },
+      {
+        "tipo": "personal_rutina_viaje",
+        "pregunta_en_ingles": "How often do you travel outside Arequipa?",
+        "respuestas_ingles": [
+          "I don't travel often. Maybe once or twice a year.",
+          "I travel sometimes. I go to Lima or Cusco.",
+          "I rarely travel. I stay in Arequipa most of the time."
+        ],
+        "traducciones_espanol": [
+          "No viajo seguido. Quizás una o dos veces al año.",
+          "Viajo a veces. Voy a Lima o Cusco.",
+          "Rara vez viajo. Me quedo en Arequipa la mayor parte del tiempo."
+        ]
+      },
+      {
+        "tipo": "personal_rutina_viaje",
+        "pregunta_en_ingles": "When you travel, do you plan everything before or do you decide on the trip?",
+        "respuestas_ingles": [
+          "I like to plan before. I buy tickets online and check the hotel.",
+          "I plan a little. I buy the ticket but decide other things later.",
+          "I like to plan everything. I don't like surprises when I travel."
+        ],
+        "traducciones_espanol": [
+          "Me gusta planear antes. Compro los boletos en línea y reviso el hotel.",
+          "Planeo un poco. Compro el boleto pero decido otras cosas después.",
+          "Me gusta planear todo. No me gustan las sorpresas cuando viajo."
+        ]
+      },
+      {
+        "tipo": "personal_rutina_viaje",
+        "pregunta_en_ingles": "Do you travel alone or with other people?",
+        "respuestas_ingles": [
+          "I usually travel with my family.",
+          "Sometimes I travel alone, sometimes with friends.",
+          "I prefer to travel with friends. It is more fun."
+        ],
+        "traducciones_espanol": [
+          "Usualmente viajo con mi familia.",
+          "A veces viajo solo, a veces con amigos.",
+          "Prefiero viajar con amigos. Es más divertido."
+        ]
+      },
+      {
+        "tipo": "personal_rutina_viaje",
+        "pregunta_en_ingles": "Do you have a passport? Do you want to travel outside Peru?",
+        "respuestas_ingles": [
+          "I don't have a passport yet, but I want to get one.",
+          "Yes, I have a passport. I want to travel to another country someday.",
+          "I don't have a passport. I only travel inside Peru."
+        ],
+        "traducciones_espanol": [
+          "Todavía no tengo pasaporte, pero quiero obtener uno.",
+          "Sí, tengo pasaporte. Quiero viajar a otro país algún día.",
+          "No tengo pasaporte. Solo viajo dentro de Perú."
+        ]
+      },
+      {
+        "tipo": "personal_rutina_viaje",
+        "pregunta_en_ingles": "What do you need to prepare before a trip?",
+        "respuestas_ingles": [
+          "I need to buy tickets, pack my bag, and check the schedule.",
+          "I need to save money, book the ticket, and tell my family.",
+          "I need to pack clothes and buy food for the trip."
+        ],
+        "traducciones_espanol": [
+          "Necesito comprar boletos, empacar mi maleta y revisar el horario.",
+          "Necesito ahorrar dinero, reservar el boleto y avisarle a mi familia.",
+          "Necesito empacar ropa y comprar comida para el viaje."
+        ]
+      },
+      {
+        "tipo": "personal_transporte",
+        "pregunta_en_ingles": "How do you get to school or work every day in Arequipa?",
+        "respuestas_ingles": [
+          "I take a bus or a combi to get to work.",
+          "I walk sometimes. Arequipa is not very big.",
+          "I take a taxi or use an app like InDriver."
+        ],
+        "traducciones_espanol": [
+          "Tomo un bus o una combi para ir al trabajo.",
+          "A veces camino. Arequipa no es muy grande.",
+          "Tomo un taxi o uso una app como InDriver."
+        ]
+      },
+      {
+        "tipo": "personal_transporte",
+        "pregunta_en_ingles": "Is public transport in Arequipa good or bad?",
+        "respuestas_ingles": [
+          "It is okay. The combis are fast but sometimes crowded.",
+          "It is not very good. There is a lot of traffic in the city.",
+          "It is cheap but not always comfortable."
+        ],
+        "traducciones_espanol": [
+          "Está bien. Las combis son rápidas pero a veces están llenas.",
+          "No es muy bueno. Hay mucho tráfico en la ciudad.",
+          "Es barato pero no siempre cómodo."
+        ]
+      },
+      {
+        "tipo": "personal_transporte",
+        "pregunta_en_ingles": "Do you have a car or a motorcycle? Do you want one?",
+        "respuestas_ingles": [
+          "I don't have a car. I want to buy one in the future.",
+          "I don't have a car or motorcycle. I use public transport.",
+          "I have a motorcycle. It is faster in traffic."
+        ],
+        "traducciones_espanol": [
+          "No tengo carro. Quiero comprar uno en el futuro.",
+          "No tengo carro ni moto. Uso el transporte público.",
+          "Tengo una moto. Es más rápido en el tráfico."
+        ]
+      },
+      {
+        "tipo": "personal_transporte",
+        "pregunta_en_ingles": "Is it easy to get a taxi in Arequipa at night?",
+        "respuestas_ingles": [
+          "Yes, you can get a taxi easily with apps like InDriver or Uber.",
+          "It is not very easy at night. There are fewer taxis.",
+          "Yes, there are always taxis in the city center."
+        ],
+        "traducciones_espanol": [
+          "Sí, puedes conseguir un taxi fácilmente con apps como InDriver o Uber.",
+          "No es muy fácil de noche. Hay menos taxis.",
+          "Sí, siempre hay taxis en el centro de la ciudad."
+        ]
+      },
+      {
+        "tipo": "personal_lugares",
+        "pregunta_en_ingles": "What is your favorite place in Arequipa and why?",
+        "respuestas_ingles": [
+          "My favorite place is the Plaza de Armas. It is very beautiful and historic.",
+          "I like the Santa Catalina Monastery. It is old and has a lot of history.",
+          "I like the Yanahuara viewpoint. You can see the Misti volcano from there."
+        ],
+        "traducciones_espanol": [
+          "Mi lugar favorito es la Plaza de Armas. Es muy hermosa e histórica.",
+          "Me gusta el Monasterio de Santa Catalina. Es antiguo y tiene mucha historia.",
+          "Me gusta el mirador de Yanahuara. Puedes ver el volcán Misti desde allí."
+        ]
+      },
+      {
+        "tipo": "personal_lugares",
+        "pregunta_en_ingles": "Do tourists visit Arequipa? What can they see?",
+        "respuestas_ingles": [
+          "Yes, many tourists visit Arequipa. They can see the Plaza de Armas and the monastery.",
+          "Yes, tourists come to see the white stone buildings and the Colca Canyon.",
+          "Yes, Arequipa is a beautiful city. Tourists like the historic center."
+        ],
+        "traducciones_espanol": [
+          "Sí, muchos turistas visitan Arequipa. Pueden ver la Plaza de Armas y el monasterio.",
+          "Sí, los turistas vienen a ver los edificios de piedra blanca y el Cañón del Colca.",
+          "Sí, Arequipa es una ciudad hermosa. A los turistas les gusta el centro histórico."
+        ]
+      },
+      {
+        "tipo": "personal_lugares",
+        "pregunta_en_ingles": "Have you visited other cities in Peru? Which one is your favorite?",
+        "respuestas_ingles": [
+          "Yes, I visited Cusco. It is amazing. My favorite city in Peru.",
+          "I visited Lima. It is very big and busy. I prefer Arequipa.",
+          "I haven't visited many cities, but I want to go to Cusco."
+        ],
+        "traducciones_espanol": [
+          "Sí, visité Cusco. Es increíble. Mi ciudad favorita en Perú.",
+          "Visité Lima. Es muy grande y agitada. Prefiero Arequipa.",
+          "No he visitado muchas ciudades, pero quiero ir a Cusco."
+        ]
+      },
+      {
+        "tipo": "personal_lugares",
+        "pregunta_en_ingles": "Is Arequipa a small town or a big city?",
+        "respuestas_ingles": [
+          "Arequipa is a big city. It is the second largest city in Peru.",
+          "It is a big city but it feels friendly and not too crowded.",
+          "Arequipa is big, but it is not as big as Lima."
+        ],
+        "traducciones_espanol": [
+          "Arequipa es una ciudad grande. Es la segunda ciudad más grande de Perú.",
+          "Es una ciudad grande pero se siente amigable y no muy congestionada.",
+          "Arequipa es grande, pero no tan grande como Lima."
+        ]
+      },
+      {
+        "tipo": "personal_lugares",
+        "pregunta_en_ingles": "Is the weather in Arequipa good for tourists?",
+        "respuestas_ingles": [
+          "Yes, the weather is great. It is sunny and dry almost every day.",
+          "Yes, it is usually warm and sunny. There is not much rain.",
+          "The weather is very good. Tourists like the sunny days in Arequipa."
+        ],
+        "traducciones_espanol": [
+          "Sí, el clima es genial. Es soleado y seco casi todos los días.",
+          "Sí, generalmente es cálido y soleado. No llueve mucho.",
+          "El clima es muy bueno. A los turistas les gustan los días soleados en Arequipa."
+        ]
+      }
+    ]
+  },
+  "semanas_activas": []
+}
