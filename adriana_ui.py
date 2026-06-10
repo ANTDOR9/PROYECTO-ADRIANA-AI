@@ -16,7 +16,8 @@ from faster_whisper import WhisperModel
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 from configuracion import (
-    cargar_config, abrir_configuracion, calcular_geometria
+    cargar_config, guardar_config, abrir_configuracion,
+    calcular_geometria_emergente, calcular_geometria_subtitulos
 )
 
 # Ruta directa a FFmpeg
@@ -28,7 +29,7 @@ os.environ["PATH"] = r"C:\ffmpeg\bin" + os.pathsep + os.environ.get("PATH", "")
 MODELO_WHISPER   = "small"
 CHUNK_SEGUNDOS   = 6
 SAMPLE_RATE      = 16000
-ARCHIVO_GLOSARIO = os.path.join(os.path.dirname(__file__), "glosario.json")
+ARCHIVO_GLOSARIO = os.path.join(os.path.dirname(os.path.abspath(__file__)), "glosario.json")
 
 COLORES = {
     "fondo":        "#0d0d1a",
@@ -49,7 +50,7 @@ COLORES = {
 }
 
 # ══════════════════════════════════════════
-#  GLOSARIO FIJO
+#  GLOSARIO
 # ══════════════════════════════════════════
 GLOSARIO_GENERAL_DEFAULT = [
     {"pregunta_en_ingles": "How are you?",
@@ -96,15 +97,8 @@ GLOSARIO_GENERAL_DEFAULT = [
      "traducciones_espanol": ["¡Claro! Me llamo Anthony, soy de Perú.", "¡Por supuesto! Soy Anthony y estoy aprendiendo inglés.", "¡Sí! Soy Anthony, mucho gusto a todos."]},
 ]
 
-# ══════════════════════════════════════════
-#  GLOSARIO
-# ══════════════════════════════════════════
 def glosario_vacio():
-    return {
-        "general": GLOSARIO_GENERAL_DEFAULT.copy(),
-        "semanas": {},
-        "semanas_activas": []
-    }
+    return {"general": GLOSARIO_GENERAL_DEFAULT.copy(), "semanas": {}, "semanas_activas": []}
 
 def cargar_glosario_json():
     if os.path.exists(ARCHIVO_GLOSARIO):
@@ -139,9 +133,10 @@ tray_icon               = None
 boton_grabar            = None
 detener_grabacion       = threading.Event()
 texto_acumulado         = ""
-ventana_flotante_actual = None
+ventana_emergente_actual = None
+ventana_subtitulos      = None
 _ultima_linea_en        = ""
-_lock_flotante          = threading.Lock()
+_lock_emergente         = threading.Lock()
 _ultima_pregunta        = ""
 
 # ══════════════════════════════════════════
@@ -207,68 +202,137 @@ def transcribir_chunk(audio_np):
     return texto
 
 # ══════════════════════════════════════════
-#  VENTANA FLOTANTE — usa configuración
+#  SUBTÍTULOS EN TIEMPO REAL
 # ══════════════════════════════════════════
-def mostrar_flotante(texto_en, texto_es, coincidencia=None):
-    global ventana_flotante_actual, _ultima_pregunta
-
+def crear_ventana_subtitulos():
+    global ventana_subtitulos
     config = cargar_config()
-
-    # Si emergente desactivada, no mostrar
-    if not config["emergente_activa"]:
+    if not config["subtitulos_activos"]:
         return
 
-    if coincidencia:
-        if coincidencia["pregunta"] == _ultima_pregunta:
-            return
-        _ultima_pregunta = coincidencia["pregunta"]
-
-    with _lock_flotante:
+    if ventana_subtitulos:
         try:
-            if ventana_flotante_actual and ventana_flotante_actual.winfo_exists():
-                ventana_flotante_actual.destroy()
+            if ventana_subtitulos.winfo_exists():
+                return
+        except:
+            pass
+
+    sub = tk.Toplevel()
+    ventana_subtitulos = sub
+    sub.overrideredirect(True)
+    sub.attributes("-topmost", True)
+    sub.configure(bg="#000000")
+
+    sw = sub.winfo_screenwidth()
+    sh = sub.winfo_screenheight()
+    ancho, alto, x, y = calcular_geometria_subtitulos(config, sw, sh)
+    sub.geometry(f"{ancho}x{alto}+{x}+{y}")
+    sub.attributes("-alpha", config["subtitulos_opacidad"])
+
+    # Contenido
+    frame = tk.Frame(sub, bg="#000000", padx=10, pady=6)
+    frame.pack(fill="both", expand=True)
+
+    sub.lbl_en = tk.Label(frame, text="",
+                           bg="#000000", fg=COLORES["verde"],
+                           font=("Consolas", 11, "bold"),
+                           wraplength=ancho - 30, justify="center")
+    sub.lbl_en.pack(fill="x")
+
+    sub.lbl_es = tk.Label(frame, text="",
+                           bg="#000000", fg="white",
+                           font=("Consolas", 11),
+                           wraplength=ancho - 30, justify="center")
+    sub.lbl_es.pack(fill="x")
+
+    # Arrastrable
+    def iniciar_arrastre(e):
+        sub._drag_x = e.x
+        sub._drag_y = e.y
+    def arrastrar(e):
+        x = sub.winfo_x() + e.x - sub._drag_x
+        y = sub.winfo_y() + e.y - sub._drag_y
+        sub.geometry(f"+{x}+{y}")
+    frame.bind("<Button-1>", iniciar_arrastre)
+    frame.bind("<B1-Motion>", arrastrar)
+    sub.lbl_en.bind("<Button-1>", iniciar_arrastre)
+    sub.lbl_en.bind("<B1-Motion>", arrastrar)
+    sub.lbl_es.bind("<Button-1>", iniciar_arrastre)
+    sub.lbl_es.bind("<B1-Motion>", arrastrar)
+
+def actualizar_subtitulos(texto_en, texto_es):
+    global ventana_subtitulos
+    if not ventana_subtitulos:
+        return
+    try:
+        if ventana_subtitulos.winfo_exists():
+            ventana_subtitulos.lbl_en.config(text=texto_en)
+            ventana_subtitulos.lbl_es.config(text=texto_es)
+    except:
+        pass
+
+def cerrar_subtitulos():
+    global ventana_subtitulos
+    try:
+        if ventana_subtitulos and ventana_subtitulos.winfo_exists():
+            ventana_subtitulos.destroy()
+    except:
+        pass
+    ventana_subtitulos = None
+
+# ══════════════════════════════════════════
+#  VENTANA EMERGENTE DE PREGUNTAS
+# ══════════════════════════════════════════
+def mostrar_emergente(texto_en, texto_es, coincidencia):
+    global ventana_emergente_actual, _ultima_pregunta
+
+    config = cargar_config()
+    if not config["emergente_activa"]:
+        return
+    if coincidencia["pregunta"] == _ultima_pregunta:
+        return
+    _ultima_pregunta = coincidencia["pregunta"]
+
+    with _lock_emergente:
+        try:
+            if ventana_emergente_actual and ventana_emergente_actual.winfo_exists():
+                ventana_emergente_actual.destroy()
         except:
             pass
 
     flotante = tk.Toplevel()
-    ventana_flotante_actual = flotante
-    flotante.title("Adriana AI")
+    ventana_emergente_actual = flotante
+    flotante.title("Adriana AI — Pregunta")
     flotante.attributes("-topmost", True)
     flotante.configure(bg=COLORES["fondo"])
     flotante.resizable(True, True)
+    flotante.attributes("-alpha", config["emergente_opacidad"])
 
     sw = flotante.winfo_screenwidth()
     sh = flotante.winfo_screenheight()
-    ancho, alto, x, y = calcular_geometria(config, sw, sh)
+    ancho, alto, x, y = calcular_geometria_emergente(config, sw, sh)
     flotante.geometry(f"{ancho}x{alto}+{x}+{y}")
-    flotante.attributes("-alpha", config["emergente_opacidad"])
-    flotante.minsize(300, 150)
+    flotante.minsize(300, 200)
 
     marco = tk.Frame(flotante, bg=COLORES["borde"], padx=2, pady=2)
     marco.pack(fill="both", expand=True)
     interior = tk.Frame(marco, bg=COLORES["fondo"])
     interior.pack(fill="both", expand=True)
 
-    # Header
     header = tk.Frame(interior, bg=COLORES["panel"], pady=5)
     header.pack(fill="x")
-    tk.Label(header, text="◈ ADRIANA AI",
-             bg=COLORES["panel"], fg=COLORES["borde"],
+    tk.Label(header, text="💬 PREGUNTA DETECTADA",
+             bg=COLORES["panel"], fg=COLORES["amarillo"],
              font=("Consolas", 9, "bold")).pack(side="left", padx=8)
-
-    # Botón configuración en la flotante
-    tk.Button(header, text="⚙",
-              command=lambda: abrir_configuracion(flotante),
+    tk.Button(header, text="⚙", command=lambda: abrir_configuracion(flotante, _aplicar_config),
               bg=COLORES["panel"], fg=COLORES["texto2"],
               relief="flat", font=("Consolas", 10),
               cursor="hand2", bd=0).pack(side="right", padx=2)
-
     tk.Button(header, text="✕", command=flotante.destroy,
               bg=COLORES["panel"], fg=COLORES["rosa"],
               relief="flat", font=("Consolas", 10, "bold"),
               cursor="hand2", bd=0).pack(side="right", padx=6)
 
-    # Contenido con scroll
     contenido = scrolledtext.ScrolledText(
         interior, bg=COLORES["fondo"], fg=COLORES["texto"],
         font=("Consolas", 10), relief="flat", bd=0,
@@ -276,33 +340,23 @@ def mostrar_flotante(texto_en, texto_es, coincidencia=None):
     )
     contenido.pack(fill="both", expand=True, padx=8, pady=6)
 
-    contenido.tag_config("label",   foreground=COLORES["borde"],   font=("Consolas", 9, "bold"))
-    contenido.tag_config("en",      foreground=COLORES["verde"],    font=("Consolas", 10))
-    contenido.tag_config("label2",  foreground=COLORES["borde2"],   font=("Consolas", 9, "bold"))
-    contenido.tag_config("es",      foreground=COLORES["cyan"],     font=("Consolas", 10))
-    contenido.tag_config("sep",     foreground=COLORES["panel"],    font=("Consolas", 6))
     contenido.tag_config("match",   foreground=COLORES["amarillo"], font=("Consolas", 9, "bold"))
-    contenido.tag_config("resp_en", foreground=COLORES["verde"],    font=("Consolas", 9))
+    contenido.tag_config("sep",     foreground=COLORES["panel"])
+    contenido.tag_config("resp_en", foreground=COLORES["verde"],    font=("Consolas", 10))
     contenido.tag_config("resp_es", foreground=COLORES["rosa"],     font=("Consolas", 9))
+    contenido.tag_config("score",   foreground=COLORES["cyan"],     font=("Consolas", 8))
 
-    contenido.insert("end", "EN › ", "label")
-    contenido.insert("end", texto_en + "\n\n", "en")
-    contenido.insert("end", "ES › ", "label2")
-    contenido.insert("end", texto_es + "\n", "es")
+    contenido.insert("end", f"🔍 {coincidencia['pregunta']}\n", "match")
+    contenido.insert("end", f"   Similitud: {int(coincidencia['score']*100)}%\n\n", "score")
+    contenido.insert("end", "💬 Respuestas sugeridas:\n", "match")
+    contenido.insert("end", "─" * 38 + "\n", "sep")
 
-    if coincidencia:
-        contenido.insert("end", "─" * 40 + "\n", "sep")
-        contenido.insert("end",
-            f"🔍 Pregunta detectada ({int(coincidencia['score']*100)}% similitud)\n", "match")
-        contenido.insert("end", f"   {coincidencia['pregunta']}\n\n", "match")
-        contenido.insert("end", "💬 Respuestas sugeridas:\n", "match")
-        for i, (r, t) in enumerate(zip(coincidencia["respuestas"], coincidencia["traducciones"])):
-            contenido.insert("end", f"  {i+1}. {r}\n", "resp_en")
-            contenido.insert("end", f"     {t}\n", "resp_es")
+    for i, (r, t) in enumerate(zip(coincidencia["respuestas"], coincidencia["traducciones"])):
+        contenido.insert("end", f"  {i+1}. {r}\n", "resp_en")
+        contenido.insert("end", f"     {t}\n\n", "resp_es")
 
     contenido.config(state="disabled")
 
-    # Arrastrable
     def iniciar_arrastre(e):
         flotante._drag_x = e.x
         flotante._drag_y = e.y
@@ -312,6 +366,20 @@ def mostrar_flotante(texto_en, texto_es, coincidencia=None):
         flotante.geometry(f"+{x}+{y}")
     header.bind("<Button-1>", iniciar_arrastre)
     header.bind("<B1-Motion>", arrastrar)
+
+# ══════════════════════════════════════════
+#  APLICAR CONFIG EN TIEMPO REAL
+# ══════════════════════════════════════════
+def _aplicar_config(config):
+    global ventana_subtitulos
+    # Actualizar subtítulos si están activos
+    if config["subtitulos_activos"]:
+        cerrar_subtitulos()
+        if grabando and ventana_principal:
+            ventana_principal.after(100, crear_ventana_subtitulos)
+    else:
+        cerrar_subtitulos()
+    actualizar_info()
 
 # ══════════════════════════════════════════
 #  GRABACIÓN EN TIEMPO REAL
@@ -346,6 +414,10 @@ def grabar_y_transcribir():
     frames_actuales = []
     actualizar_estado("🔴  Grabando en tiempo real...", COLORES["grabando"])
 
+    # Abrir subtítulos
+    if ventana_principal:
+        ventana_principal.after(0, crear_ventana_subtitulos)
+
     while not detener_grabacion.is_set():
         data = stream.read(chunk, exception_on_overflow=False)
         frames_actuales.append(np.frombuffer(data, dtype=np.float32))
@@ -370,16 +442,27 @@ def grabar_y_transcribir():
                     return
                 texto_acumulado = (texto_acumulado + " " + texto).strip()
                 insertar_chunk_en_historial(texto)
+
+                # Traducir para subtítulos
                 try:
                     texto_es = traductor.translate(texto)
                 except:
                     texto_es = ""
+
+                # Actualizar subtítulos
+                if ventana_principal:
+                    ventana_principal.after(0, lambda t=texto, e=texto_es:
+                                            actualizar_subtitulos(t, e))
+
+                # Buscar pregunta para emergente
                 coincidencia = buscar_pregunta_similar(texto)
                 etiqueta = f"🔴 \"{texto[:45]}...\"" if len(texto) > 45 else f"🔴 \"{texto}\""
                 actualizar_estado(etiqueta, COLORES["grabando"])
-                if ventana_principal:
+
+                # Mostrar emergente SOLO si hay pregunta con respuestas
+                if coincidencia and ventana_principal:
                     ventana_principal.after(0, lambda t=texto, e=texto_es, c=coincidencia:
-                                            mostrar_flotante(t, e, c))
+                                            mostrar_emergente(t, e, c))
 
             threading.Thread(target=procesar_chunk, daemon=True).start()
 
@@ -400,25 +483,34 @@ def grabar_y_transcribir():
 
 def finalizar_sesion():
     global grabando, boton_grabar, texto_acumulado, _ultima_pregunta
+
+    # Cerrar subtítulos al terminar
+    if ventana_principal:
+        ventana_principal.after(0, cerrar_subtitulos)
+
     if not texto_acumulado.strip():
         actualizar_estado("⚠️  No se detectó audio claro.", COLORES["rosa"])
         grabando = False
         if boton_grabar:
             boton_grabar.config(text="⬤  GRABAR  (Ctrl+Space)", bg=COLORES["boton"])
         return
+
     try:
         texto_es = traductor.translate(texto_acumulado)
     except:
         texto_es = ""
+
     coincidencia = buscar_pregunta_similar(texto_acumulado)
     hora = datetime.datetime.now().strftime("%H:%M:%S")
     historial.append({"hora": hora, "en": texto_acumulado, "es": texto_es})
     agregar_separador_historial(texto_es, hora, coincidencia["pregunta"] if coincidencia else None)
     _ultima_pregunta = ""
+
     if coincidencia:
         actualizar_estado(f"✅  Sesión finalizada — {int(coincidencia['score']*100)}% similitud", COLORES["verde"])
     else:
         actualizar_estado("✅  Sesión finalizada — presiona GRABAR para continuar", COLORES["texto2"])
+
     grabando = False
     if boton_grabar:
         boton_grabar.config(text="⬤  GRABAR  (Ctrl+Space)", bg=COLORES["boton"])
@@ -462,6 +554,9 @@ def actualizar_estado(texto, color=None):
     if label_estado and ventana_principal:
         ventana_principal.after(0, lambda: label_estado.config(
             text=texto, fg=color or COLORES["texto2"]))
+
+def actualizar_info():
+    pass  # se llama desde el loop de refresco
 
 # ══════════════════════════════════════════
 #  TOGGLE GRABAR
@@ -526,10 +621,10 @@ def abrir_editor_glosario():
         frame_form = tk.Frame(frame, bg=COLORES["fondo"])
         frame_form.pack(side="left", fill="both", expand=True, pady=4)
 
-        def campo(label):
+        def campo(label, color=None):
             tk.Label(frame_form, text=label, bg=COLORES["fondo"],
-                     fg=COLORES["texto2"], font=("Consolas", 8)).pack(anchor="w", padx=8, pady=(6, 0))
-            e = tk.Entry(frame_form, bg=COLORES["fondo2"], fg=COLORES["texto"],
+                     fg=color or COLORES["texto2"], font=("Consolas", 8)).pack(anchor="w", padx=8, pady=(6, 0))
+            e = tk.Entry(frame_form, bg=COLORES["fondo2"], fg=color or COLORES["texto"],
                          font=("Consolas", 9), relief="flat", bd=4,
                          insertbackground=COLORES["borde"])
             e.pack(fill="x", padx=8)
@@ -540,20 +635,8 @@ def abrir_editor_glosario():
 
         pares = []
         for i in range(1, 4):
-            tk.Label(frame_form, text=f"Respuesta {i}:",
-                     bg=COLORES["fondo"], fg=COLORES["verde"],
-                     font=("Consolas", 8, "bold")).pack(anchor="w", padx=8, pady=(4, 0))
-            e_r = tk.Entry(frame_form, bg=COLORES["fondo2"], fg=COLORES["verde"],
-                           font=("Consolas", 9), relief="flat", bd=4,
-                           insertbackground=COLORES["borde"])
-            e_r.pack(fill="x", padx=8)
-            tk.Label(frame_form, text=f"  Traducción {i}:",
-                     bg=COLORES["fondo"], fg=COLORES["rosa"],
-                     font=("Consolas", 8)).pack(anchor="w", padx=8)
-            e_t = tk.Entry(frame_form, bg=COLORES["fondo2"], fg=COLORES["rosa"],
-                           font=("Consolas", 9), relief="flat", bd=4,
-                           insertbackground=COLORES["borde"])
-            e_t.pack(fill="x", padx=8)
+            e_r = campo(f"Respuesta {i}:", COLORES["verde"])
+            e_t = campo(f"  Traducción {i}:", COLORES["rosa"])
             pares.append((e_r, e_t))
 
         def obtener_lista_seccion():
@@ -597,11 +680,7 @@ def abrir_editor_glosario():
             if not respuestas:
                 messagebox.showwarning("Sin respuestas", "Agrega al menos una respuesta.", parent=editor)
                 return
-            nuevo = {
-                "pregunta_en_ingles":   pregunta,
-                "respuestas_ingles":    respuestas,
-                "traducciones_espanol": traducciones
-            }
+            nuevo = {"pregunta_en_ingles": pregunta, "respuestas_ingles": respuestas, "traducciones_espanol": traducciones}
             lista = obtener_lista_seccion()
             for i, item in enumerate(lista):
                 if item["pregunta_en_ingles"].lower() == pregunta.lower():
@@ -631,7 +710,6 @@ def abrir_editor_glosario():
 
         frame_bots = tk.Frame(frame_form, bg=COLORES["fondo"])
         frame_bots.pack(fill="x", padx=8, pady=8)
-
         tk.Button(frame_bots, text="➕  Agregar / Actualizar", command=agregar,
                   bg=COLORES["boton"], fg="white", font=("Consolas", 9, "bold"),
                   relief="flat", padx=10, pady=6, cursor="hand2").pack(side="left", padx=(0, 6))
@@ -641,7 +719,6 @@ def abrir_editor_glosario():
         tk.Button(frame_bots, text="🔄  Limpiar", command=limpiar_form,
                   bg=COLORES["panel"], fg=COLORES["texto2"], font=("Consolas", 9),
                   relief="flat", padx=10, pady=6, cursor="hand2").pack(side="left", padx=6)
-
         refrescar_lista()
 
     crear_pestaña("General", es_general=True)
@@ -654,7 +731,6 @@ def abrir_editor_glosario():
     tk.Label(frame_sem, text="Gestionar semanas de clase",
              bg=COLORES["fondo"], fg=COLORES["borde"],
              font=("Consolas", 11, "bold")).pack(pady=(20, 4))
-
     tk.Frame(frame_sem, bg=COLORES["panel"], height=1).pack(fill="x", padx=20, pady=12)
 
     frame_nueva = tk.Frame(frame_sem, bg=COLORES["fondo"])
@@ -685,8 +761,7 @@ def abrir_editor_glosario():
                            selectcolor=COLORES["panel"],
                            activebackground=COLORES["fondo"],
                            font=("Consolas", 10), command=guardar_activas).pack(side="left")
-            preguntas = glosario_data["semanas"].get(semana, [])
-            tk.Label(fila, text=f"  ({len(preguntas)} preguntas)",
+            tk.Label(fila, text=f"  ({len(glosario_data['semanas'].get(semana, []))} preguntas)",
                      bg=COLORES["fondo"], fg=COLORES["texto2"],
                      font=("Consolas", 8)).pack(side="left")
         if not glosario_data["semanas"]:
@@ -698,8 +773,7 @@ def abrir_editor_glosario():
         activas = [s for s, v in checks_vars.items() if v.get()]
         glosario_data["semanas_activas"] = activas
         guardar_glosario_json(glosario_data)
-        total = len(obtener_preguntas_activas())
-        actualizar_estado(f"✅  {total} preguntas activas", COLORES["verde"])
+        actualizar_estado(f"✅  {len(obtener_preguntas_activas())} preguntas activas", COLORES["verde"])
 
     def crear_semana():
         nombre = e_nueva_sem.get().strip()
@@ -718,22 +792,18 @@ def abrir_editor_glosario():
               bg=COLORES["boton"], fg="white", font=("Consolas", 9),
               relief="flat", padx=10, pady=4, cursor="hand2").pack(side="left")
 
-    tk.Frame(frame_sem, bg=COLORES["panel"], height=1).pack(fill="x", padx=20, pady=12)
-
-    tk.Label(frame_sem, text="Semanas activas en la búsqueda:",
-             bg=COLORES["fondo"], fg=COLORES["amarillo"],
-             font=("Consolas", 9, "bold")).pack(pady=(0, 6))
-
+    tk.Label(frame_sem, text="Semanas activas:", bg=COLORES["fondo"],
+             fg=COLORES["amarillo"], font=("Consolas", 9, "bold")).pack(pady=(12, 4))
     refrescar_semanas()
 
     tk.Frame(frame_sem, bg=COLORES["panel"], height=1).pack(fill="x", padx=20, pady=12)
-    tk.Label(frame_sem, text="Importar JSON externo a una semana:",
+    tk.Label(frame_sem, text="Importar JSON a una semana:",
              bg=COLORES["fondo"], fg=COLORES["texto2"],
              font=("Consolas", 8, "bold")).pack()
 
     frame_imp = tk.Frame(frame_sem, bg=COLORES["fondo"])
     frame_imp.pack(pady=6)
-    tk.Label(frame_imp, text="Importar a semana:", bg=COLORES["fondo"],
+    tk.Label(frame_imp, text="Semana destino:", bg=COLORES["fondo"],
              fg=COLORES["texto2"], font=("Consolas", 8)).pack(side="left", padx=6)
     e_sem_imp = tk.Entry(frame_imp, bg=COLORES["fondo2"], fg=COLORES["texto"],
                          font=("Consolas", 9), relief="flat", bd=4, width=14,
@@ -793,7 +863,7 @@ def limpiar_historial():
 # ══════════════════════════════════════════
 def crear_icono_tray():
     try:
-        img = Image.open(os.path.join(os.path.dirname(__file__), "icono.ico"))
+        img = Image.open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "icono.ico"))
         img = img.resize((64, 64))
         return img
     except:
@@ -830,12 +900,15 @@ def construir_ui():
     global ventana_principal, label_estado, historial_widget, boton_grabar
 
     ventana_principal = tk.Tk()
+    ventana_principal.title("Adriana AI — Traductor en Tiempo Real")
+    ventana_principal.configure(bg=COLORES["fondo"])
+
     try:
-        ventana_principal.iconbitmap(os.path.join(os.path.dirname(__file__), "icono.ico"))
+        ventana_principal.iconbitmap(
+            os.path.join(os.path.dirname(os.path.abspath(__file__)), "icono.ico"))
     except:
         pass
-    ventana_principal.title("Adriana AI — Asistente de Inglés")
-    ventana_principal.configure(bg=COLORES["fondo"])
+
     sw = ventana_principal.winfo_screenwidth()
     sh = ventana_principal.winfo_screenheight()
     ancho = min(620, sw - 20)
@@ -855,7 +928,7 @@ def construir_ui():
     tk.Label(header, text="◈ ADRIANA AI",
              bg=COLORES["panel"], fg=COLORES["borde"],
              font=("Consolas", 16, "bold")).pack(side="left", padx=16)
-    tk.Label(header, text="Asistente para clases de inglés",
+    tk.Label(header, text="Traductor en tiempo real",
              bg=COLORES["panel"], fg=COLORES["texto2"],
              font=("Consolas", 8)).pack(side="left")
     tk.Button(header, text="—", command=minimizar_a_tray,
@@ -873,28 +946,28 @@ def construir_ui():
               padx=10, pady=5, cursor="hand2").pack(side="left")
 
     tk.Button(zona_acc, text="⚙️  Configuración",
-              command=lambda: abrir_configuracion(ventana_principal),
+              command=lambda: abrir_configuracion(ventana_principal, _aplicar_config),
               bg=COLORES["panel"], fg=COLORES["cyan"],
               font=("Consolas", 9, "bold"), relief="flat",
               padx=10, pady=5, cursor="hand2").pack(side="left", padx=6)
 
-    # Info semanas activas
-    def info_semanas():
+    # Info estado
+    def info_estado():
+        cfg     = cargar_config()
         activas = glosario_data.get("semanas_activas", [])
         total   = len(obtener_preguntas_activas())
-        cfg     = cargar_config()
-        emergente = "✅ Emergente ON" if cfg["emergente_activa"] else "❌ Emergente OFF"
-        if activas:
-            return f"{emergente}  |  {total} preguntas  |  {', '.join(activas)}"
-        return f"{emergente}  |  {total} preguntas activas"
+        sub     = "🟢 Sub ON" if cfg["subtitulos_activos"] else "🔴 Sub OFF"
+        emg     = "🟢 Emergente ON" if cfg["emergente_activa"] else "🔴 Emergente OFF"
+        sem     = f"| {', '.join(activas)}" if activas else ""
+        return f"{sub}  {emg}  |  {total} preguntas {sem}"
 
-    label_info = tk.Label(zona_acc, text=info_semanas(),
+    label_info = tk.Label(zona_acc, text=info_estado(),
                           bg=COLORES["fondo2"], fg=COLORES["texto2"],
                           font=("Consolas", 7))
     label_info.pack(side="left", padx=10)
 
     def refrescar_info():
-        label_info.config(text=info_semanas())
+        label_info.config(text=info_estado())
         ventana_principal.after(2000, refrescar_info)
     ventana_principal.after(2000, refrescar_info)
 
@@ -929,7 +1002,7 @@ def construir_ui():
     label_estado.pack(pady=2)
 
     tk.Label(ventana_principal,
-             text="⚡ Transcripción en tiempo real cada 6s  |  Ventana emergente automática al detectar pregunta",
+             text="⚡ Subtítulos en tiempo real  |  💬 Ventana emergente solo para preguntas con respuestas",
              bg=COLORES["fondo"], fg=COLORES["borde"],
              font=("Consolas", 7)).pack()
 
@@ -989,7 +1062,7 @@ keyboard.add_hotkey("ctrl+space", iniciar_proceso, trigger_on_release=True)
 # ══════════════════════════════════════════
 #  ARRANQUE
 # ══════════════════════════════════════════
-print("🎯 Iniciando interfaz...")
+print("🎯 Iniciando Adriana AI...")
 threading.Thread(target=iniciar_tray, daemon=True).start()
 ventana = construir_ui()
 print("⌨️  Ctrl+Space para grabar | Minimizar para ir al system tray")
