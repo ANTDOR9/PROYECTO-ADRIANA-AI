@@ -1,4 +1,4 @@
-# ADRIANA AI 
+# ADRIANA AI (actualizacion pendiente....)
 
 Aplicación de escritorio para Windows que transcribe y traduce audio en inglés 
 al español en tiempo real, con un sistema de respuestas sugeridas basado en 
