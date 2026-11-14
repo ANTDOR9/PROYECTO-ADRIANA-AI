@@ -1,0 +1,4 @@
+# Opcional: librerías CUDA para usar una GPU NVIDIA con Whisper
+nvidia-cublas-cu12
+nvidia-cudnn-cu12
+nvidia-cuda-nvrtc-cu12

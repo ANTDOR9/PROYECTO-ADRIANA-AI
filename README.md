@@ -1,4 +1,4 @@
-# ADRIANA AI (actualizacion pendiente....)
+# ADRIANA AI
 
 Aplicación de escritorio para Windows que transcribe y traduce audio en inglés 
 al español en tiempo real, con un sistema de respuestas sugeridas basado en 
@@ -9,7 +9,7 @@ un glosario personalizable.
 ## ¿Qué hace?
 
 - Captura el audio del sistema en tiempo real
-- Transcribe automáticamente de inglés a español cada 6 segundos
+- Transcribe el audio en inglés y lo traduce al español en bloques de 4 segundos
 - Detecta preguntas y muestra respuestas sugeridas en una ventana flotante
 - Permite cargar preguntas y respuestas personalizadas desde archivos JSON
 - Glosario editable organizado por semanas sin tocar código
@@ -19,8 +19,9 @@ un glosario personalizable.
 ## Características principales
 
 **Transcripción en tiempo real**
-Usa Faster-Whisper para procesar el audio cada 6 segundos mientras escuchas,
-sin necesidad de esperar al final.
+Usa Faster-Whisper para procesar el audio cada 4 segundos mientras escuchas,
+sin esperar al final. El historial separa la transcripción en líneas y párrafos
+según las pausas de quien habla.
 
 **Sistema de glosario con semanas**
 Organiza tus preguntas y respuestas por semanas. Activa o desactiva semanas
@@ -35,6 +36,16 @@ directamente al programa desde un archivo JSON.
 Aparece automáticamente al detectar una pregunta. Puedes ajustar su tamaño,
 posición y transparencia desde la configuración.
 
+**Elige dónde se procesa**
+Desde Configuración puedes usar modo Mixto (Whisper en la gráfica NVIDIA y la
+traducción en el procesador), Solo gráfica o Solo procesador. El cambio se
+aplica reiniciando la app desde el mismo botón. Funciona con GPU Pascal
+(GTX 10xx) usando cálculo int8.
+
+**Interfaz minimalista**
+Tema oscuro con acento morado y transiciones de color suaves en los botones,
+sin animaciones pesadas.
+
 **100% local**
 No requiere internet durante el uso. Sin APIs de pago. Todo corre en tu PC.
 
@@ -45,6 +56,7 @@ No requiere internet durante el uso. Sin APIs de pago. Todo corre en tu PC.
 - Windows 10/11
 - Python 3.11
 - FFmpeg instalado en `C:\ffmpeg`
+- Opcional: gráfica NVIDIA (el instalador ofrece las librerías CUDA)
 
 ---
 
@@ -110,9 +122,12 @@ Para importar preguntas al glosario el archivo debe seguir este formato:
 ```
 PROYECTO-ADRIANA-AI/
 ├── adriana_ui.py        # Programa principal
-├── configuracion.py     # Módulo de configuración
+├── configuracion.py     # Ventana de configuración
+├── estilo.py            # Paleta y transiciones de botones
 ├── glosario.json        # Glosario guardado automáticamente
-├── config.json          # Configuración de la ventana flotante
+├── config.json          # Configuración personal (se crea sola, no se sube)
+├── requirements.txt     # Dependencias
+├── requirements-gpu.txt # Librerías CUDA (opcional)
 ├── descargar_modelo.py  # Descarga modelo de traducción
 ├── instalar.bat         # Instalador automático
 ├── iniciar.bat          # Lanzador

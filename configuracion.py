@@ -1,7 +1,9 @@
 import json
 import os
 import tkinter as tk
-from tkinter import ttk
+from tkinter import ttk, messagebox
+import subprocess
+import sys
 
 # ══════════════════════════════════════════
 #  ARCHIVO DE CONFIGURACIÓN
@@ -20,23 +22,12 @@ CONFIG_DEFAULT = {
     "subtitulos_posicion":  "inferior_centro",
     "subtitulos_opacidad":  0.75,
     "subtitulos_tamano":    "mediano",
+
+    # Rendimiento (requiere reiniciar): mixto | gpu | cpu
+    "dispositivo":          "mixto",
 }
 
-COLORES = {
-    "fondo":        "#0d0d1a",
-    "fondo2":       "#13132b",
-    "panel":        "#1a1a35",
-    "borde":        "#6c63ff",
-    "borde2":       "#9d4edd",
-    "texto":        "#e0e0ff",
-    "texto2":       "#a0a0cc",
-    "verde":        "#00ff9d",
-    "cyan":         "#00d4ff",
-    "rosa":         "#ff6b9d",
-    "amarillo":     "#ffd93d",
-    "boton":        "#6c63ff",
-    "boton_hover":  "#7c3aed",
-}
+from estilo import COLORES, instalar_hover
 
 # ══════════════════════════════════════════
 #  CARGAR / GUARDAR CONFIG
@@ -53,6 +44,23 @@ def cargar_config():
         except:
             pass
     return CONFIG_DEFAULT.copy()
+
+# Los rellena adriana_ui.py
+INFO_DISPOSITIVO   = ""
+ANTES_DE_REINICIAR = None
+
+def reiniciar_aplicacion():
+    """Abre una instancia nueva de la app y cierra la actual."""
+    try:
+        if ANTES_DE_REINICIAR:
+            ANTES_DE_REINICIAR()
+    except Exception:
+        pass
+    carpeta = os.path.dirname(os.path.abspath(__file__))
+    script  = os.path.join(carpeta, "adriana_ui.py")
+    flags   = getattr(subprocess, "CREATE_NEW_CONSOLE", 0)
+    subprocess.Popen([sys.executable, script], cwd=carpeta, creationflags=flags)
+    os._exit(0)
 
 def guardar_config(data):
     with open(ARCHIVO_CONFIG, "w", encoding="utf-8") as f:
@@ -118,7 +126,7 @@ def abrir_configuracion(parent=None, callback_aplicar=None):
     ventana = tk.Toplevel(parent) if parent else tk.Tk()
     ventana.title("⚙️ Configuración — Adriana AI")
     ventana.configure(bg=COLORES["fondo"])
-    ventana.geometry("520x620")
+    ventana.geometry("780x680")
     ventana.resizable(False, True)
     ventana.attributes("-topmost", True)
     if parent:
@@ -134,13 +142,14 @@ def abrir_configuracion(parent=None, callback_aplicar=None):
     var_subtitulos_tamano   = tk.StringVar(value=config_actual["subtitulos_tamano"])
     var_subtitulos_posicion = tk.StringVar(value=config_actual["subtitulos_posicion"])
     var_subtitulos_opacidad = tk.DoubleVar(value=config_actual["subtitulos_opacidad"])
+    var_dispositivo         = tk.StringVar(value=config_actual["dispositivo"])
 
     # ── HEADER ──────────────────────────────
     tk.Frame(ventana, bg=COLORES["panel"], pady=10).pack(fill="x")
     header = ventana.winfo_children()[-1]
     tk.Label(header, text="⚙️  Configuración — Adriana AI",
              bg=COLORES["panel"], fg=COLORES["borde"],
-             font=("Consolas", 13, "bold")).pack(side="left", padx=16)
+             font=("Segoe UI", 13, "bold")).pack(side="left", padx=16)
 
     # Scroll
     canvas = tk.Canvas(ventana, bg=COLORES["fondo"], highlightthickness=0)
@@ -153,10 +162,10 @@ def abrir_configuracion(parent=None, callback_aplicar=None):
     scrollbar.pack(side="right", fill="y")
 
     def seccion(texto):
-        tk.Frame(frame_scroll, bg=COLORES["borde"], height=1).pack(fill="x", padx=16, pady=(14, 0))
+        tk.Frame(frame_scroll, bg=COLORES["linea"], height=1).pack(fill="x", padx=16, pady=(14, 0))
         tk.Label(frame_scroll, text=texto,
                  bg=COLORES["fondo"], fg=COLORES["amarillo"],
-                 font=("Consolas", 10, "bold")).pack(anchor="w", padx=16, pady=(6, 4))
+                 font=("Segoe UI", 10, "bold")).pack(anchor="w", padx=16, pady=(6, 4))
 
     def toggle_label(var, lbl):
         lbl.config(
@@ -168,10 +177,10 @@ def abrir_configuracion(parent=None, callback_aplicar=None):
         f = tk.Frame(parent, bg=COLORES["fondo"])
         f.pack(fill="x", padx=24, pady=4)
         tk.Label(f, text="Transparencia:", bg=COLORES["fondo"],
-                 fg=COLORES["texto2"], font=("Consolas", 8)).pack(side="left")
+                 fg=COLORES["texto2"], font=("Segoe UI", 8)).pack(side="left")
         lbl = tk.Label(f, text=f"{int(var.get()*100)}%",
                        bg=COLORES["fondo"], fg=COLORES["verde"],
-                       font=("Consolas", 9, "bold"), width=5)
+                       font=("Segoe UI", 9, "bold"), width=5)
         lbl.pack(side="right", padx=8)
         lbl_ref.append(lbl)
         style = ttk.Style()
@@ -191,7 +200,8 @@ def abrir_configuracion(parent=None, callback_aplicar=None):
                            bg=COLORES["fondo"], fg=COLORES["cyan"],
                            selectcolor=COLORES["panel"],
                            activebackground=COLORES["fondo"],
-                           font=("Consolas", 9), cursor="hand2").pack(anchor="w", pady=1)
+                           font=("Segoe UI", 9), cursor="hand2",
+                           wraplength=440, justify="left").pack(anchor="w", pady=1)
 
     # ══ SECCIÓN: VENTANA EMERGENTE ══════════
     seccion("▸ Ventana emergente de preguntas")
@@ -200,12 +210,12 @@ def abrir_configuracion(parent=None, callback_aplicar=None):
     f_toggle1.pack(fill="x", padx=24, pady=4)
     tk.Label(f_toggle1, text="Mostrar ventana al detectar pregunta:",
              bg=COLORES["fondo"], fg=COLORES["texto2"],
-             font=("Consolas", 8)).pack(side="left")
+             font=("Segoe UI", 8)).pack(side="left")
     lbl_emergente = tk.Label(f_toggle1,
                               text="✅ Activado" if var_emergente_activa.get() else "❌ Desactivado",
                               bg=COLORES["fondo"],
                               fg=COLORES["verde"] if var_emergente_activa.get() else COLORES["rosa"],
-                              font=("Consolas", 8, "bold"))
+                              font=("Segoe UI", 8, "bold"))
     lbl_emergente.pack(side="right")
     tk.Checkbutton(f_toggle1, variable=var_emergente_activa,
                    bg=COLORES["fondo"], selectcolor=COLORES["panel"],
@@ -214,7 +224,7 @@ def abrir_configuracion(parent=None, callback_aplicar=None):
                    cursor="hand2").pack(side="right")
 
     tk.Label(frame_scroll, text="Tamaño:", bg=COLORES["fondo"],
-             fg=COLORES["texto2"], font=("Consolas", 8)).pack(anchor="w", padx=24)
+             fg=COLORES["texto2"], font=("Segoe UI", 8)).pack(anchor="w", padx=24)
     radio_row(frame_scroll, var_emergente_tamano, [
         ("pequeño", "🔹 Pequeño  (380×220)"),
         ("mediano", "🔷 Mediano  (500×320)"),
@@ -222,7 +232,7 @@ def abrir_configuracion(parent=None, callback_aplicar=None):
     ])
 
     tk.Label(frame_scroll, text="Posición:", bg=COLORES["fondo"],
-             fg=COLORES["texto2"], font=("Consolas", 8)).pack(anchor="w", padx=24, pady=(8,0))
+             fg=COLORES["texto2"], font=("Segoe UI", 8)).pack(anchor="w", padx=24, pady=(8,0))
     radio_row(frame_scroll, var_emergente_posicion, [
         ("inferior_derecha",   "↘ Inferior derecha  (recomendado)"),
         ("superior_derecha",   "↗ Superior derecha"),
@@ -240,12 +250,12 @@ def abrir_configuracion(parent=None, callback_aplicar=None):
     f_toggle2.pack(fill="x", padx=24, pady=4)
     tk.Label(f_toggle2, text="Mostrar subtítulos al grabar:",
              bg=COLORES["fondo"], fg=COLORES["texto2"],
-             font=("Consolas", 8)).pack(side="left")
+             font=("Segoe UI", 8)).pack(side="left")
     lbl_subtitulos = tk.Label(f_toggle2,
                                text="✅ Activado" if var_subtitulos_activos.get() else "❌ Desactivado",
                                bg=COLORES["fondo"],
                                fg=COLORES["verde"] if var_subtitulos_activos.get() else COLORES["rosa"],
-                               font=("Consolas", 8, "bold"))
+                               font=("Segoe UI", 8, "bold"))
     lbl_subtitulos.pack(side="right")
     tk.Checkbutton(f_toggle2, variable=var_subtitulos_activos,
                    bg=COLORES["fondo"], selectcolor=COLORES["panel"],
@@ -254,7 +264,7 @@ def abrir_configuracion(parent=None, callback_aplicar=None):
                    cursor="hand2").pack(side="right")
 
     tk.Label(frame_scroll, text="Tamaño:", bg=COLORES["fondo"],
-             fg=COLORES["texto2"], font=("Consolas", 8)).pack(anchor="w", padx=24)
+             fg=COLORES["texto2"], font=("Segoe UI", 8)).pack(anchor="w", padx=24)
     radio_row(frame_scroll, var_subtitulos_tamano, [
         ("pequeño", "🔹 Pequeño  (700×70)"),
         ("mediano", "🔷 Mediano  (900×90)"),
@@ -262,7 +272,7 @@ def abrir_configuracion(parent=None, callback_aplicar=None):
     ])
 
     tk.Label(frame_scroll, text="Posición:", bg=COLORES["fondo"],
-             fg=COLORES["texto2"], font=("Consolas", 8)).pack(anchor="w", padx=24, pady=(8,0))
+             fg=COLORES["texto2"], font=("Segoe UI", 8)).pack(anchor="w", padx=24, pady=(8,0))
     radio_row(frame_scroll, var_subtitulos_posicion, [
         ("inferior_centro",    "⬇ Inferior centro  (recomendado)"),
         ("inferior_izquierda", "↙ Inferior izquierda"),
@@ -273,13 +283,26 @@ def abrir_configuracion(parent=None, callback_aplicar=None):
     lbl_op2 = []
     slider_row(frame_scroll, var_subtitulos_opacidad, lbl_op2)
 
+    # ══ SECCIÓN: RENDIMIENTO ════════════════
+    seccion("▸ Rendimiento (requiere reiniciar)")
+    if INFO_DISPOSITIVO:
+        tk.Label(frame_scroll, text=f"En uso ahora: {INFO_DISPOSITIVO}",
+                 bg=COLORES["fondo"], fg=COLORES["verde"],
+                 font=("Segoe UI", 8)).pack(anchor="w", padx=24, pady=(0, 4))
+    radio_row(frame_scroll, var_dispositivo, [
+        ("mixto", "⚖ Mixto: Whisper en la gráfica, traducción en el procesador (recomendado)"),
+        ("gpu",   "🎮 Solo gráfica: Whisper y traducción en la GPU (usa más memoria de video)"),
+        ("cpu",   "🧠 Solo procesador: no usa la gráfica (más lento, deja la GPU libre)"),
+    ])
+
     # ══ BOTONES ═════════════════════════════
-    tk.Frame(frame_scroll, bg=COLORES["borde"], height=1).pack(fill="x", padx=16, pady=14)
+    tk.Frame(frame_scroll, bg=COLORES["linea"], height=1).pack(fill="x", padx=16, pady=14)
 
     frame_bots = tk.Frame(frame_scroll, bg=COLORES["fondo"])
     frame_bots.pack(pady=8)
 
-    def guardar_y_cerrar():
+    def _guardar():
+        config_actual["dispositivo"]         = var_dispositivo.get()
         config_actual["emergente_activa"]    = var_emergente_activa.get()
         config_actual["emergente_tamano"]    = var_emergente_tamano.get()
         config_actual["emergente_posicion"]  = var_emergente_posicion.get()
@@ -291,7 +314,22 @@ def abrir_configuracion(parent=None, callback_aplicar=None):
         guardar_config(config_actual)
         if callback_aplicar:
             callback_aplicar(config_actual)
+
+    def guardar_y_cerrar():
+        cambio = var_dispositivo.get() != config_backup["dispositivo"]
+        _guardar()
+        reiniciar = cambio and messagebox.askyesno(
+            "Reiniciar",
+            "Cambiaste el dispositivo de procesamiento.\n¿Reiniciar Adriana AI ahora para aplicarlo?",
+            parent=ventana)
         ventana.destroy()
+        if reiniciar:
+            reiniciar_aplicacion()
+
+    def guardar_y_reiniciar():
+        _guardar()
+        ventana.destroy()
+        reiniciar_aplicacion()
 
     def revertir():
         var_emergente_activa.set(config_backup["emergente_activa"])
@@ -302,25 +340,32 @@ def abrir_configuracion(parent=None, callback_aplicar=None):
         var_subtitulos_tamano.set(config_backup["subtitulos_tamano"])
         var_subtitulos_posicion.set(config_backup["subtitulos_posicion"])
         var_subtitulos_opacidad.set(config_backup["subtitulos_opacidad"])
+        var_dispositivo.set(config_backup["dispositivo"])
         toggle_label(var_emergente_activa, lbl_emergente)
         toggle_label(var_subtitulos_activos, lbl_subtitulos)
 
     tk.Button(frame_bots, text="💾  Guardar cambios",
               command=guardar_y_cerrar,
               bg=COLORES["boton"], fg="white",
-              font=("Consolas", 10, "bold"), relief="flat",
+              font=("Segoe UI", 10, "bold"), relief="flat",
+              padx=16, pady=8, cursor="hand2").pack(side="left", padx=6)
+
+    tk.Button(frame_bots, text="🔄  Guardar y reiniciar",
+              command=guardar_y_reiniciar,
+              bg=COLORES["borde2"], fg="white",
+              font=("Segoe UI", 10, "bold"), relief="flat",
               padx=16, pady=8, cursor="hand2").pack(side="left", padx=6)
 
     tk.Button(frame_bots, text="↩  Revertir",
               command=revertir,
               bg=COLORES["panel"], fg=COLORES["amarillo"],
-              font=("Consolas", 10), relief="flat",
+              font=("Segoe UI", 10), relief="flat",
               padx=16, pady=8, cursor="hand2").pack(side="left", padx=6)
 
     tk.Button(frame_bots, text="✕  Cancelar",
               command=ventana.destroy,
               bg=COLORES["panel"], fg=COLORES["rosa"],
-              font=("Consolas", 10), relief="flat",
+              font=("Segoe UI", 10), relief="flat",
               padx=16, pady=8, cursor="hand2").pack(side="left", padx=6)
 
     tk.Frame(frame_scroll, bg=COLORES["fondo"], height=20).pack()
@@ -329,4 +374,6 @@ def abrir_configuracion(parent=None, callback_aplicar=None):
         ventana.mainloop()
 
 if __name__ == "__main__":
-    abrir_configuracion()
+    _r = tk.Tk(); _r.withdraw(); instalar_hover(_r)
+    abrir_configuracion(_r)
+    _r.mainloop()

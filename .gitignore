@@ -1,7 +1,21 @@
+# Entorno y caché
 venv/
 __pycache__/
-*.wav
 *.pyc
+
+# Audio y compilados
+*.wav
 dist/
 build/
 *.spec
+
+# Configuración personal y copias de seguridad
+config.json
+*.bak
+*.bak*
+_to_delete/
+
+# Editor / sistema
+.vscode/
+*.log
+Thumbs.db

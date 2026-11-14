@@ -1,0 +1,10 @@
+# Dependencias de Adriana AI (Python 3.11, Windows)
+faster-whisper
+pyaudiowpatch
+soundfile
+numpy
+argostranslate
+keyboard
+pystray
+pillow
+scikit-learn
